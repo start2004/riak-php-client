@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Tests;
+namespace OpenAdapter\Riak\Tests;
 
-use Basho\Riak;
-use Basho\Riak\Command;
+use OpenAdapter\Riak;
+use OpenAdapter\Riak\Command;
 
 /**
  * Functional tests related to Counter CRDTs

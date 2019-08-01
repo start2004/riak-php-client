@@ -1,16 +1,16 @@
 <?php
 
-namespace Basho\Riak\Node;
+namespace OpenAdapter\Riak\Node;
 
-use Basho\Riak\Node;
+use OpenAdapter\Riak\Node;
 
 /**
- * This class follows the Builder design pattern and is the preferred method for creating Basho\Riak\Node objects for
+ * This class follows the Builder design pattern and is the preferred method for creating OpenAdapter\Riak\Node objects for
  * connecting to your Riak node cluster.
  *
  * <code>
  *  // simple local development / testing cluster
- *  use Basho\Riak\Node;
+ *  use OpenAdapter\Riak\Node;
  *
  *  $nodes = (new Node\Builder)
  *      ->buildLocalhost([10018, 10028, 10038, 10048, 10058]);
@@ -18,7 +18,7 @@ use Basho\Riak\Node;
  *
  * <code>
  *  // password authentication to production cluster
- *  use Basho\Riak\Node;
+ *  use OpenAdapter\Riak\Node;
  *
  *  $nodes = (new Node\Builder)
  *      ->onPort(8098)
@@ -29,7 +29,7 @@ use Basho\Riak\Node;
  *
  * <code>
  *  // certificate authentication to production load balanced cluster
- *  use Basho\Riak\Node;
+ *  use OpenAdapter\Riak\Node;
  *
  *  $node = (new Node\Builder)
  *      ->atHost('riak.company.int')
@@ -41,7 +41,7 @@ use Basho\Riak\Node;
  *
  * <code>
  *  // pam authentication to production load balanced cluster
- *  use Basho\Riak\Node;
+ *  use OpenAdapter\Riak\Node;
  *
  *  $node = (new Node\Builder)
  *      ->atHost('riak.company.int')
@@ -97,6 +97,7 @@ class Builder
      *
      * @param $user
      * @param $pass
+     *
      * @return $this
      */
     public function usingPasswordAuthentication($user, $pass = '')
@@ -203,7 +204,8 @@ class Builder
      *
      * @param $timeout
      */
-    public function withConnectionTimeout($timeout) {
+    public function withConnectionTimeout($timeout)
+    {
         $this->config->setConnectionTimeout($timeout);
     }
 
@@ -212,7 +214,8 @@ class Builder
      *
      * @param $timeout
      */
-    public function withStreamTimeout($timeout) {
+    public function withStreamTimeout($timeout)
+    {
         $this->config->setStreamTimeout($timeout);
     }
 
@@ -231,6 +234,7 @@ class Builder
      * staging and production environments where you have multiple Riak nodes on multiple machines / vms.
      *
      * @param array $hosts
+     *
      * @return Node[]
      */
     public function buildCluster(array $hosts = ['localhost'])
@@ -252,7 +256,10 @@ class Builder
      */
     public function build()
     {
-        $this->validate();
+        try {
+            $this->validate();
+        } catch (Builder\Exception $e) {
+        }
 
         return new Node(clone $this->config);
     }
@@ -287,6 +294,7 @@ class Builder
      * Build node objects with configuration to use a specific host address
      *
      * @param $host
+     *
      * @return $this
      */
     public function atHost($host)
@@ -303,6 +311,7 @@ class Builder
      * development environments where you have multiple Riak nodes on a single machine / vm.
      *
      * @param array $ports
+     *
      * @return Node[]
      */
     public function buildLocalhost(array $ports = [8087])
@@ -320,6 +329,7 @@ class Builder
      * Build node objects with configuration to use a specific port number
      *
      * @param $port
+     *
      * @return $this
      */
     public function onPort($port)

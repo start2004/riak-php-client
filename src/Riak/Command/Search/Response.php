@@ -1,15 +1,15 @@
 <?php
 
-namespace Basho\Riak\Command\Search;
+namespace OpenAdapter\Riak\Command\Search;
 
-use Basho\Riak\Search\Doc;
+use OpenAdapter\Riak\Search\Doc;
 
 /**
  * Container for a response for receiving data back from a Search request on Riak
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-class Response extends \Basho\Riak\Command\Response
+class Response extends \OpenAdapter\Riak\Command\Response
 {
     /**
      * @var int
@@ -23,11 +23,12 @@ class Response extends \Basho\Riak\Command\Response
 
     /**
      * Response constructor.
+     *
      * @param bool|true $success
      * @param int $code
      * @param string $message
      * @param int $numFound
-     * @param \Basho\Riak\Search\Doc[] $docs
+     * @param \OpenAdapter\Riak\Search\Doc[] $docs
      */
     public function __construct($success = true, $code = 0, $message = '', $numFound = 0, $docs = [])
     {
@@ -46,7 +47,7 @@ class Response extends \Basho\Riak\Command\Response
     }
 
     /**
-     * @return \Basho\Riak\Search\Doc[]
+     * @return \OpenAdapter\Riak\Search\Doc[]
      */
     public function getDocs()
     {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Tests;
+namespace OpenAdapter\Riak\Tests;
 
-use Basho\Riak;
-use Basho\Riak\Command;
+use OpenAdapter\Riak;
+use OpenAdapter\Riak\Command;
 
 /**
  * Scenario tests for when Nodes become unreachable
@@ -13,13 +13,14 @@ use Basho\Riak\Command;
 class NodeUnreachableTest extends TestCase
 {
     /**
-     * @expectedException \Basho\Riak\Exception
+     * @expectedException \OpenAdapter\Riak\Exception
      */
     public function testUnreachableNode()
     {
         $nodes = $this->getCluster();
         $riak = new Riak([$nodes[0]]);
         $response = (new Command\Builder\Ping($riak))
+            ->withConnectionTimeout(1)
             ->build()
             ->execute();
 
@@ -27,12 +28,13 @@ class NodeUnreachableTest extends TestCase
     }
 
     /**
-     * @expectedException \Basho\Riak\Exception
+     * @expectedException \OpenAdapter\Riak\Exception
      */
     public function testUnreachableNodes()
     {
         $riak = new Riak($this->getCluster());
         $response = (new Command\Builder\Ping($riak))
+            ->withConnectionTimeout(1)
             ->build()
             ->execute();
 
@@ -40,7 +42,7 @@ class NodeUnreachableTest extends TestCase
     }
 
     /**
-     * @expectedException \Basho\Riak\Exception
+     * @expectedException \OpenAdapter\Riak\Exception
      */
     public function testMaxConnections()
     {
@@ -49,6 +51,7 @@ class NodeUnreachableTest extends TestCase
 
         $riak = new Riak($nodes, ['max_connect_attempts' => 2]);
         $response = (new Command\Builder\Ping($riak))
+            ->withConnectionTimeout(1)
             ->build()
             ->execute();
 
@@ -65,10 +68,11 @@ class NodeUnreachableTest extends TestCase
 
         $riak = new Riak($nodes, ['max_connect_attempts' => 3], static::getApiBridgeClass());
         $response = (new Command\Builder\Ping($riak))
+            ->withConnectionTimeout(1)
             ->build()
             ->execute();
 
-        $this->assertInstanceOf('Basho\Riak\Command\Response', $response);
+        $this->assertInstanceOf('OpenAdapter\Riak\Command\Response', $response);
         $this->assertTrue($response->isSuccess());
     }
 }

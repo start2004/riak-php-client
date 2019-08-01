@@ -1,12 +1,12 @@
 <?php
 
-namespace Basho;
+namespace OpenAdapter;
 
-use Basho\Riak\Api;
-use Basho\Riak\Api\Http;
-use Basho\Riak\Command;
-use Basho\Riak\Exception;
-use Basho\Riak\Node;
+use OpenAdapter\Riak\Api;
+use OpenAdapter\Riak\Api\Http;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\Exception;
+use OpenAdapter\Riak\Node;
 
 /**
  * This class maintains the list of nodes in the Riak cluster.
@@ -25,14 +25,14 @@ use Basho\Riak\Node;
  *
  * $response = $command->execute();
  *
- * $user = $response->getObject();
+ * $user = $response->getDataObject();
  * </code>
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
 class Riak
 {
-    const VERSION = "2.0.3";
+    const VERSION = '2.0.3';
 
     /**
      * Riak server ring
@@ -47,11 +47,11 @@ class Riak
      * @var array
      */
     protected $config = [
-        'prefix'               => 'riak',
-        'mapred_prefix'        => 'mapred',
-        'index_prefix'         => 'buckets',
-        'dns_server'           => '8.8.8.8',
-        'max_connect_attempts' => 3,
+        'prefix' => 'riak',
+        'mapred_prefix' => 'mapred',
+        'index_prefix' => 'buckets',
+        'dns_server' => '8.8.8.8',
+        'max_connect_attempts' => 3
     ];
 
     /**
@@ -66,7 +66,7 @@ class Riak
      *
      * @var Api|null
      */
-    protected $api = NULL;
+    protected $api = null;
 
     /**
      * List of nodes marked inactive
@@ -85,13 +85,13 @@ class Riak
     /**
      * Construct a new Client object, defaults to port 8098.
      *
-     * @param Node[] $nodes an array of Basho\Riak\Node objects
+     * @param Node[] $nodes an array of OpenAdapter\Riak\Node objects
      * @param array $config a configuration object
      * @param Api $api
      *
      * @throws Exception
      */
-    public function __construct(array $nodes, array $config = [], Api $api = NULL)
+    public function __construct(array $nodes, array $config = [], Api $api = null)
     {
         // wash any custom keys if any
         $this->nodes = array_values($nodes);
@@ -120,8 +120,8 @@ class Riak
      */
     protected function pickNode()
     {
-        $nodes       = $this->getNodes();
-        $index = mt_rand(0, count($nodes) - 1);
+        $nodes = $this->getNodes();
+        $index = random_int(0, \count($nodes) - 1);
         return array_keys($nodes)[$index];
     }
 
@@ -131,18 +131,6 @@ class Riak
     public function getNodes()
     {
         return $this->nodes;
-    }
-
-    /**
-     * Get value from connection config
-     *
-     * @param $key
-     *
-     * @return mixed
-     */
-    public function getConfigValue($key)
-    {
-        return $this->config[$key];
     }
 
     /**
@@ -157,6 +145,7 @@ class Riak
      * Execute a Riak command
      *
      * @param Command $command
+     *
      * @return Command\Response
      * @throws Exception
      */
@@ -165,7 +154,7 @@ class Riak
         $response = $this->getActiveNode()->execute($command, $this->api);
 
         // if more than 1 node configured, lets try a different node up to max connection attempts
-        if (empty($response) && count($this->nodes) > 1 && $this->attempts < $this->getConfigValue('max_connect_attempts')) {
+        if (empty($response) && \count($this->nodes) > 1 && $this->attempts < $this->getConfigValue('max_connect_attempts')) {
             $response = $this->pickNewNode()->execute($command);
         } elseif (empty($response) && $this->attempts >= $this->getConfigValue('max_connect_attempts')) {
             throw new Exception('Nodes unreachable. Error Msg: ' . $this->api->getError());
@@ -203,21 +192,15 @@ class Riak
     }
 
     /**
-     * @return Api|null
-     */
-    public function getApi()
-    {
-        return $this->api;
-    }
-
-    /**
-     * Accessor for the last request issued to the API. For debugging purposes.
+     * Get value from connection config
      *
-     * @return string
+     * @param $key
+     *
+     * @return mixed
      */
-    public function getLastRequest()
+    public function getConfigValue($key)
     {
-        return $this->api->getRequest();
+        return $this->config[$key];
     }
 
     /**
@@ -240,5 +223,23 @@ class Riak
         $this->setActiveNodeIndex($this->pickNode());
 
         return $this;
+    }
+
+    /**
+     * @return Api|null
+     */
+    public function getApi()
+    {
+        return $this->api;
+    }
+
+    /**
+     * Accessor for the last request issued to the API. For debugging purposes.
+     *
+     * @return string
+     */
+    public function getLastRequest()
+    {
+        return $this->api->getRequest();
     }
 }

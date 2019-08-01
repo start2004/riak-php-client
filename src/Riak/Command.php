@@ -1,8 +1,8 @@
 <?php
 
-namespace Basho\Riak;
+namespace OpenAdapter\Riak;
 
-use Basho\Riak\Command\Builder;
+use OpenAdapter\Riak\Command\Builder;
 
 /**
  * The command class is used to build a read or write command to be executed against a Riak node.
@@ -40,17 +40,20 @@ abstract class Command
     protected $response = null;
 
     /**
-     * @var \Basho\Riak|null
+     * @var \OpenAdapter\Riak|null
      */
     protected $riak = null;
 
     protected $verbose = false;
+
+    protected $connectionTimeout = 0;
 
     public function __construct(Builder $builder)
     {
         $this->riak = $builder->getConnection();
         $this->parameters = $builder->getParameters();
         $this->verbose = $builder->getVerbose();
+        $this->connectionTimeout = $builder->getConnectionTimeout();
     }
 
     public function isVerbose()
@@ -62,6 +65,7 @@ abstract class Command
      * Executes the command against the API
      *
      * @return Command\Response
+     * @throws Exception
      */
     public function execute()
     {
@@ -112,7 +116,7 @@ abstract class Command
      */
     public function hasParameters()
     {
-        return (bool)count($this->parameters);
+        return (bool)\count($this->parameters);
     }
 
     public function getMethod()
@@ -134,11 +138,19 @@ abstract class Command
     }
 
     /**
-     * @return Object|null
+     * @return DataObject|null
      */
-    public function getObject()
+    public function getDataObject()
     {
         return null;
+    }
+
+    /**
+     * @return int
+     */
+    public function getConnectionTimeout()
+    {
+        return $this->connectionTimeout;
     }
 
     abstract public function getData();

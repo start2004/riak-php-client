@@ -1,8 +1,8 @@
 <?php
 
-namespace Basho\Tests;
+namespace OpenAdapter\Riak\Tests;
 
-use Basho\Riak\Command;
+use OpenAdapter\Riak\Command;
 
 /**
  * Functional tests related to Counter CRDTs
@@ -92,12 +92,12 @@ class MapOperationsTest extends TestCase
         $map = $response->getMap();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('Basho\Riak\DataType\Map', $response->getMap());
+        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Map', $response->getMap());
 
-        $this->assertInstanceOf('Basho\Riak\DataType\Set', $map->getSet('ATLANTIC_DIVISION'));
+        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Set', $map->getSet('ATLANTIC_DIVISION'));
         $this->assertEquals(1, count($map->getSet('ATLANTIC_DIVISION')->getData()));
 
-        $this->assertInstanceOf('Basho\Riak\DataType\Counter', $map->getCounter('teams'));
+        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Counter', $map->getCounter('teams'));
         $this->assertEquals(1, $map->getCounter('teams')->getData());
         $this->assertNotEmpty($map->getContext());
 
@@ -118,7 +118,7 @@ class MapOperationsTest extends TestCase
 
         // build a map update command
         $command = (new Command\Builder\UpdateMap(static::$riak))
-            ->updateFlag('expansion_year', TRUE)
+            ->updateFlag('expansion_year', true)
             ->updateCounter('teams', $updateCounterBuilder)
             ->updateSet('ATLANTIC_DIVISION', $updateSetBuilder)
             ->buildLocation(static::$key, 'Teams', static::MAP_BUCKET_TYPE)
@@ -138,12 +138,12 @@ class MapOperationsTest extends TestCase
         $map = $response->getMap();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('Basho\Riak\DataType\Map', $response->getMap());
+        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Map', $response->getMap());
 
-        $this->assertInstanceOf('Basho\Riak\DataType\Set', $map->getSet('ATLANTIC_DIVISION'));
+        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Set', $map->getSet('ATLANTIC_DIVISION'));
         $this->assertEquals(3, count($map->getSet('ATLANTIC_DIVISION')->getData()));
 
-        $this->assertInstanceOf('Basho\Riak\DataType\Counter', $map->getCounter('teams'));
+        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Counter', $map->getCounter('teams'));
         $this->assertEquals(3, $map->getCounter('teams')->getData());
 
         $this->assertTrue($map->getFlag('expansion_year'));
@@ -154,7 +154,7 @@ class MapOperationsTest extends TestCase
     /**
      * @depends      testAddExisting
      *
-     * @expectedException \Basho\Riak\DataType\Exception
+     * @expectedException \OpenAdapter\Riak\DataType\Exception
      */
     public function testRemoveExisting()
     {
@@ -184,12 +184,12 @@ class MapOperationsTest extends TestCase
         $map = $response->getMap();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('Basho\Riak\DataType\Map', $response->getMap());
+        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Map', $response->getMap());
 
-        $this->assertInstanceOf('Basho\Riak\DataType\Set', $map->getSet('ATLANTIC_DIVISION'));
+        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Set', $map->getSet('ATLANTIC_DIVISION'));
         $this->assertEquals(3, count($map->getSet('ATLANTIC_DIVISION')->getData()));
 
-        $this->assertInstanceOf('Basho\Riak\DataType\Counter', $map->getCounter('teams'));
+        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Counter', $map->getCounter('teams'));
         $this->assertEquals(3, $map->getCounter('teams')->getData());
 
         $this->assertTrue($map->getFlag('expansion_year'));
@@ -203,7 +203,7 @@ class MapOperationsTest extends TestCase
     public function testAddMapExisting()
     {
         $updateMapBuilder = (new Command\Builder\UpdateMap(static::$riak))
-            ->updateFlag('notifications', FALSE)
+            ->updateFlag('notifications', false)
             ->updateRegister('label', 'Email Alerts');
 
         // build a map update command
@@ -225,9 +225,9 @@ class MapOperationsTest extends TestCase
         $map = $response->getMap();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('Basho\Riak\DataType\Map', $response->getMap());
+        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Map', $response->getMap());
 
-        $this->assertInstanceOf('Basho\Riak\DataType\Map', $map->getMap('preferences'));
+        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Map', $map->getMap('preferences'));
         $this->assertEquals('Email Alerts', $map->getMap('preferences')->getRegister('label'));
         $this->assertFalse($map->getMap('preferences')->getFlag('notifications'));
 

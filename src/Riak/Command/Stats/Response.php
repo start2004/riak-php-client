@@ -1,15 +1,13 @@
 <?php
 
-namespace Basho\Riak\Command\Stats;
-
-use Basho\Riak\Location;
+namespace OpenAdapter\Riak\Command\Stats;
 
 /**
  * Container for a response related to an operation on an object
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-class Response extends \Basho\Riak\Command\Response
+class Response extends \OpenAdapter\Riak\Command\Response
 {
     protected $stats = [];
 
@@ -20,7 +18,22 @@ class Response extends \Basho\Riak\Command\Response
         $this->stats = $data;
     }
 
-    public function __get($name) {
+    public function __isset($name)
+    {
+        if (isset($this->stats[$name])) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function __set($name, $value)
+    {
+        $this->stats[$name] = $value;
+    }
+
+    public function __get($name)
+    {
         if (isset($this->stats[$name])) {
             return $this->stats[$name];
         }
@@ -28,7 +41,8 @@ class Response extends \Basho\Riak\Command\Response
         return null;
     }
 
-    public function getAllStats() {
+    public function getAllStats()
+    {
         return $this->stats;
     }
 }

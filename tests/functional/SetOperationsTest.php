@@ -1,8 +1,8 @@
 <?php
 
-namespace Basho\Tests;
+namespace OpenAdapter\Riak\Tests;
 
-use Basho\Riak\Command;
+use OpenAdapter\Riak\Command;
 
 /**
  * Functional tests related to Set CRDTs
@@ -91,7 +91,7 @@ class SetTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('Basho\Riak\DataType\Set', $response->getSet());
+        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Set', $response->getSet());
         $this->assertNotEmpty($response->getSet()->getData());
         $this->assertTrue(is_array($response->getSet()->getData()));
         $this->assertEquals(7, count($response->getSet()->getData()));
@@ -103,7 +103,7 @@ class SetTest extends TestCase
     /**
      * @depends      testAddNewWithKey
      */
-    public function testAddExisting()
+    public function testAddAnotherNew()
     {
         // add without context
         $command = (new Command\Builder\UpdateSet(static::$riak))
@@ -123,7 +123,7 @@ class SetTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('Basho\Riak\DataType\Set', $response->getSet());
+        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Set', $response->getSet());
         $this->assertNotEmpty($response->getSet()->getData());
         $this->assertTrue(is_array($response->getSet()->getData()));
         $this->assertEquals(8, count($response->getSet()->getData()));
@@ -155,7 +155,7 @@ class SetTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('Basho\Riak\DataType\Set', $response->getSet());
+        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Set', $response->getSet());
         $this->assertNotEmpty($response->getSet()->getData());
         $this->assertTrue(is_array($response->getSet()->getData()));
         $this->assertEquals(7, count($response->getSet()->getData()));
@@ -190,7 +190,7 @@ class SetTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('Basho\Riak\DataType\Set', $response->getSet());
+        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Set', $response->getSet());
         $this->assertNotEmpty($response->getSet()->getData());
         $this->assertTrue(is_array($response->getSet()->getData()));
         $this->assertEquals(7, count($response->getSet()->getData()));

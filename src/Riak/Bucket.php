@@ -1,6 +1,6 @@
 <?php
 
-namespace Basho\Riak;
+namespace OpenAdapter\Riak;
 
 /**
  * Core data structure for a Riak Bucket.
@@ -12,7 +12,7 @@ class Bucket
     /**
      * The default bucket type in Riak.
      */
-    const DEFAULT_TYPE = "default";
+    const DEFAULT_TYPE = 'default';
 
     /**
      * Bucket properties

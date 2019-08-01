@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Tests\Riak\Command\Builder;
+namespace OpenAdapter\Riak\Tests\Riak\Command\Builder;
 
-use Basho\Riak\Command;
-use Basho\Tests\TestCase;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\Tests\TestCase;
 
 /**
  * Tests the configuration of Riak commands via the Command Builder class
@@ -20,13 +20,13 @@ class QueryIndexTest extends TestCase
         // build an object
         $builder = new Command\Builder\QueryIndex(static::$riak);
         $builder->buildBucket('some_bucket', 'some_bucket_type')
-                ->withIndexName('foo_int')
-                ->withScalarValue(42);
+            ->withIndexName('foo_int')
+            ->withScalarValue(42);
 
         $command = $builder->build();
 
-        $this->assertInstanceOf('Basho\Riak\Command\Indexes\Query', $command);
-        $this->assertInstanceOf('Basho\Riak\Bucket', $command->getBucket());
+        $this->assertInstanceOf('OpenAdapter\Riak\Command\Indexes\Query', $command);
+        $this->assertInstanceOf('OpenAdapter\Riak\Bucket', $command->getBucket());
         $this->assertEquals('some_bucket', $command->getBucket()->getName());
         $this->assertEquals('some_bucket_type', $command->getBucket()->getType());
         $this->assertEquals('foo_int', $command->getIndexName());
@@ -36,7 +36,7 @@ class QueryIndexTest extends TestCase
     /**
      * Tests validate properly verifies the index name is not there
      *
-     * @expectedException \Basho\Riak\Command\Builder\Exception
+     * @expectedException \OpenAdapter\Riak\Command\Builder\Exception
      */
     public function testValidateLocation()
     {
@@ -49,14 +49,14 @@ class QueryIndexTest extends TestCase
     /**
      * Tests validate properly verifies the scalar match value is not there
      *
-     * @expectedException \Basho\Riak\Command\Builder\Exception
+     * @expectedException \OpenAdapter\Riak\Command\Builder\Exception
      */
     public function testValidateScalarValue()
     {
         $builder = new Command\Builder\QueryIndex(static::$riak);
         $builder->buildBucket('some_bucket')
-                ->withIndexName("foo_int")
-                ->withScalarValue(null);
+            ->withIndexName("foo_int")
+            ->withScalarValue(null);
 
         $builder->build();
     }
@@ -64,7 +64,7 @@ class QueryIndexTest extends TestCase
     /**
      * Tests validate properly verifies the range lower bound value is not there
      *
-     * @expectedException \Basho\Riak\Command\Builder\Exception
+     * @expectedException \OpenAdapter\Riak\Command\Builder\Exception
      */
     public function testValidateRangeLowerBound()
     {
@@ -79,7 +79,7 @@ class QueryIndexTest extends TestCase
     /**
      * Tests validate properly verifies the range upper bound value is not there
      *
-     * @expectedException \Basho\Riak\Command\Builder\Exception
+     * @expectedException \OpenAdapter\Riak\Command\Builder\Exception
      */
     public function testValidateRangeUpperBound()
     {
@@ -130,7 +130,6 @@ class QueryIndexTest extends TestCase
             ->withTimeout(43);
 
         $command = $builder->build();
-
 
 
         $this->assertEquals('12345', $command->getParameter('continuation'));

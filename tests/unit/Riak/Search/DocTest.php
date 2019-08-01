@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Tests\Riak\Search;
+namespace OpenAdapter\Riak\Tests\Riak\Search;
 
-use Basho\Riak\Search\Doc;
-use PHPUnit_Framework_TestCase as TestCase;
+use OpenAdapter\Riak\Search\Doc;
+use PHPUnit\Framework\TestCase as TestCase;
 
 /**
  * Search result document test
@@ -20,10 +20,10 @@ class DocTest extends TestCase
     public function setUp()
     {
         $data = new \stdClass();
-        $data->_yz_id = '1*tests*test*5*39';
-        $data->_yz_rk = '5';
-        $data->_yz_rt = 'tests';
-        $data->_yz_rb = 'test';
+        $data->yzId = '1*tests*test*5*39';
+        $data->yzRk = '5';
+        $data->yzRt = 'tests';
+        $data->yzRb = 'test';
         $data->foo = 'bar';
         $data->_status = 200;
         $this->doc = new Doc($data);
@@ -32,8 +32,8 @@ class DocTest extends TestCase
     public function testGetLocation()
     {
         $result = $this->doc->getLocation();
-        $this->assertInstanceOf('\Basho\Riak\Location', $result);
-        $this->assertInstanceOf('\Basho\Riak\Bucket', $result->getBucket());
+        $this->assertInstanceOf('\OpenAdapter\Riak\Location', $result);
+        $this->assertInstanceOf('\OpenAdapter\Riak\Bucket', $result->getBucket());
         $this->assertEquals('tests', $result->getBucket()->getType());
         $this->assertEquals('test', $result->getBucket()->getName());
         $this->assertEquals('5', $result->getKey());

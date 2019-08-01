@@ -1,15 +1,15 @@
 <?php
 
-namespace Basho\Tests\Riak;
+namespace OpenAdapter\Riak\Tests\Riak;
 
-use Basho\Riak\DataType\Hll;
+use OpenAdapter\Riak\DataType\Hll;
 
 /**
  * Test for HyperLogLog CRDT
  *
  * @author Luke Bakken <lbakken@basho.com>
  */
-class HllTest extends \PHPUnit_Framework_TestCase
+class HllTest extends \PHPUnit\Framework\TestCase
 {
     public function testType()
     {

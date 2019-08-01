@@ -1,10 +1,10 @@
 <?php
 
-namespace Basho\Riak\Command\DataType\Counter;
+namespace OpenAdapter\Riak\Command\DataType\Counter;
 
-use Basho\Riak\Command;
-use Basho\Riak\CommandInterface;
-use Basho\Riak\Location;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\CommandInterface;
+use OpenAdapter\Riak\Location;
 
 /**
  * Used to fetch a counter
@@ -16,12 +16,12 @@ class Fetch extends Command implements CommandInterface
     /**
      * @var Command\DataType\Counter\Response|null
      */
-    protected $response = NULL;
+    protected $response = null;
 
     /**
      * @var Location|null
      */
-    protected $location = NULL;
+    protected $location = null;
 
     public function __construct(Command\Builder\FetchCounter $builder)
     {

@@ -1,13 +1,13 @@
 <?php
 
-namespace Basho\Riak\Command\Search\Schema;
+namespace OpenAdapter\Riak\Command\Search\Schema;
 
 /**
  * Container for a response related to an operation on an object
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-class Response extends \Basho\Riak\Command\Response
+class Response extends \OpenAdapter\Riak\Command\Response
 {
     protected $schema = '';
     protected $contentType = '';

@@ -1,8 +1,8 @@
 <?php
 
-namespace Basho\Tests;
+namespace OpenAdapter\Riak\Tests;
 
-use Basho\Riak\Command;
+use OpenAdapter\Riak\Command;
 
 /**
  * Class BucketOperationsTest
@@ -93,7 +93,7 @@ class BucketOperationsTest extends TestCase
     {
         if (static::$hll_present) {
             $command = (new Command\Builder\FetchBucketProperties(static::$riak))
-                ->buildBucket('test' + md5(rand(0, 99) . time()), static::HLL_BUCKET_TYPE)
+                ->buildBucket('test' . md5(rand(0, 99) . time()), static::HLL_BUCKET_TYPE)
                 ->build();
 
             $bucket = $command->execute()->getBucket();

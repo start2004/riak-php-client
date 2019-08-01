@@ -1,6 +1,6 @@
 <?php
 
-namespace Basho\Riak\Command\Builder\TimeSeries;
+namespace OpenAdapter\Riak\Command\Builder\TimeSeries;
 
 /**
  * @author Christopher Mancini <cmancini at basho d0t com>
@@ -12,7 +12,7 @@ trait TableTrait
      *
      * @var string|null
      */
-    protected $table = NULL;
+    protected $table = null;
 
     /**
      * Gets the table name

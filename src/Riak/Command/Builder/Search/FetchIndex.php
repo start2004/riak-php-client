@@ -1,8 +1,8 @@
 <?php
 
-namespace Basho\Riak\Command\Builder\Search;
+namespace OpenAdapter\Riak\Command\Builder\Search;
 
-use Basho\Riak\Command;
+use OpenAdapter\Riak\Command;
 
 /**
  * @author Christopher Mancini <cmancini at basho d0t com>
@@ -15,6 +15,7 @@ class FetchIndex extends Command\Builder implements Command\BuilderInterface
      * {@inheritdoc}
      *
      * @return Command\Search\Index\Fetch;
+     * @throws Command\Builder\Exception
      */
     public function build()
     {
@@ -25,7 +26,7 @@ class FetchIndex extends Command\Builder implements Command\BuilderInterface
 
     public function validate()
     {
-        return;
+        return true;
     }
 
     public function withName($name)

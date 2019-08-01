@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Riak\Command\Builder;
+namespace OpenAdapter\Riak\Command\Builder;
 
-use Basho\Riak;
-use Basho\Riak\Command;
+use OpenAdapter\Riak;
+use OpenAdapter\Riak\Command;
 
 /**
  * Used to fetch KV objects from Riak
@@ -15,7 +15,7 @@ use Basho\Riak\Command;
  *
  * $response = $command->execute();
  *
- * $user = $response->getObject();
+ * $user = $response->getDataObject();
  * </code>
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
@@ -31,6 +31,7 @@ class Ping extends Command\Builder implements Command\BuilderInterface
      * {@inheritdoc}
      *
      * @return Command\Ping;
+     * @throws Exception
      */
     public function build()
     {

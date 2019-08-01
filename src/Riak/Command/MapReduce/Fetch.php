@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Riak\Command\MapReduce;
+namespace OpenAdapter\Riak\Command\MapReduce;
 
-use Basho\Riak\Command;
-use Basho\Riak\CommandInterface;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\CommandInterface;
 
 /**
  * Used to fetch a result set from Riak using MapReduce

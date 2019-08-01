@@ -1,8 +1,8 @@
 <?php
 
-namespace Basho\Tests;
+namespace OpenAdapter\Riak\Tests;
 
-use Basho\Riak\Command;
+use OpenAdapter\Riak\Command;
 
 /**
  * Functional tests related to Hll CRDTs
@@ -25,8 +25,7 @@ class HllOperationsTest extends TestCase
         // make completely random key based on time
         static::$key = md5(rand(0, 99) . time());
 
-        try
-        {
+        try {
             // Skip this suite if the "hlls" bucket type is not present
             $command = (new Command\Builder\FetchBucketProperties(static::$riak))
                 ->buildBucket('test', static::HLL_BUCKET_TYPE)
@@ -37,9 +36,7 @@ class HllOperationsTest extends TestCase
             if (!$response->isSuccess() || $response->getCode() != 200) {
                 throw new \PHPUnit_Framework_SkippedTestSuiteError("hlls bucket type is not enabled and activated, skipping");
             }
-        }
-        catch (\Exception $ex)
-        {
+        } catch (\Exception $ex) {
             throw new \PHPUnit_Framework_SkippedTestSuiteError("hlls bucket type is not enabled and activated, skipping");
         }
     }
@@ -102,7 +99,7 @@ class HllOperationsTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('Basho\Riak\DataType\Hll', $response->getHll());
+        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Hll', $response->getHll());
         $this->assertNotEmpty($response->getHll()->getData());
         $this->assertTrue(is_int($response->getHll()->getData()));
         $this->assertEquals(7, $response->getHll()->getData());
@@ -130,7 +127,7 @@ class HllOperationsTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('Basho\Riak\DataType\Hll', $response->getHll());
+        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Hll', $response->getHll());
         $this->assertNotEmpty($response->getHll()->getData());
         $this->assertTrue(is_int($response->getHll()->getData()));
         $this->assertEquals(7, $response->getHll()->getData());
@@ -159,7 +156,7 @@ class HllOperationsTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('Basho\Riak\DataType\Hll', $response->getHll());
+        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Hll', $response->getHll());
         $this->assertNotEmpty($response->getHll()->getData());
         $this->assertTrue(is_int($response->getHll()->getData()));
         $this->assertEquals(8, $response->getHll()->getData());

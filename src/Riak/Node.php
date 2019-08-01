@@ -1,9 +1,8 @@
 <?php
 
-namespace Basho\Riak;
+namespace OpenAdapter\Riak;
 
-use Basho\Riak\Node\Config;
-use Basho\Riak\Node\Response;
+use OpenAdapter\Riak\Node\Config;
 
 /**
  * Contains the connection configuration to connect to a Riak node.
@@ -207,13 +206,13 @@ class Node
      * @param Command $command
      * @param Api $api
      *
-     * @return Command\Response
+     * @return Command\Response|bool
      * @throws Exception
      */
     public function execute(Command $command, Api $api)
     {
         $success = $api->prepare($command, $this)->send();
-        if ($success === FALSE) {
+        if ($success === false) {
             return false;
         }
 

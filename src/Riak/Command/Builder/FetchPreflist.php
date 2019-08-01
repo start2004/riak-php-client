@@ -1,8 +1,8 @@
 <?php
 
-namespace Basho\Riak\Command\Builder;
+namespace OpenAdapter\Riak\Command\Builder;
 
-use Basho\Riak\Command;
+use OpenAdapter\Riak\Command;
 
 /**
  * Used to fetch map objects from Riak
@@ -24,13 +24,14 @@ class FetchPreflist extends Command\Builder implements Command\BuilderInterface
     /**
      * {@inheritdoc}
      *
-     * @return Command\Object\FetchPreflist;
+     * @return Command\DataObject\FetchPreflist;
+     * @throws Exception
      */
     public function build()
     {
         $this->validate();
 
-        return new Command\Object\FetchPreflist($this);
+        return new Command\DataObject\FetchPreflist($this);
     }
 
     /**

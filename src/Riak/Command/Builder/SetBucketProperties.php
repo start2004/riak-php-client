@@ -1,9 +1,8 @@
 <?php
 
-namespace Basho\Riak\Command\Builder;
+namespace OpenAdapter\Riak\Command\Builder;
 
-use Basho\Riak;
-use Basho\Riak\Command;
+use OpenAdapter\Riak\Command;
 
 /**
  * @author Christopher Mancini <cmancini at basho d0t com>
@@ -42,6 +41,7 @@ class SetBucketProperties extends Command\Builder implements Command\BuilderInte
      * {@inheritdoc}
      *
      * @return Command\Bucket\Store
+     * @throws Exception
      */
     public function build()
     {
@@ -57,7 +57,7 @@ class SetBucketProperties extends Command\Builder implements Command\BuilderInte
     {
         $this->required('Bucket');
 
-        if (count($this->properties) < 1) {
+        if (\count($this->properties) < 1) {
             throw new Exception('At least one element to add or remove needs to be defined.');
         }
     }

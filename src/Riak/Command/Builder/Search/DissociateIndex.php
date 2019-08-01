@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Riak\Command\Builder\Search;
+namespace OpenAdapter\Riak\Command\Builder\Search;
 
-use Basho\Riak;
-use Basho\Riak\Command;
+use OpenAdapter\Riak;
+use OpenAdapter\Riak\Command;
 
 /**
  * Used to increment counter objects in Riak by the provided positive / negative integer
@@ -21,7 +21,7 @@ use Basho\Riak\Command;
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-class DissociateIndex extends Command\Builder\SetBucketProperties implements Command\BuilderInterface
+class DissociateIndex extends Command\Builder\SetBucketProperties
 {
     public function __construct(Riak $riak)
     {

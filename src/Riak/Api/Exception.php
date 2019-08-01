@@ -1,13 +1,13 @@
 <?php
 
-namespace Basho\Riak\Api;
+namespace OpenAdapter\Riak\Api;
 
 /**
  * Exception thrown when there is an error within the execution of an Api Bridge object.
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-class Exception extends \Basho\Riak\Exception
+class Exception extends \OpenAdapter\Riak\Exception
 {
 
 }

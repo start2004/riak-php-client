@@ -1,8 +1,8 @@
 <?php
 
-namespace Basho\Riak\Command\Builder;
+namespace OpenAdapter\Riak\Command\Builder;
 
-use Basho\Riak\Command;
+use OpenAdapter\Riak\Command;
 
 /**
  * Used to fetch map objects from Riak
@@ -27,6 +27,7 @@ class FetchMap extends Command\Builder implements Command\BuilderInterface
      * {@inheritdoc}
      *
      * @return Command\DataType\Map\Fetch;
+     * @throws Exception
      */
     public function build()
     {

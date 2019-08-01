@@ -1,16 +1,16 @@
 <?php
 
-namespace Basho\Tests;
+namespace OpenAdapter\Riak\Tests;
 
-use Basho\Riak;
-use Basho\Riak\Node;
+use OpenAdapter\Riak;
+use OpenAdapter\Riak\Node;
 
 /**
  * Main class for testing Riak clustering
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-abstract class TestCase extends \PHPUnit_Framework_TestCase
+abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
     const TEST_NODE_HOST = 'riak-test';
     const TEST_NODE_PORT = 8087;
@@ -24,9 +24,12 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
     const MAP_BUCKET_TYPE = 'maps';
     const SEARCH_BUCKET_TYPE = 'yokozuna';
     const SET_BUCKET_TYPE = 'sets';
+    const GSET_BUCKET_TYPE = 'gsets';
+
+    const TEST_IMG = "Basho_Man_Super.png";
 
     /**
-     * @var \Basho\Riak|null
+     * @var \OpenAdapter\Riak|null
      */
     static $riak = null;
 
@@ -42,30 +45,6 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
             ->buildCluster(['riak1.company.com', 'riak2.company.com', 'riak3.company.com',]);
     }
 
-    public static function getLocalNode()
-    {
-        return (new Node\Builder)
-            ->atHost(static::getTestHost())
-            ->onPort(static::getTestPort())
-            ->build();
-    }
-
-    public static function getApiBridgeClass()
-    {
-        return !empty($_ENV['PB_INTERFACE']) ? new Riak\Api\Pb() : null;
-    }
-
-    public static function getTestHost()
-    {
-        $host = getenv('RIAK_HOST');
-        return $host ?: static::TEST_NODE_HOST;
-    }
-
-    public static function getTestHttpPort()
-    {
-        return getenv('RIAK_HTTP_PORT') ? getenv('RIAK_HTTP_PORT') : static::TEST_NODE_HTTP_PORT;
-    }
-
     public static function getTestPort()
     {
         if (getenv('PB_INTERFACE')) {
@@ -75,6 +54,11 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
         }
 
         return $port;
+    }
+
+    public static function getTestHttpPort()
+    {
+        return getenv('RIAK_HTTP_PORT') ? getenv('RIAK_HTTP_PORT') : static::TEST_NODE_HTTP_PORT;
     }
 
     public static function getTestSecurePort()
@@ -94,6 +78,25 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
     public static function setUpBeforeClass()
     {
         static::$riak = new Riak([static::getLocalNode()], [], static::getApiBridgeClass());
+    }
+
+    public static function getLocalNode()
+    {
+        return (new Node\Builder)
+            ->atHost(static::getTestHost())
+            ->onPort(static::getTestPort())
+            ->build();
+    }
+
+    public static function getTestHost()
+    {
+        $host = getenv('RIAK_HOST');
+        return $host ?: static::TEST_NODE_HOST;
+    }
+
+    public static function getApiBridgeClass()
+    {
+        return !empty($_ENV['PB_INTERFACE']) ? new Riak\Api\Pb() : null;
     }
 
     /**

@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Riak\Command\Builder;
+namespace OpenAdapter\Riak\Command\Builder;
 
-use Basho\Riak\Bucket;
-use Basho\Riak\Location;
+use OpenAdapter\Riak\Bucket;
+use OpenAdapter\Riak\Location;
 
 /**
  * Allows easy code sharing for Location getters / setters within the Command Builders
@@ -18,7 +18,7 @@ trait LocationTrait
     /**
      * @var Location|null
      */
-    protected $location = NULL;
+    protected $location = null;
 
     /**
      * @return Location|null

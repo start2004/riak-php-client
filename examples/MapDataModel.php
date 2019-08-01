@@ -2,7 +2,7 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use Basho\Riak;
+use OpenAdapter\Riak;
 
 class User
 {
@@ -48,10 +48,10 @@ class User
     public function __toString()
     {
         return json_encode([
-            'first_name'   => $this->first_name,
-            'last_name'    => $this->last_name,
-            'interests'    => $this->getInterests(),
-            'visits'       => $this->getVisitCount(),
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+            'interests' => $this->getInterests(),
+            'visits' => $this->getVisitCount(),
             'paid_account' => $this->getPaidAccount()
         ]);
     }

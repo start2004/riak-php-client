@@ -1,10 +1,8 @@
 <?php
 
-namespace Basho\Tests;
+namespace OpenAdapter\Riak\Tests;
 
-use Basho\Riak;
-use Basho\Riak\Node;
-use Basho\Riak\Node\Builder;
+use OpenAdapter\Riak;
 
 /**
  * Main class for testing Riak clustering
@@ -32,13 +30,13 @@ class RiakTest extends TestCase
         $nodes = static::getCluster();
         $riak = new Riak($nodes);
         $this->assertNotFalse($riak->getActiveNodeIndex());
-        $this->assertInstanceOf('Basho\Riak\Node', $riak->getActiveNode());
+        $this->assertInstanceOf('OpenAdapter\Riak\Node', $riak->getActiveNode());
     }
 
     public function testApi()
     {
         $nodes = static::getCluster();
         $riak = new Riak($nodes);
-        $this->assertInstanceOf('Basho\Riak\Api', $riak->getApi());
+        $this->assertInstanceOf('OpenAdapter\Riak\Api', $riak->getApi());
     }
 }

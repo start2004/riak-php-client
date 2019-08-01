@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Riak\Command\TimeSeries\Query;
+namespace OpenAdapter\Riak\Command\TimeSeries\Query;
 
-use Basho\Riak\Command;
-use Basho\Riak\CommandInterface;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\CommandInterface;
 
 /**
  * Used to store data within a TS table
@@ -19,7 +19,7 @@ class Fetch extends Command implements CommandInterface
      *
      * @var string|null
      */
-    protected $query = NULL;
+    protected $query = null;
 
     /**
      * Interpolations in the form of key => value of the query string
@@ -27,6 +27,14 @@ class Fetch extends Command implements CommandInterface
      * @var array
      */
     protected $interps = [];
+
+    public function __construct(Command\Builder\TimeSeries\Query $builder)
+    {
+        parent::__construct($builder);
+
+        $this->query = $builder->getQuery();
+        $this->interps = $builder->getInterps();
+    }
 
     public function getData()
     {
@@ -37,13 +45,5 @@ class Fetch extends Command implements CommandInterface
     {
         // plain text string
         return $this->query;
-    }
-
-    public function __construct(Command\Builder\TimeSeries\Query $builder)
-    {
-        parent::__construct($builder);
-
-        $this->query = $builder->getQuery();
-        $this->interps = $builder->getInterps();
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Basho\Riak\Command\Builder;
+namespace OpenAdapter\Riak\Command\Builder;
 
-use Basho\Riak\Command;
+use OpenAdapter\Riak\Command;
 
 /**
  * Used to delete a KV object from Riak
@@ -25,13 +25,14 @@ class DeleteObject extends Command\Builder implements Command\BuilderInterface
     /**
      * {@inheritdoc}
      *
-     * @return Command\Object\Delete;
+     * @return Command\DataObject\Delete;
+     * @throws Exception
      */
     public function build()
     {
         $this->validate();
 
-        return new Command\Object\Delete($this);
+        return new Command\DataObject\Delete($this);
     }
 
     /**

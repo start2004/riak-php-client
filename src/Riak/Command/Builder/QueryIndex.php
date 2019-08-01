@@ -1,8 +1,8 @@
 <?php
 
-namespace Basho\Riak\Command\Builder;
+namespace OpenAdapter\Riak\Command\Builder;
 
-use Basho\Riak\Command;
+use OpenAdapter\Riak\Command;
 
 /**
  * Used to query a secondary index in Riak.
@@ -29,6 +29,7 @@ class QueryIndex extends Command\Builder implements Command\BuilderInterface
      * {@inheritdoc}
      *
      * @return Command\Indexes\Query
+     * @throws Exception
      */
     public function build()
     {
@@ -45,10 +46,9 @@ class QueryIndex extends Command\Builder implements Command\BuilderInterface
         $this->required('Bucket');
         $this->required('IndexName');
 
-        if($this->isMatchQuery()) {
+        if ($this->isMatchQuery()) {
             $this->required('MatchValue');
-        }
-        else {
+        } else {
             $this->required('LowerBound');
             $this->required('UpperBound');
         }

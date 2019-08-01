@@ -1,8 +1,8 @@
 <?php
 
-namespace Basho\Tests;
+namespace OpenAdapter\Riak\Tests;
 
-use Basho\Riak\Command;
+use OpenAdapter\Riak\Command;
 
 /**
  * Functional tests related to Key-Value objects
@@ -14,9 +14,9 @@ class ObjectOperationsTest extends TestCase
     private static $key = '';
 
     /**
-     * @var \Basho\Riak\Object|null
+     * @var \OpenAdapter\Riak\DataObject|null
      */
-    private static $object = NULL;
+    private static $object = null;
 
     public static function setUpBeforeClass()
     {
@@ -39,7 +39,7 @@ class ObjectOperationsTest extends TestCase
         // expects 201 - Created
         $this->assertEquals('201', $response->getCode());
         $this->assertNotEmpty($response->getLocation());
-        $this->assertInstanceOf('\Basho\Riak\Location', $response->getLocation());
+        $this->assertInstanceOf('\OpenAdapter\Riak\Location', $response->getLocation());
     }
 
     public function testFetchNotFound()
@@ -83,19 +83,19 @@ class ObjectOperationsTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('Basho\Riak\Object', $response->getObject());
-        $this->assertEquals('some_data', $response->getObject()->getData());
-        $this->assertNotEmpty($response->getObject()->getVclock());
+        $this->assertInstanceOf('OpenAdapter\Riak\DataObject', $response->getDataObject());
+        $this->assertEquals('some_data', $response->getDataObject()->getData());
+        $this->assertNotEmpty($response->getDataObject()->getVclock());
 
         // confirm we are using the HTTP api bridge
-        if (static::$riak->getApi() instanceof \Basho\Riak\Api\Http) {
+        if (static::$riak->getApi() instanceof \OpenAdapter\Riak\Api\Http) {
             $headers = static::$riak->getApi()->getResponseHeaders();
             $this->assertNotEmpty($headers);
             $this->assertNotEmpty($headers["Last-Modified"]);
             $this->assertNotEmpty(new \DateTime($headers["Last-Modified"]));
         }
 
-        static::$object = $response->getObject();
+        static::$object = $response->getDataObject();
     }
 
     /**
@@ -149,6 +149,36 @@ class ObjectOperationsTest extends TestCase
         //$this->assertNotEmpty($response->getVclock());
     }
 
+    public function testListKeys()
+    {
+        $bucket = 'list-keys-php';
+        $keys = ['key1', 'key2', 'key3', 'key4', 'key5'];
+
+        $builder = (new Command\Builder\StoreObject(static::$riak))
+            ->buildObject(true);
+
+        foreach ($keys as $key) {
+            $builder->buildLocation($key, $bucket)->build()->execute();
+        }
+
+        $response = (new Command\Builder\ListObjects(static::$riak))
+            ->buildBucket($bucket)
+            ->acknowledgeRisk(true)
+            ->build()
+            ->execute();
+
+        $this->assertTrue($response->getKeys() >= count($keys));
+
+        $found = [];
+        foreach ($response->getKeys() as $location) {
+            if (in_array($location->getKey(), $keys)) {
+                $found[$location->getKey()] = 1;
+            }
+        }
+
+        $this->assertEquals(count($found), count($keys));
+    }
+
     public function testFetchAssociativeArray()
     {
         $data = ['myData' => 42];
@@ -170,8 +200,8 @@ class ObjectOperationsTest extends TestCase
 
         $response = $command->execute();
         $this->assertEquals('200', $response->getCode());
-        $this->assertEquals($data, $response->getObject()->getData());
-        $this->assertEquals('array', gettype($response->getObject()->getData()));
+        $this->assertEquals($data, $response->getDataObject()->getData());
+        $this->assertEquals('array', gettype($response->getDataObject()->getData()));
 
         // Fetch normal to get as stdClass object
         $command = (new Command\Builder\FetchObject(static::$riak))
@@ -180,6 +210,6 @@ class ObjectOperationsTest extends TestCase
 
         $response = $command->execute();
         $this->assertEquals('200', $response->getCode());
-        $this->assertEquals('object', gettype($response->getObject()->getData()));
+        $this->assertEquals('object', gettype($response->getDataObject()->getData()));
     }
 }

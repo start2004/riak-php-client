@@ -1,9 +1,8 @@
 <?php
 
-namespace Basho\Riak\Command\Builder\Search;
+namespace OpenAdapter\Riak\Command\Builder\Search;
 
-use Basho\Riak;
-use Basho\Riak\Command;
+use OpenAdapter\Riak\Command;
 
 /**
  * @author Christopher Mancini <cmancini at basho d0t com>
@@ -60,6 +59,7 @@ class StoreSchema extends Command\Builder implements Command\BuilderInterface
      * {@inheritdoc}
      *
      * @return Command\Search\Schema\Store
+     * @throws Command\Builder\Exception
      */
     public function build()
     {

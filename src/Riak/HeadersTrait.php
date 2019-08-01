@@ -1,6 +1,6 @@
 <?php
 
-namespace Basho\Riak;
+namespace OpenAdapter\Riak;
 
 /**
  * Trait HeadersTrait
@@ -37,6 +37,6 @@ trait HeadersTrait
      */
     protected function getHeader($key)
     {
-        return isset($this->headers[$key]) ? $this->headers[$key] : NULL;
+        return $this->headers[$key] ?? null;
     }
 }

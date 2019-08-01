@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Riak\Command\Builder\MapReduce;
+namespace OpenAdapter\Riak\Command\Builder\MapReduce;
 
-use Basho\Riak;
-use Basho\Riak\Command;
+use OpenAdapter\Riak;
+use OpenAdapter\Riak\Command;
 
 /**
  * Builds the command to fetch a collection of objects from Riak using Yokozuna search
@@ -15,7 +15,7 @@ class FetchObjects extends Command\Builder implements Command\BuilderInterface
     /**
      * MR inputs used by query phase
      *
-     * @var array|string
+     * @var array
      */
     protected $inputs = [];
 
@@ -38,12 +38,13 @@ class FetchObjects extends Command\Builder implements Command\BuilderInterface
      * {@inheritdoc}
      *
      * @return Command\MapReduce\Fetch;
+     * @throws Command\Builder\Exception
      */
     public function build()
     {
         $this->validate();
 
-        if (is_array($this->inputs) && count($this->inputs) == 1) {
+        if (\is_array($this->inputs) && \count($this->inputs) == 1) {
             $this->inputs = $this->inputs[0];
         }
 

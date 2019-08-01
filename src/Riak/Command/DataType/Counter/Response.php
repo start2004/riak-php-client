@@ -1,19 +1,19 @@
 <?php
 
-namespace Basho\Riak\Command\DataType\Counter;
+namespace OpenAdapter\Riak\Command\DataType\Counter;
 
-use Basho\Riak\DataType\Counter;
-use Basho\Riak\Location;
+use OpenAdapter\Riak\DataType\Counter;
+use OpenAdapter\Riak\Location;
 
 /**
  * Container for a response related to an operation on an object
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-class Response extends \Basho\Riak\Command\Response
+class Response extends \OpenAdapter\Riak\Command\Response
 {
     /**
-     * @var \Basho\Riak\DataType\Counter|null
+     * @var \OpenAdapter\Riak\DataType\Counter|null
      */
     protected $counter = null;
 
@@ -40,7 +40,7 @@ class Response extends \Basho\Riak\Command\Response
      * Retrieves the Location value from the response headers
      *
      * @return Location
-     * @throws \Basho\Riak\Command\Exception
+     * @throws \OpenAdapter\Riak\Command\Exception
      */
     public function getLocation()
     {
@@ -59,7 +59,7 @@ class Response extends \Basho\Riak\Command\Response
      * Retrieves the date of the counter's retrieval
      *
      * @return string
-     * @throws \Basho\Riak\Command\Exception
+     * @throws \OpenAdapter\Riak\Command\Exception
      */
     public function getDate()
     {

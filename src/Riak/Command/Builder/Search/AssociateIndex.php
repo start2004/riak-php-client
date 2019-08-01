@@ -1,8 +1,8 @@
 <?php
 
-namespace Basho\Riak\Command\Builder\Search;
+namespace OpenAdapter\Riak\Command\Builder\Search;
 
-use Basho\Riak\Command;
+use OpenAdapter\Riak\Command;
 
 /**
  * Used to increment counter objects in Riak by the provided positive / negative integer
@@ -20,7 +20,7 @@ use Basho\Riak\Command;
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-class AssociateIndex extends Command\Builder\SetBucketProperties implements Command\BuilderInterface
+class AssociateIndex extends Command\Builder\SetBucketProperties
 {
     /**
      * @param $name

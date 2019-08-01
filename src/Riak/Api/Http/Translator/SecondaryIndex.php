@@ -1,30 +1,35 @@
 <?php
 
-namespace Basho\Riak\Api\Http\Translator;
+namespace OpenAdapter\Riak\Api\Http\Translator;
 
 /**
  * @author Alex Moore <amoore at basho d0t com>
  */
 class SecondaryIndex
 {
-    const INT_INDEX_SUFFIX = '_int';
-    const STR_IDX_SUFFIX = '_bin';
-    const IDX_SUFFIX_LEN = 4;
-    const IDX_HEADER_PREFIX = "x-riak-index-";
-    const IDX_HEADER_PREFIX_LEN = 13;
+    private const INT_INDEX_SUFFIX = '_int';
+    private const STR_IDX_SUFFIX = '_bin';
+    private const IDX_SUFFIX_LEN = 4;
+    private const IDX_HEADER_PREFIX = 'x-riak-index-';
+    private const IDX_HEADER_PREFIX_LEN = 13;
 
     public static function isIntIndex($headerKey)
     {
         return static::indexNameContainsTypeSuffix($headerKey, self::INT_INDEX_SUFFIX);
     }
 
+    private static function indexNameContainsTypeSuffix($indexName, $typeSuffix)
+    {
+        $nameLen = \strlen($indexName) - self::IDX_SUFFIX_LEN;
+
+        return substr_compare($indexName, $typeSuffix, $nameLen) == 0;
+    }
+
     public function extractIndexesFromHeaders(&$headers)
     {
         $indexes = [];
-
         foreach ($headers as $key => $value) {
-
-            if (!$this->isIndexHeader($key)) {
+            if (!self::isIndexHeader($key)) {
                 continue;
             }
 
@@ -37,7 +42,7 @@ class SecondaryIndex
 
     public static function isIndexHeader($headerKey)
     {
-        if (strlen($headerKey) <= self::IDX_HEADER_PREFIX_LEN) {
+        if (\strlen($headerKey) <= self::IDX_HEADER_PREFIX_LEN) {
             return false;
         }
 
@@ -59,25 +64,18 @@ class SecondaryIndex
 
     private function getIndexValue($indexName, $value)
     {
-        $values = explode(", ", $value);
+        $values = explode(', ', $value);
 
-        if ($this->isStringIndex($indexName)) {
+        if (self::isStringIndex($indexName)) {
             return $values;
-        } else {
-            return array_map("intval", $values);
         }
+
+        return array_map('\intval', $values);
     }
 
     public static function isStringIndex($headerKey)
     {
         return static::indexNameContainsTypeSuffix($headerKey, self::STR_IDX_SUFFIX);
-    }
-
-    private static function indexNameContainsTypeSuffix($indexName, $typeSuffix)
-    {
-        $nameLen = strlen($indexName) - self::IDX_SUFFIX_LEN;
-
-        return substr_compare($indexName, $typeSuffix, $nameLen) == 0;
     }
 
     public function createHeadersFromIndexes($indexes)
@@ -93,8 +91,8 @@ class SecondaryIndex
 
     private function createIndexHeader(&$headers, $indexName, $values)
     {
-        $headerKey = self::IDX_HEADER_PREFIX. $indexName;
-        foreach ($values as $indexName => $value) {
+        $headerKey = self::IDX_HEADER_PREFIX . $indexName;
+        foreach ($values as $index => $value) {
             $headers[] = [$headerKey, $value];
         }
     }

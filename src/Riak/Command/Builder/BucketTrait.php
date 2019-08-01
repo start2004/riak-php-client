@@ -1,8 +1,8 @@
 <?php
 
-namespace Basho\Riak\Command\Builder;
+namespace OpenAdapter\Riak\Command\Builder;
 
-use Basho\Riak\Bucket;
+use OpenAdapter\Riak\Bucket;
 
 /**
  * Allows easy code sharing for Bucket getters / setters within the Command Builders
@@ -16,7 +16,7 @@ trait BucketTrait
      *
      * @var Bucket|null
      */
-    protected $bucket = NULL;
+    protected $bucket = null;
 
     /**
      * Gets the Bucket object

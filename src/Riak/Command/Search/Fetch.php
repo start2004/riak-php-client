@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Riak\Command\Search;
+namespace OpenAdapter\Riak\Command\Search;
 
-use Basho\Riak\Command;
-use Basho\Riak\CommandInterface;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\CommandInterface;
 
 /**
  * Used to fetch a search results from Riak

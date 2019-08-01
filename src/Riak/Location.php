@@ -1,6 +1,6 @@
 <?php
 
-namespace Basho\Riak;
+namespace OpenAdapter\Riak;
 
 /**
  * Immutable data structure storing the location of an Object or DataType
@@ -19,7 +19,7 @@ class Location
     /**
      * @var Bucket|null
      */
-    protected $bucket = NULL;
+    protected $bucket = null;
 
     /**
      * @param $key

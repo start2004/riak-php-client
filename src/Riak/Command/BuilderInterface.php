@@ -1,6 +1,6 @@
 <?php
 
-namespace Basho\Riak\Command;
+namespace OpenAdapter\Riak\Command;
 
 /**
  * BuilderInterface

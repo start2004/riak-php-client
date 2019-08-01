@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Riak\Command\Builder;
+namespace OpenAdapter\Riak\Command\Builder;
 
-use Basho\Riak;
-use Basho\Riak\Command;
+use OpenAdapter\Riak;
+use OpenAdapter\Riak\Command;
 
 /**
  * Riak real time stats
@@ -21,6 +21,7 @@ class FetchStats extends Command\Builder implements Command\BuilderInterface
      * {@inheritdoc}
      *
      * @return Command\Stats;
+     * @throws Exception
      */
     public function build()
     {

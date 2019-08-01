@@ -1,19 +1,19 @@
 <?php
 
-namespace Basho\Riak\Command\DataType\Set;
+namespace OpenAdapter\Riak\Command\DataType\Set;
 
-use Basho\Riak\DataType\Set;
-use Basho\Riak\Location;
+use OpenAdapter\Riak\DataType\Set;
+use OpenAdapter\Riak\Location;
 
 /**
  * Container for a response related to an operation on a set data type
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-class Response extends \Basho\Riak\Command\Response
+class Response extends \OpenAdapter\Riak\Command\Response
 {
     /**
-     * @var \Basho\Riak\DataType\Set|null
+     * @var \OpenAdapter\Riak\DataType\Set|null
      */
     protected $set = null;
 
@@ -30,7 +30,7 @@ class Response extends \Basho\Riak\Command\Response
      * Retrieves the Location value from the response headers
      *
      * @return Location
-     * @throws \Basho\Riak\Command\Exception
+     * @throws \OpenAdapter\Riak\Command\Exception
      */
     public function getLocation()
     {
@@ -49,7 +49,7 @@ class Response extends \Basho\Riak\Command\Response
      * Retrieves the date of the counter's retrieval
      *
      * @return string
-     * @throws \Basho\Riak\Command\Exception
+     * @throws \OpenAdapter\Riak\Command\Exception
      */
     public function getDate()
     {

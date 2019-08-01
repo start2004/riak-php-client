@@ -1,6 +1,6 @@
 <?php
 
-namespace Basho\Riak;
+namespace OpenAdapter\Riak;
 
 /**
  * CommandInterface

@@ -1,19 +1,19 @@
 <?php
 
-namespace Basho\Riak\Command\DataType\Hll;
+namespace OpenAdapter\Riak\Command\DataType\Hll;
 
-use Basho\Riak\DataType\Hll;
-use Basho\Riak\Location;
+use OpenAdapter\Riak\DataType\Hll;
+use OpenAdapter\Riak\Location;
 
 /**
  * Container for a response related to an operation on an hll data type
  *
  * @author Luke Bakken <lbakken@basho.com>
  */
-class Response extends \Basho\Riak\Command\Response
+class Response extends \OpenAdapter\Riak\Command\Response
 {
     /**
-     * @var \Basho\Riak\DataType\Hll|null
+     * @var \OpenAdapter\Riak\DataType\Hll|null
      */
     protected $hll = null;
 
@@ -30,7 +30,7 @@ class Response extends \Basho\Riak\Command\Response
      * Retrieves the Location value from the response headers
      *
      * @return Location
-     * @throws \Basho\Riak\Command\Exception
+     * @throws \OpenAdapter\Riak\Command\Exception
      */
     public function getLocation()
     {
@@ -49,7 +49,7 @@ class Response extends \Basho\Riak\Command\Response
      * Retrieves the date of the hll's retrieval
      *
      * @return string
-     * @throws \Basho\Riak\Command\Exception
+     * @throws \OpenAdapter\Riak\Command\Exception
      */
     public function getDate()
     {

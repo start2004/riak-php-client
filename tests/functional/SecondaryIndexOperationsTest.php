@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Tests;
+namespace OpenAdapter\Riak\Tests;
 
-use Basho\Riak\Command;
-use Basho\Riak\Object as RObject;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\DataObject as RObject;
 
 /**
  * Functional tests related to secondary indexes
@@ -16,14 +16,14 @@ class SecondaryIndexOperationsTest extends TestCase
     private static $bucket = '';
 
     /**
-     * @var \Basho\Riak\Object|null
+     * @var \OpenAdapter\Riak\DataObject|null
      */
-    private static $object = NULL;
+    private static $object = null;
 
     /**
      * @var array|null
      */
-    private static $vclock = NULL;
+    private static $vclock = null;
 
     public static function setUpBeforeClass()
     {
@@ -63,15 +63,15 @@ class SecondaryIndexOperationsTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('Basho\Riak\Object', $response->getObject());
-        $this->assertEquals('person', $response->getObject()->getData());
-        $this->assertNotEmpty($response->getObject()->getVClock());
-        $indexes = $response->getObject()->getIndexes();
+        $this->assertInstanceOf('OpenAdapter\Riak\DataObject', $response->getDataObject());
+        $this->assertEquals('person', $response->getDataObject()->getData());
+        $this->assertNotEmpty($response->getDataObject()->getVClock());
+        $indexes = $response->getDataObject()->getIndexes();
         $this->assertEquals($indexes['lucky_numbers_int'], [42, 64]);
         $this->assertEquals($indexes['lastname_bin'], ['Knuth']);
 
-        static::$object = $response->getObject();
-        static::$vclock = $response->getObject()->getVClock();
+        static::$object = $response->getDataObject();
+        static::$vclock = $response->getDataObject()->getVClock();
     }
 
     /**
@@ -102,24 +102,24 @@ class SecondaryIndexOperationsTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('Basho\Riak\Object', $response->getObject());
-        $this->assertEquals('person', $response->getObject()->getData());
-        $indexes = $response->getObject()->getIndexes();
+        $this->assertInstanceOf('OpenAdapter\Riak\DataObject', $response->getDataObject());
+        $this->assertEquals('person', $response->getDataObject()->getData());
+        $indexes = $response->getDataObject()->getIndexes();
         $this->assertEquals($indexes['lucky_numbers_int'], [42]);
     }
 
     public function testSetupIndexObjects()
     {
-        for($x = 0; $x <= 1000; $x++) {
-            $object = (new RObject('student'.$x))
-                        ->addValueToIndex('lucky_numbers_int', $x) // 0,1,2...
-                        ->addValueToIndex('group_int', $x % 2)     // 0,0,1,1,2,2,3,3,...
-                        ->addValueToIndex('grade_bin', chr(65 + ($x % 6))) // A,B,C,D,E,F,A...
-                        ->addValueToIndex('lessThan500_bin', $x < 500 ? 'less' : 'more');
+        for ($x = 0; $x <= 1000; $x++) {
+            $object = (new RObject('student' . $x))
+                ->addValueToIndex('lucky_numbers_int', $x)// 0,1,2...
+                ->addValueToIndex('group_int', $x % 2)// 0,0,1,1,2,2,3,3,...
+                ->addValueToIndex('grade_bin', chr(65 + ($x % 6)))// A,B,C,D,E,F,A...
+                ->addValueToIndex('lessThan500_bin', $x < 500 ? 'less' : 'more');
 
             $command = (new Command\Builder\StoreObject(static::$riak))
                 ->withObject($object)
-                ->buildLocation('student'.$x, 'Students'.static::$bucket, static::LEVELDB_BUCKET_TYPE)
+                ->buildLocation('student' . $x, 'Students' . static::$bucket, static::LEVELDB_BUCKET_TYPE)
                 ->build();
 
             $response = $command->execute();
@@ -133,10 +133,10 @@ class SecondaryIndexOperationsTest extends TestCase
     public function testScalarQuery()
     {
         $command = (new Command\Builder\QueryIndex(static::$riak))
-                        ->buildBucket('Students'.static::$bucket, static::LEVELDB_BUCKET_TYPE)
-                        ->withIndexName('lucky_numbers_int')
-                        ->withScalarValue(5)
-                        ->build();
+            ->buildBucket('Students' . static::$bucket, static::LEVELDB_BUCKET_TYPE)
+            ->withIndexName('lucky_numbers_int')
+            ->withScalarValue(5)
+            ->build();
 
         $response = $command->execute();
 
@@ -151,7 +151,7 @@ class SecondaryIndexOperationsTest extends TestCase
     public function testRangeQuery()
     {
         $command = (new Command\Builder\QueryIndex(static::$riak))
-            ->buildBucket('Students'.static::$bucket, static::LEVELDB_BUCKET_TYPE)
+            ->buildBucket('Students' . static::$bucket, static::LEVELDB_BUCKET_TYPE)
             ->withIndexName('grade_bin')
             ->withRangeValue('A', 'B')
             ->build();
@@ -162,7 +162,7 @@ class SecondaryIndexOperationsTest extends TestCase
         $matches = $response->getResults();
         sort($matches, SORT_NATURAL | SORT_FLAG_CASE);
         $this->assertEquals(334, count($matches));
-        $this->assertEquals(['student0','student1','student6','student7'], array_slice($matches, 0, 4));
+        $this->assertEquals(['student0', 'student1', 'student6', 'student7'], array_slice($matches, 0, 4));
     }
 
     /**
@@ -173,7 +173,7 @@ class SecondaryIndexOperationsTest extends TestCase
         $keysAndTerms = [['A' => 'student0'], ['B' => 'student1'], ['A' => 'student6'], ['B' => 'student7']];
 
         $command = (new Command\Builder\QueryIndex(static::$riak))
-            ->buildBucket('Students'.static::$bucket, static::LEVELDB_BUCKET_TYPE)
+            ->buildBucket('Students' . static::$bucket, static::LEVELDB_BUCKET_TYPE)
             ->withIndexName('grade_bin')
             ->withRangeValue('A', 'B')
             ->withReturnTerms(true)
@@ -183,13 +183,14 @@ class SecondaryIndexOperationsTest extends TestCase
 
         $this->assertEquals('200', $response->getCode());
         $matches = $response->getResults();
-        usort($matches, function($a, $b) { return strnatcmp(current($a), current($b)); });
+        usort($matches, function ($a, $b) {
+            return strnatcmp(current($a), current($b));
+        });
 
         $this->assertEquals(334, count($matches));
         $this->assertTrue($response->hasReturnTerms());
         $this->assertEquals($keysAndTerms, array_slice($matches, 0, 4));
     }
-
 
 
     /**
@@ -198,9 +199,9 @@ class SecondaryIndexOperationsTest extends TestCase
     public function testGettingKeysWithContinuationWorks()
     {
         $builder = (new Command\Builder\QueryIndex(static::$riak))
-            ->buildBucket('Students'.static::$bucket, static::LEVELDB_BUCKET_TYPE)
+            ->buildBucket('Students' . static::$bucket, static::LEVELDB_BUCKET_TYPE)
             ->withIndexName('lucky_numbers_int')
-            ->withRangeValue(0,3)
+            ->withRangeValue(0, 3)
             ->withMaxResults(3);
 
         // Get first page
@@ -253,9 +254,9 @@ class SecondaryIndexOperationsTest extends TestCase
     public function testUsingPaginationSortWillSortResultsWhilePaging()
     {
         $builder = (new Command\Builder\QueryIndex(static::$riak))
-            ->buildBucket('Students'.static::$bucket, static::LEVELDB_BUCKET_TYPE)
+            ->buildBucket('Students' . static::$bucket, static::LEVELDB_BUCKET_TYPE)
             ->withIndexName('lucky_numbers_int')
-            ->withRangeValue(0,500)
+            ->withRangeValue(0, 500)
             ->withMaxResults(10)
             ->withReturnTerms(true);
 

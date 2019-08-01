@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Tests;
+namespace OpenAdapter\Riak\Tests;
 
-use Basho\Riak;
-use Basho\Riak\Command;
+use OpenAdapter\Riak;
+use OpenAdapter\Riak\Command;
 
 /**
  * Scenario tests for when Kv Object changes result in a conflict
@@ -50,9 +50,9 @@ class ObjectConflictTest extends TestCase
         $this->assertEquals('300', $response->getCode());
         $this->assertTrue($response->hasSiblings());
         $this->assertNotEmpty($response->getSiblings());
-        $this->assertNotEmpty($response->getObject()->getVclock());
+        $this->assertNotEmpty($response->getDataObject()->getVclock());
 
-        static::$vclock = $response->getObject()->getVclock();
+        static::$vclock = $response->getDataObject()->getVclock();
     }
 
     /**
@@ -60,7 +60,7 @@ class ObjectConflictTest extends TestCase
      */
     public function testResolveConflict()
     {
-        $object = new Riak\Object('some_resolved_data');
+        $object = new Riak\DataObject('some_resolved_data');
         $object->setVclock(static::$vclock);
 
         $command = (new Command\Builder\StoreObject(static::$riak))
@@ -85,6 +85,6 @@ class ObjectConflictTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertEquals('some_resolved_data', $response->getObject()->getData());
+        $this->assertEquals('some_resolved_data', $response->getDataObject()->getData());
     }
 }

@@ -1,11 +1,10 @@
 <?php
 
-namespace Basho\Tests\Riak\Command\Builder;
+namespace OpenAdapter\Riak\Tests\Riak\Command\Builder;
 
-use Basho\Riak\Command;
-use Basho\Riak\TimeSeries\Cell;
-use Basho\Tests\TestCase;
-use Basho\Tests\TimeSeriesTrait;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\Tests\TestCase;
+use OpenAdapter\Riak\Tests\TimeSeriesTrait;
 
 /**
  * Tests the configuration of Riak commands via the Command Builder class
@@ -36,7 +35,7 @@ class DeleteRowTest extends TestCase
         // build a command
         $command = $builder->build();
 
-        $this->assertInstanceOf('Basho\Riak\Command\TimeSeries\Delete', $command);
+        $this->assertInstanceOf('OpenAdapter\Riak\Command\TimeSeries\Delete', $command);
         $this->assertEquals(static::$table, $command->getTable());
         $this->assertEquals(static::$key, $command->getData());
         $this->assertEquals("region/South%20Atlantic/state/South%20Carolina/time/1443816900", implode("/", $command->getData()));

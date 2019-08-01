@@ -1,16 +1,16 @@
 <?php
 
-namespace Basho\Riak\Command\Bucket;
+namespace OpenAdapter\Riak\Command\Bucket;
 
-use Basho\Riak\Command;
-use Basho\Riak\CommandInterface;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\CommandInterface;
 
 /**
  * Used to remove a bucket property from a Riak bucket
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-class Delete extends Command\Object implements CommandInterface
+class Delete extends Command\DataObject implements CommandInterface
 {
     protected $method = 'DELETE';
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Riak\Command\Search\Schema;
+namespace OpenAdapter\Riak\Command\Search\Schema;
 
-use Basho\Riak\Command;
-use Basho\Riak\CommandInterface;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\CommandInterface;
 
 /**
  * Class Fetch

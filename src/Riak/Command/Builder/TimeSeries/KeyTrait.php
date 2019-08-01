@@ -1,6 +1,6 @@
 <?php
 
-namespace Basho\Riak\Command\Builder\TimeSeries;
+namespace OpenAdapter\Riak\Command\Builder\TimeSeries;
 
 /**
  * @author Christopher Mancini <cmancini at basho d0t com>
@@ -10,14 +10,14 @@ trait KeyTrait
     /**
      * Stores the key
      *
-     * @var \Basho\Riak\TimeSeries\Cell[]
+     * @var \OpenAdapter\Riak\TimeSeries\Cell[]
      */
     protected $key = [];
 
     /**
      * Gets the key
      *
-     * @return \Basho\Riak\TimeSeries\Cell[]
+     * @return \OpenAdapter\Riak\TimeSeries\Cell[]
      */
     public function getKey()
     {
@@ -27,7 +27,7 @@ trait KeyTrait
     /**
      * Attach the provided key to the Command Builder
      *
-     * @param \Basho\Riak\TimeSeries\Cell[] $key
+     * @param \OpenAdapter\Riak\TimeSeries\Cell[] $key
      *
      * @return $this
      */

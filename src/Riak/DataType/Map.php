@@ -15,9 +15,9 @@ Unless required by applicable law or agreed to in writing, software distributed 
 specific language governing permissions and limitations under the License.
 */
 
-namespace Basho\Riak\DataType;
+namespace OpenAdapter\Riak\DataType;
 
-use Basho\Riak\DataType;
+use OpenAdapter\Riak\DataType;
 
 /**
  * Data structure for map crdt
@@ -64,6 +64,7 @@ class Map extends DataType
      * @param $key
      *
      * @return string
+     * @throws Exception
      */
     public function getRegister($key)
     {
@@ -97,16 +98,18 @@ class Map extends DataType
      * @param $key
      *
      * @return bool
+     * @throws Exception
      */
     public function getFlag($key)
     {
-        return $this->getDataByKey($key, static::FLAG) == 'enabled' ? TRUE : FALSE;
+        return 'enabled' === $this->getDataByKey($key, static::FLAG);
     }
 
     /**
      * @param $key
      *
      * @return Counter
+     * @throws Exception
      */
     public function getCounter($key)
     {
@@ -117,6 +120,7 @@ class Map extends DataType
      * @param $key
      *
      * @return Set
+     * @throws Exception
      */
     public function getSet($key)
     {
@@ -127,10 +131,11 @@ class Map extends DataType
      * @param $key
      *
      * @return Map
+     * @throws Exception
      */
     public function getMap($key)
     {
-        return new Map($this->getDataByKey($key, Map::TYPE), $this->context);
+        return new Map($this->getDataByKey($key, self::TYPE), $this->context);
     }
 
     public function getContext()

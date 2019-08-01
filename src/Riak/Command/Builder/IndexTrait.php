@@ -1,6 +1,6 @@
 <?php
 
-namespace Basho\Riak\Command\Builder;
+namespace OpenAdapter\Riak\Command\Builder;
 
 /**
  * Allows easy code sharing for Bucket getters / setters within the Command Builders
@@ -14,28 +14,28 @@ trait IndexTrait
      *
      * @var string|null
      */
-    protected $indexName = NULL;
+    protected $indexName = null;
 
     /**
      * The index match value for scalar queries.
      *
      * @var string|integer|null
      */
-    protected $match = NULL;
+    protected $match = null;
 
     /**
      * The index lower bound value for range queries.
      *
      * @var string|integer|null
      */
-    protected $lowerBound = NULL;
+    protected $lowerBound = null;
 
     /**
      * The index upper bound value for range queries.
      *
      * @var string|integer|null
      */
-    protected $upperBound = NULL;
+    protected $upperBound = null;
 
     /**
      * The continuation string for this query.
@@ -43,7 +43,7 @@ trait IndexTrait
      *
      * @var string|null
      */
-    protected $continuation = NULL; //Binary
+    protected $continuation = null; //Binary
 
     /**
      * The maximum number of results returned by the query.
@@ -119,7 +119,7 @@ trait IndexTrait
      */
     public function isMatchQuery()
     {
-        return isset($this->match);
+        return null !== $this->match;
     }
 
     /**
@@ -127,7 +127,7 @@ trait IndexTrait
      */
     public function isRangeQuery()
     {
-        return isset($this->lowerBound) && isset($this->upperBound);
+        return isset($this->lowerBound, $this->upperBound);
     }
 
     /**
@@ -181,6 +181,7 @@ trait IndexTrait
 
     /**
      * @param $param
+     *
      * @return bool
      */
     public function isParamSet($param)

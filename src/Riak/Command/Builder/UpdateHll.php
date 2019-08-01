@@ -1,9 +1,8 @@
 <?php
 
-namespace Basho\Riak\Command\Builder;
+namespace OpenAdapter\Riak\Command\Builder;
 
-use Basho\Riak;
-use Basho\Riak\Command;
+use OpenAdapter\Riak\Command;
 
 /**
  * @author Luke Bakken <lbakken@basho.com>
@@ -31,8 +30,7 @@ class UpdateHll extends Command\Builder implements Command\BuilderInterface
      */
     public function add($element)
     {
-        settype($element, 'string');
-        $this->add_all[] = $element;
+        $this->add_all[] = (string)$element;
 
         return $this;
     }
@@ -49,6 +47,7 @@ class UpdateHll extends Command\Builder implements Command\BuilderInterface
      * {@inheritdoc}
      *
      * @return Command\DataType\Hll\Store
+     * @throws Exception
      */
     public function build()
     {
@@ -64,7 +63,7 @@ class UpdateHll extends Command\Builder implements Command\BuilderInterface
     {
         $this->required('Bucket');
 
-        $count_add = count($this->add_all);
+        $count_add = \count($this->add_all);
         if ($count_add < 1) {
             throw new Exception('At least one element to add must be defined.');
         }

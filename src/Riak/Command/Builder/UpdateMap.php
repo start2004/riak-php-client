@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Riak\Command\Builder;
+namespace OpenAdapter\Riak\Command\Builder;
 
-use Basho\Riak;
-use Basho\Riak\Command;
+use OpenAdapter\Riak;
+use OpenAdapter\Riak\Command;
 
 /**
  * @author Christopher Mancini <cmancini at basho d0t com>
@@ -111,7 +111,7 @@ class UpdateMap extends Command\Builder implements Command\BuilderInterface
      *
      * @return $this
      */
-    public function updateFlag($key, $state = TRUE)
+    public function updateFlag($key, $state = true)
     {
         $this->update($key, Riak\DataType\Map::FLAG, $state);
 
@@ -173,6 +173,7 @@ class UpdateMap extends Command\Builder implements Command\BuilderInterface
      * {@inheritdoc}
      *
      * @return Command\DataType\Map\Store
+     * @throws Exception
      */
     public function build()
     {
@@ -188,12 +189,12 @@ class UpdateMap extends Command\Builder implements Command\BuilderInterface
     {
         $this->required('Bucket');
 
-        $count_remove = count($this->remove);
-        $count_registers = count($this->registers);
-        $count_flags = count($this->flags);
-        $count_counters = count($this->counters);
-        $count_sets = count($this->sets);
-        $count_maps = count($this->maps);
+        $count_remove = \count($this->remove);
+        $count_registers = \count($this->registers);
+        $count_flags = \count($this->flags);
+        $count_counters = \count($this->counters);
+        $count_sets = \count($this->sets);
+        $count_maps = \count($this->maps);
 
         if ($count_remove + $count_registers + $count_flags + $count_counters + $count_sets + $count_maps < 1) {
             throw new Exception('At least one add, remove, or update operation needs to be defined.');
@@ -207,7 +208,7 @@ class UpdateMap extends Command\Builder implements Command\BuilderInterface
         // if we are performing a remove on a nested set, Location and context are required
         if ($count_sets) {
             foreach ($this->sets as $set) {
-                if (count($set->getRemoveAll())) {
+                if (\count($set->getRemoveAll())) {
                     $this->required('Location');
                     $this->required('Context');
                     break;

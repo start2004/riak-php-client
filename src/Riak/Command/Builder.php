@@ -1,19 +1,18 @@
 <?php
 
-namespace Basho\Riak\Command;
+namespace OpenAdapter\Riak\Command;
 
-use Basho\Riak;
-use Basho\Riak\Command;
-use Basho\Riak\DataType;
+use OpenAdapter\Riak;
+use OpenAdapter\Riak\Command;
 
 /**
- * This class follows the Builder design pattern and is the preferred method for creating Basho\Riak\Command
+ * This class follows the Builder design pattern and is the preferred method for creating OpenAdapter\Riak\Command
  * objects for interacting with your Riak data cluster.
  *
  * <code>
- * use Basho\Riak\Command;
- * use Basho\Riak\Bucket;
- * use Basho\Riak\Location;
+ * use OpenAdapter\Riak\Command;
+ * use OpenAdapter\Riak\Bucket;
+ * use OpenAdapter\Riak\Location;
  *
  * $bucket = new Bucket('users');
  *
@@ -48,6 +47,8 @@ abstract class Builder
 
     protected $verbose = false;
 
+    protected $connectionTimeout = 0;
+
     public function __construct(Riak $riak)
     {
         $this->riak = $riak;
@@ -81,6 +82,13 @@ abstract class Builder
         return $this;
     }
 
+    public function withConnectionTimeout($seconds = 60)
+    {
+        $this->connectionTimeout = $seconds;
+
+        return $this;
+    }
+
     public function getParameters()
     {
         return $this->parameters;
@@ -94,6 +102,14 @@ abstract class Builder
     public function getVerbose()
     {
         return $this->verbose;
+    }
+
+    /**
+     * @return int
+     */
+    public function getConnectionTimeout()
+    {
+        return $this->connectionTimeout;
     }
 
     /**
@@ -119,15 +135,15 @@ abstract class Builder
     protected function required($objectName)
     {
         $method = "get{$objectName}";
-        $class = "Basho\\Riak\\{$objectName}";
+        $class = "OpenAdapter\Riak\\{$objectName}";
         $value = $this->$method();
-        if (is_null($value)) {
+        if (null === $value) {
             throw new Builder\Exception("Expected non-empty value for {$objectName}");
         }
-        if (is_object($value) && $value instanceof $class === false) {
-            throw new Builder\Exception("Expected instance of {$class}, received instance of " . get_class($value));
+        if (\is_object($value) && $value instanceof $class === false) {
+            throw new Builder\Exception("Expected instance of {$class}, received instance of " . \get_class($value));
         }
-        if (is_array($value) && count($value) == 0) {
+        if (\is_array($value) && \count($value) == 0) {
             throw new Builder\Exception("Expected non-empty array value for {$objectName}");
         }
     }

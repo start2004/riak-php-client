@@ -1,6 +1,6 @@
 {
-  "name": "basho/riak",
-  "description": "Official Riak client for PHP",
+  "name": "open-adapter/riak-php-client",
+  "description": "UnOfficial Riak client for PHP",
   "type": "library",
   "keywords": [
     "basho",
@@ -18,6 +18,12 @@
   "license": "Apache-2.0",
   "authors": [
     {
+      "name": "Przemyslaw Pastusiak",
+      "email": "przemyslaw@pastusiak.eu",
+      "homepage": "https://github.com/pastusiak",
+      "role": "Fork - Lead Developer"
+    },
+    {
       "name": "Christopher Mancini",
       "email": "cmancini@basho.com",
       "homepage": "https://github.com/christophermancini",
@@ -31,21 +37,25 @@
     }
   ],
   "autoload": {
-    "psr-4": {"Basho\\": "src/"}
+    "psr-4": {
+      "OpenAdapter\\": "src/"
+    }
   },
   "autoload-dev": {
-    "psr-4": {"Basho\\Tests\\": "tests/"}
+    "psr-4": {
+      "OpenAdapter\\Riak\\Tests\\": "tests/"
+    }
   },
   "support": {
-    "issues": "https://github.com/basho/riak-php-client/issues"
+    "issues": "https://github.com/open-adapter/riak-php-client/issues"
   },
   "require": {
-    "php": ">=5.4",
+    "php": ">=7.2",
     "ext-json": "*",
     "ext-curl": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "4.8.*",
+    "phpunit/phpunit": "7.*",
     "apigen/apigen": "4.1.*"
   }
 }

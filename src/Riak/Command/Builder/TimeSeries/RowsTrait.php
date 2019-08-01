@@ -1,6 +1,6 @@
 <?php
 
-namespace Basho\Riak\Command\Builder\TimeSeries;
+namespace OpenAdapter\Riak\Command\Builder\TimeSeries;
 
 /**
  * @author Christopher Mancini <cmancini at basho d0t com>
@@ -37,7 +37,9 @@ trait RowsTrait
     }
 
     /**
-     * @param \Basho\Riak\TimeSeries\Cell[] $row
+     * @param \OpenAdapter\Riak\TimeSeries\Cell[] $row
+     *
+     * @return RowsTrait
      */
     public function withRow(array $row)
     {

@@ -1,20 +1,19 @@
 <?php
 
-namespace Basho\Riak\Api;
+namespace OpenAdapter\Riak\Api;
 
-use Basho\Riak\Api;
-use Basho\Riak\ApiInterface;
-use Basho\Riak\Bucket;
-use Basho\Riak\Command;
-use Basho\Riak\DataType\Counter;
-use Basho\Riak\DataType\Map;
-use Basho\Riak\DataType\Set;
-use Basho\Riak\DataType\Hll;
-use Basho\Riak\Location;
-use Basho\Riak\Node;
-use Basho\Riak\Object;
-use Basho\Riak\Search\Doc;
-use Basho\Riak\TimeSeries\Cell;
+use OpenAdapter\Riak\Api;
+use OpenAdapter\Riak\ApiInterface;
+use OpenAdapter\Riak\Bucket;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\DataObject;
+use OpenAdapter\Riak\DataType\Counter;
+use OpenAdapter\Riak\DataType\Hll;
+use OpenAdapter\Riak\DataType\Map;
+use OpenAdapter\Riak\DataType\Set;
+use OpenAdapter\Riak\Location;
+use OpenAdapter\Riak\Node;
+use OpenAdapter\Riak\Search\Doc;
 
 /**
  * Handles communications between end user app & Riak via Riak HTTP API using cURL
@@ -41,6 +40,13 @@ class Http extends Api implements ApiInterface
      * @var string
      */
     protected $requestBody = '';
+
+    /**
+     * Request url the request is being sent to
+     *
+     * @var string
+     */
+    protected $requestURL = '';
 
     /**
      * Response headers returned from request
@@ -83,10 +89,8 @@ class Http extends Api implements ApiInterface
      * @var string
      */
     protected $query = '';
-
-    private $options = [];
-
     protected $headers = [];
+    private $options = [];
 
     /**
      * @return int
@@ -135,6 +139,7 @@ class Http extends Api implements ApiInterface
      * @param Node $node
      *
      * @return $this
+     * @throws Exception
      */
     public function prepare(Command $command, Node $node)
     {
@@ -164,6 +169,7 @@ class Http extends Api implements ApiInterface
         $this->path = '';
         $this->query = '';
         $this->requestBody = '';
+        $this->requestURL = '';
         $this->responseHeaders = [];
         $this->responseBody = '';
 
@@ -179,6 +185,7 @@ class Http extends Api implements ApiInterface
      * Sets the API path for the command
      *
      * @return $this
+     * @throws Exception
      */
     protected function buildPath()
     {
@@ -188,86 +195,85 @@ class Http extends Api implements ApiInterface
         $bucket = $this->command->getBucket();
 
         $location = $this->command->getLocation();
-        if (!empty($location) && $location instanceof Location) {
+        if (null !== $location && $location instanceof Location) {
             $key = $location->getKey();
         }
-        switch (get_class($this->command)) {
-            case 'Basho\Riak\Command\Bucket\List':
-                $this->path = sprintf('/types/%s/buckets/%s', $bucket->getType(), $bucket->getName());
-                break;
+        switch (\get_class($this->command)) {
             /** @noinspection PhpMissingBreakStatementInspection */
-            case 'Basho\Riak\Command\Bucket\Store':
+            case 'OpenAdapter\Riak\Command\Bucket\Store':
                 $this->headers[static::CONTENT_TYPE_KEY] = static::CONTENT_TYPE_JSON;
-            case 'Basho\Riak\Command\Bucket\Fetch':
-            case 'Basho\Riak\Command\Bucket\Delete':
+            case 'OpenAdapter\Riak\Command\Bucket\Fetch':
+            case 'OpenAdapter\Riak\Command\Bucket\Delete':
                 $this->path = sprintf('/types/%s/buckets/%s/props', $bucket->getType(), $bucket->getName());
                 break;
-            case 'Basho\Riak\Command\Bucket\Keys':
-                $this->path = sprintf('/types/%s/buckets/%s/keys', $bucket->getType(), $bucket->getName());
-                break;
             /** @noinspection PhpMissingBreakStatementInspection */
-            case 'Basho\Riak\Command\Object\Fetch':
+            case 'OpenAdapter\Riak\Command\DataObject\Fetch':
                 $this->headers['Accept'] = '*/*, multipart/mixed';
-            case 'Basho\Riak\Command\Object\Store':
-            case 'Basho\Riak\Command\Object\Delete':
+            case 'OpenAdapter\Riak\Command\DataObject\Store':
+            case 'OpenAdapter\Riak\Command\DataObject\Delete':
                 $this->path = sprintf('/types/%s/buckets/%s/keys/%s', $bucket->getType(), $bucket->getName(), $key);
                 break;
-            case 'Basho\Riak\Command\DataType\Counter\Store':
-            case 'Basho\Riak\Command\DataType\Set\Store':
-            /** @noinspection PhpMissingBreakStatementInspection */
-            case 'Basho\Riak\Command\DataType\Map\Store':
-            case 'Basho\Riak\Command\DataType\Hll\Store':
+            case 'OpenAdapter\Riak\Command\DataObject\Keys\Fetch':
                 $this->headers[static::CONTENT_TYPE_KEY] = static::CONTENT_TYPE_JSON;
-            case 'Basho\Riak\Command\DataType\Counter\Fetch':
-            case 'Basho\Riak\Command\DataType\Set\Fetch':
-            case 'Basho\Riak\Command\DataType\Map\Fetch':
-            case 'Basho\Riak\Command\DataType\Hll\Fetch':
+                $this->path = sprintf('/types/%s/buckets/%s/keys', $bucket->getType(), $bucket->getName());
+                break;
+            case 'OpenAdapter\Riak\Command\DataType\Counter\Store':
+            case 'OpenAdapter\Riak\Command\DataType\GSet\Store':
+            case 'OpenAdapter\Riak\Command\DataType\Set\Store':
+                /** @noinspection PhpMissingBreakStatementInspection */
+            case 'OpenAdapter\Riak\Command\DataType\Map\Store':
+            case 'OpenAdapter\Riak\Command\DataType\Hll\Store':
+                $this->headers[static::CONTENT_TYPE_KEY] = static::CONTENT_TYPE_JSON;
+            case 'OpenAdapter\Riak\Command\DataType\Counter\Fetch':
+            case 'OpenAdapter\Riak\Command\DataType\Set\Fetch':
+            case 'OpenAdapter\Riak\Command\DataType\Map\Fetch':
+            case 'OpenAdapter\Riak\Command\DataType\Hll\Fetch':
                 $this->path = sprintf('/types/%s/buckets/%s/datatypes/%s', $bucket->getType(), $bucket->getName(), $key);
                 break;
             /** @noinspection PhpMissingBreakStatementInspection */
-            case 'Basho\Riak\Command\Search\Index\Store':
+            case 'OpenAdapter\Riak\Command\Search\Index\Store':
                 $this->headers[static::CONTENT_TYPE_KEY] = static::CONTENT_TYPE_JSON;
-            case 'Basho\Riak\Command\Search\Index\Fetch':
-            case 'Basho\Riak\Command\Search\Index\Delete':
+            case 'OpenAdapter\Riak\Command\Search\Index\Fetch':
+            case 'OpenAdapter\Riak\Command\Search\Index\Delete':
                 $this->path = sprintf('/search/index/%s', $this->command);
                 break;
             /** @noinspection PhpMissingBreakStatementInspection */
-            case 'Basho\Riak\Command\Search\Schema\Store':
+            case 'OpenAdapter\Riak\Command\Search\Schema\Store':
                 $this->headers[static::CONTENT_TYPE_KEY] = static::CONTENT_TYPE_XML;
-            case 'Basho\Riak\Command\Search\Schema\Fetch':
+            case 'OpenAdapter\Riak\Command\Search\Schema\Fetch':
                 $this->path = sprintf('/search/schema/%s', $this->command);
                 break;
-            case 'Basho\Riak\Command\Search\Fetch':
+            case 'OpenAdapter\Riak\Command\Search\Fetch':
                 $this->path = sprintf('/search/query/%s', $this->command);
                 break;
-            case 'Basho\Riak\Command\MapReduce\Fetch':
+            case 'OpenAdapter\Riak\Command\MapReduce\Fetch':
                 $this->headers[static::CONTENT_TYPE_KEY] = static::CONTENT_TYPE_JSON;
                 $this->path = sprintf('/%s', $this->config['mapred_prefix']);
                 break;
-            case 'Basho\Riak\Command\Indexes\Query':
+            case 'OpenAdapter\Riak\Command\Indexes\Query':
                 $this->path = $this->createIndexQueryPath($bucket);
                 break;
-            case 'Basho\Riak\Command\Ping':
+            case 'OpenAdapter\Riak\Command\Ping':
                 $this->path = '/ping';
                 break;
-            case 'Basho\Riak\Command\Stats':
+            case 'OpenAdapter\Riak\Command\Stats':
                 $this->path = '/stats';
                 break;
-            case 'Basho\Riak\Command\Object\FetchPreflist':
+            case 'OpenAdapter\Riak\Command\DataObject\FetchPreflist':
                 $this->path = sprintf('/types/%s/buckets/%s/keys/%s/preflist', $bucket->getType(), $bucket->getName(), $key);
                 break;
-            case 'Basho\Riak\Command\TimeSeries\Fetch':
-            case 'Basho\Riak\Command\TimeSeries\Delete':
+            case 'OpenAdapter\Riak\Command\TimeSeries\Fetch':
+            case 'OpenAdapter\Riak\Command\TimeSeries\Delete':
                 /** @var $command Command\TimeSeries\Fetch */
                 $command = $this->command;
-                $this->path = sprintf('%s/tables/%s/keys/%s', static::TS_API_PREFIX, $command->getTable(), implode("/", $command->getData()));
+                $this->path = sprintf('%s/tables/%s/keys/%s', static::TS_API_PREFIX, $command->getTable(), implode('/', $command->getData()));
                 break;
-            case 'Basho\Riak\Command\TimeSeries\Store':
+            case 'OpenAdapter\Riak\Command\TimeSeries\Store':
                 /** @var $command Command\TimeSeries\Store */
                 $command = $this->command;
                 $this->path = sprintf('%s/tables/%s/keys', static::TS_API_PREFIX, $command->getTable());
                 break;
-            case 'Basho\Riak\Command\TimeSeries\Query\Fetch':
+            case 'OpenAdapter\Riak\Command\TimeSeries\Query\Fetch':
                 $this->path = sprintf('%s/query', static::TS_API_PREFIX);
                 break;
             default:
@@ -281,6 +287,7 @@ class Http extends Api implements ApiInterface
      * Generates the URL path for a 2i Query
      *
      * @param Bucket $bucket
+     *
      * @return string
      * @throws Api\Exception if 2i query is invalid.
      */
@@ -289,22 +296,19 @@ class Http extends Api implements ApiInterface
         /**  @var Command\Indexes\Query $command */
         $command = $this->command;
 
-        if($command->isMatchQuery()) {
-            $path =  sprintf('/types/%s/buckets/%s/index/%s/%s', $bucket->getType(),
-                        $bucket->getName(),
-                        $command->getIndexName(),
-                        $command->getMatchValue());
-        }
-        elseif($command->isRangeQuery()) {
-            $path =  sprintf('/types/%s/buckets/%s/index/%s/%s/%s', $bucket->getType(),
-                        $bucket->getName(),
-                        $command->getIndexName(),
-                        $command->getLowerBound(),
-                        $command->getUpperBound());
-        }
-        else
-        {
-            throw new Api\Exception("Invalid Secondary Index Query.");
+        if ($command->isMatchQuery()) {
+            $path = sprintf('/types/%s/buckets/%s/index/%s/%s', $bucket->getType(),
+                $bucket->getName(),
+                $command->getIndexName(),
+                $command->getMatchValue());
+        } elseif ($command->isRangeQuery()) {
+            $path = sprintf('/types/%s/buckets/%s/index/%s/%s/%s', $bucket->getType(),
+                $bucket->getName(),
+                $command->getIndexName(),
+                $command->getLowerBound(),
+                $command->getUpperBound());
+        } else {
+            throw new Api\Exception('Invalid Secondary Index Query.');
         }
 
         return $path;
@@ -323,6 +327,10 @@ class Http extends Api implements ApiInterface
         // record outgoing headers
         $this->options[CURLINFO_HEADER_OUT] = 1;
 
+        if ($this->command->getConnectionTimeout()) {
+            $this->options[CURLOPT_TIMEOUT] = $this->command->getConnectionTimeout();
+        }
+
         if ($this->node->useTls()) {
             // CA File
             if ($this->node->getCaFile()) {
@@ -340,24 +348,7 @@ class Http extends Api implements ApiInterface
             $this->options[CURLOPT_SSL_VERIFYHOST] = 0;
 
             if ($this->node->getUserName()) {
-                $this->options[CURLOPT_USERPWD] = sprintf('%s:%s', $this->node->getUserName(),
-                    $this->node->getPassword());
-            } elseif ($this->node->getCertificate()) {
-                /*
-                 * NOT CURRENTLY SUPPORTED ON HTTP
-                 *
-                $this->options[CURLOPT_SSLCERT] = $this->node->getCertificate();
-                $this->options[CURLOPT_SSLCERTTYPE] = 'P12';
-                if ($this->node->getCertificatePassword()) {
-                    $this->options[CURLOPT_SSLCERTPASSWD] = $this->node->getCertificatePassword();
-                }
-                if ($this->node->getPrivateKey()) {
-                    $this->options[CURLOPT_SSLKEY] = $this->node->getPrivateKey();
-                    if ($this->node->getPrivateKeyPassword()) {
-                        $this->options[CURLOPT_SSLKEYPASSWD] = $this->node->getPrivateKeyPassword();
-                    }
-                }
-                */
+                $this->options[CURLOPT_USERPWD] = sprintf('%s:%s', $this->node->getUserName(), $this->node->getPassword());
             }
         }
 
@@ -388,7 +379,7 @@ class Http extends Api implements ApiInterface
     protected function prepareRequestData()
     {
         // if POST or PUT, add parameters to post data, else add to uri
-        if (in_array($this->command->getMethod(), ['POST', 'PUT'])) {
+        if (\in_array($this->command->getMethod(), ['POST', 'PUT'])) {
             $this->requestBody = $this->command->getEncodedData();
             $this->options[CURLOPT_POSTFIELDS] = $this->requestBody;
         }
@@ -404,10 +395,10 @@ class Http extends Api implements ApiInterface
     protected function prepareRequestUrl()
     {
         $protocol = $this->node->useTls() ? 'https' : 'http';
-        $url = sprintf('%s://%s%s?%s', $protocol, $this->node->getUri(), $this->path, $this->query);
+        $this->requestURL = sprintf('%s://%s%s?%s', $protocol, $this->node->getUri(), $this->path, $this->query);
 
         // set the built request URL on the connection
-        $this->options[CURLOPT_URL] = $url;
+        $this->options[CURLOPT_URL] = $this->requestURL;
 
         return $this;
     }
@@ -441,7 +432,7 @@ class Http extends Api implements ApiInterface
         }
 
         // if we have an object, set appropriate object headers
-        $object = $this->command->getObject();
+        $object = $this->command->getDataObject();
         if ($object) {
             if ($object->getVclock()) {
                 $curl_headers[] = sprintf('%s: %s', static::VCLOCK_KEY, $object->getVclock());
@@ -463,7 +454,7 @@ class Http extends Api implements ApiInterface
             }
 
             // setup metadata headers
-            foreach($object->getMetaData() as $key => $value) {
+            foreach ($object->getMetaData() as $key => $value) {
                 $curl_headers[] = sprintf('%s%s: %s', static::METADATA_PREFIX, $key, $value);
             }
         }
@@ -485,16 +476,16 @@ class Http extends Api implements ApiInterface
     protected function prepareRequestMethod()
     {
         switch ($this->command->getMethod()) {
-            case "POST":
+            case 'POST':
                 $this->options[CURLOPT_POST] = 1;
                 break;
-            case "PUT":
+            case 'PUT':
                 $this->options[CURLOPT_CUSTOMREQUEST] = 'PUT';
                 break;
-            case "DELETE":
+            case 'DELETE':
                 $this->options[CURLOPT_CUSTOMREQUEST] = 'DELETE';
                 break;
-            case "HEAD":
+            case 'HEAD':
                 $this->options[CURLOPT_NOBODY] = 1;
                 break;
             default:
@@ -529,15 +520,16 @@ class Http extends Api implements ApiInterface
         // set the response header and body callback functions
         $this->options[CURLOPT_HEADERFUNCTION] = [$this, 'responseHeaderCallback'];
         $this->options[CURLOPT_WRITEFUNCTION] = [$this, 'responseBodyCallback'];
-
         if ($this->command->isVerbose()) {
             // set curls output to be the output buffer stream
-            $this->options[CURLOPT_STDERR] = fopen('php://stdout', 'w+');
+            $this->options[CURLOPT_STDERR] = fopen('php://stdout', 'wb+');
             $this->options[CURLOPT_VERBOSE] = 1;
 
             // there is a bug when verbose is enabled, header out causes no output
             // @see https://bugs.php.net/bug.php?id=65348
             unset($this->options[CURLINFO_HEADER_OUT]);
+
+            echo "cURL Command:\n\tcurl -X{$this->command->getMethod()} {$this->requestURL} --data \"{$this->requestBody}\"\n";
         }
 
         // set all options on the resource
@@ -562,17 +554,6 @@ class Http extends Api implements ApiInterface
     }
 
     /**
-     * Add a custom header to the request
-     *
-     * @param $key
-     * @param $value
-     */
-    public function addHeader($key, $value)
-    {
-        $this->headers[$key] = $value;
-    }
-
-    /**
      * @return resource
      */
     public function getConnection()
@@ -591,59 +572,6 @@ class Http extends Api implements ApiInterface
         return $this;
     }
 
-    /**
-     * Response header callback
-     *
-     * Handles callback from curl when the response is received, it parses the headers into an array sets them as
-     * member of the class.
-     *
-     * Has to be public for curl to be able to access it.
-     *
-     * @param $ch
-     * @param $header
-     *
-     * @return int
-     */
-    public function responseHeaderCallback($ch, $header)
-    {
-        if (strpos($header, ':')) {
-            list ($key, $value) = explode(':', $header, 2);
-
-            $value = trim($value);
-
-            if (!empty($value)) {
-                if (!isset($this->responseHeaders[$key])) {
-                    $this->responseHeaders[$key] = $value;
-                } elseif (is_array($this->responseHeaders[$key])) {
-                    $this->responseHeaders[$key] = array_merge($this->responseHeaders[$key], [$value]);
-                } else {
-                    $this->responseHeaders[$key] = array_merge([$this->responseHeaders[$key]], [$value]);
-                }
-            }
-        }
-
-        return strlen($header);
-    }
-
-    /**
-     * Response body callback
-     *
-     * Handles callback from curl when the response is received, it sets the response body as a member of the class.
-     *
-     * Has to be public for curl to be able to access it.
-     *
-     * @param $ch
-     * @param $body
-     *
-     * @return int
-     */
-    public function responseBodyCallback($ch, $body)
-    {
-        $this->responseBody .= $body;
-
-        return strlen($body);
-    }
-
     protected function parseResponse()
     {
         // trim leading / trailing whitespace
@@ -658,9 +586,9 @@ class Http extends Api implements ApiInterface
             $this->error = $body;
         }
 
-        switch (get_class($this->command)) {
-            case 'Basho\Riak\Command\Bucket\Store':
-            case 'Basho\Riak\Command\Bucket\Fetch':
+        switch (\get_class($this->command)) {
+            case 'OpenAdapter\Riak\Command\Bucket\Store':
+            case 'OpenAdapter\Riak\Command\Bucket\Fetch':
                 $bucket = null;
                 $modified = $this->getResponseHeader(static::LAST_MODIFIED_KEY, '');
                 $properties = json_decode($body, true);
@@ -670,21 +598,30 @@ class Http extends Api implements ApiInterface
                 $response = new Command\Bucket\Response($this->success, $this->statusCode, $this->error, $bucket, $modified);
                 break;
 
-            case 'Basho\Riak\Command\Object\Fetch':
-            case 'Basho\Riak\Command\Object\Store':
-                /** @var Command\Object $command */
+            case 'OpenAdapter\Riak\Command\DataObject\Fetch':
+            case 'OpenAdapter\Riak\Command\DataObject\Store':
+                /** @var Command\DataObject $command */
                 $command = $this->command;
                 $objects = (new Api\Http\Translator\ObjectResponse($command, $this->statusCode))
                     ->parseResponse($body, $this->responseHeaders);
-                $response = new Command\Object\Response($this->success, $this->statusCode, $this->error, $location, $objects);
+                $response = new Command\DataObject\Response($this->success, $this->statusCode, $this->error, $location, $objects);
                 break;
 
-            case 'Basho\Riak\Command\Object\FetchPreflist':
-                $response = new Command\Object\Response($this->success, $this->statusCode, $this->error, $location, [new Object(json_decode($body))]);
+            case 'OpenAdapter\Riak\Command\DataObject\FetchPreflist':
+                $response = new Command\DataObject\Response($this->success, $this->statusCode, $this->error, $location, [new DataObject(json_decode($body))]);
                 break;
 
-            case 'Basho\Riak\Command\DataType\Counter\Store':
-            case 'Basho\Riak\Command\DataType\Counter\Fetch':
+            case 'OpenAdapter\Riak\Command\DataObject\Keys\Fetch':
+                $data = json_decode($body);
+                $keys = [];
+                foreach ($data->keys as $key) {
+                    $keys[] = new Location($key, $this->command->getBucket());
+                }
+                $response = new Command\DataObject\Keys\Response($this->success, $this->statusCode, $this->error, $keys);
+                break;
+
+            case 'OpenAdapter\Riak\Command\DataType\Counter\Store':
+            case 'OpenAdapter\Riak\Command\DataType\Counter\Fetch':
                 $counter = null;
                 $json_object = json_decode($body);
                 if ($json_object && isset($json_object->value)) {
@@ -695,20 +632,25 @@ class Http extends Api implements ApiInterface
                 );
                 break;
 
-            case 'Basho\Riak\Command\DataType\Set\Store':
-            case 'Basho\Riak\Command\DataType\Set\Fetch':
+            case 'OpenAdapter\Riak\Command\DataType\GSet\Store':
+            case 'OpenAdapter\Riak\Command\DataType\Set\Store':
+            case 'OpenAdapter\Riak\Command\DataType\Set\Fetch':
                 $set = null;
                 $json_object = json_decode($body);
                 if ($json_object && isset($json_object->value)) {
-                    $set = new Set($json_object->value, $json_object->context);
+                    $context = '';
+                    if (isset($json_object->context)) {
+                        $context = $json_object->context;
+                    }
+                    $set = new Set($json_object->value, $context);
                 }
                 $response = new Command\DataType\Set\Response(
                     $this->success, $this->statusCode, $this->error, $location, $set, $this->getResponseHeader('Date')
                 );
                 break;
 
-            case 'Basho\Riak\Command\DataType\Map\Store':
-            case 'Basho\Riak\Command\DataType\Map\Fetch':
+            case 'OpenAdapter\Riak\Command\DataType\Map\Store':
+            case 'OpenAdapter\Riak\Command\DataType\Map\Fetch':
                 $map = null;
                 $json_object = json_decode($body, true);
                 if ($json_object && isset($json_object['value'])) {
@@ -719,8 +661,8 @@ class Http extends Api implements ApiInterface
                 );
                 break;
 
-            case 'Basho\Riak\Command\DataType\Hll\Store':
-            case 'Basho\Riak\Command\DataType\Hll\Fetch':
+            case 'OpenAdapter\Riak\Command\DataType\Hll\Store':
+            case 'OpenAdapter\Riak\Command\DataType\Hll\Fetch':
                 $hll = null;
                 $json_object = json_decode($body);
                 if ($json_object && isset($json_object->value)) {
@@ -731,8 +673,8 @@ class Http extends Api implements ApiInterface
                 );
                 break;
 
-            case 'Basho\Riak\Command\Search\Fetch':
-                $results = in_array($this->statusCode, [200,204]) ? json_decode($body) : null;
+            case 'OpenAdapter\Riak\Command\Search\Fetch':
+                $results = \in_array((int)$this->statusCode, [200, 204], true) ? json_decode($body) : null;
                 $docs = [];
                 if (!empty($results->response->docs)) {
                     foreach ($results->response->docs as $doc) {
@@ -743,25 +685,25 @@ class Http extends Api implements ApiInterface
 
                 $response = new Command\Search\Response($this->success, $this->statusCode, $this->error, $numFound, $docs);
                 break;
-            case 'Basho\Riak\Command\Search\Index\Store':
-            case 'Basho\Riak\Command\Search\Index\Fetch':
+            case 'OpenAdapter\Riak\Command\Search\Index\Store':
+            case 'OpenAdapter\Riak\Command\Search\Index\Fetch':
                 $index = json_decode($body);
                 $response = new Command\Search\Index\Response($this->success, $this->statusCode, $this->error, $index);
                 break;
 
-            case 'Basho\Riak\Command\Search\Schema\Store':
-            case 'Basho\Riak\Command\Search\Schema\Fetch':
+            case 'OpenAdapter\Riak\Command\Search\Schema\Store':
+            case 'OpenAdapter\Riak\Command\Search\Schema\Fetch':
                 $response = new Command\Search\Schema\Response(
                     $this->success, $this->statusCode, $this->error, $body, $this->getResponseHeader(static::CONTENT_TYPE_KEY)
                 );
                 break;
 
-            case 'Basho\Riak\Command\MapReduce\Fetch':
-                $results = in_array($this->statusCode, [200,204]) ? json_decode($body) : null;
+            case 'OpenAdapter\Riak\Command\MapReduce\Fetch':
+                $results = \in_array((int)$this->statusCode, [200, 204], true) ? json_decode($body) : null;
                 $response = new Command\MapReduce\Response($this->success, $this->statusCode, $this->error, $results);
                 break;
-            case 'Basho\Riak\Command\Indexes\Query':
-                $json_object = in_array($this->statusCode, [200,204]) ? json_decode($body, true) : null;
+            case 'OpenAdapter\Riak\Command\Indexes\Query':
+                $json_object = \in_array((int)$this->statusCode, [200, 204], true) ? json_decode($body, true) : null;
                 $results = [];
                 $termsReturned = false;
                 $continuation = null;
@@ -785,15 +727,15 @@ class Http extends Api implements ApiInterface
                     $this->success, $this->statusCode, $this->error, $results, $termsReturned, $continuation, $done, $this->getResponseHeader('Date')
                 );
                 break;
-            case 'Basho\Riak\Command\Stats':
+            case 'OpenAdapter\Riak\Command\Stats':
                 $response = new Command\Stats\Response($this->success, $this->statusCode, $this->error, json_decode($body, true));
                 break;
-            case 'Basho\Riak\Command\TimeSeries\Fetch':
-                $row = in_array($this->statusCode, ['200','201','204']) ? json_decode($body, true) : [];
+            case 'OpenAdapter\Riak\Command\TimeSeries\Fetch':
+                $row = \in_array((int)$this->statusCode, [200, 201, 204], true) ? json_decode($body, true) : [];
                 $response = new Command\TimeSeries\Response($this->success, $this->statusCode, $this->error, [$row]);
                 break;
-            case 'Basho\Riak\Command\TimeSeries\Query\Fetch':
-                $results = in_array($this->statusCode, ['200','204']) ? json_decode($body) : [];
+            case 'OpenAdapter\Riak\Command\TimeSeries\Query\Fetch':
+                $results = \in_array((int)$this->statusCode, [200, 204], true) ? json_decode($body) : [];
                 $rows = [];
                 if (isset($results->rows)) {
                     foreach ($results->rows as $row) {
@@ -806,12 +748,12 @@ class Http extends Api implements ApiInterface
                 }
                 $response = new Command\TimeSeries\Query\Response($this->success, $this->statusCode, $this->error, $rows);
                 break;
-            case 'Basho\Riak\Command\TimeSeries\Store':
-            case 'Basho\Riak\Command\TimeSeries\Delete':
-            case 'Basho\Riak\Command\Object\Delete':
-            case 'Basho\Riak\Command\Bucket\Delete':
-            case 'Basho\Riak\Command\Search\Index\Delete':
-            case 'Basho\Riak\Command\Ping':
+            case 'OpenAdapter\Riak\Command\TimeSeries\Store':
+            case 'OpenAdapter\Riak\Command\TimeSeries\Delete':
+            case 'OpenAdapter\Riak\Command\DataObject\Delete':
+            case 'OpenAdapter\Riak\Command\Bucket\Delete':
+            case 'OpenAdapter\Riak\Command\Search\Index\Delete':
+            case 'OpenAdapter\Riak\Command\Ping':
             default:
                 $response = new Command\Response($this->success, $this->statusCode, $this->error);
                 break;
@@ -824,8 +766,71 @@ class Http extends Api implements ApiInterface
     {
         if (!empty($this->responseHeaders[$key])) {
             return $this->responseHeaders[$key];
-        } else {
-            return $default;
         }
+
+        return $default;
+    }
+
+    /**
+     * Add a custom header to the request
+     *
+     * @param $key
+     * @param $value
+     */
+    public function addHeader($key, $value)
+    {
+        $this->headers[$key] = $value;
+    }
+
+    /**
+     * Response header callback
+     *
+     * Handles callback from curl when the response is received, it parses the headers into an array sets them as
+     * member of the class.
+     *
+     * Has to be public for curl to be able to access it.
+     *
+     * @param $ch
+     * @param $header
+     *
+     * @return int
+     */
+    public function responseHeaderCallback($ch, $header)
+    {
+        if (strpos($header, ':')) {
+            [$key, $value] = explode(':', $header, 2);
+
+            $value = trim($value);
+
+            if (!empty($value)) {
+                if (!isset($this->responseHeaders[$key])) {
+                    $this->responseHeaders[$key] = $value;
+                } elseif (\is_array($this->responseHeaders[$key])) {
+                    $this->responseHeaders[$key] = array_merge($this->responseHeaders[$key], [$value]);
+                } else {
+                    $this->responseHeaders[$key] = array_merge([$this->responseHeaders[$key]], [$value]);
+                }
+            }
+        }
+
+        return \strlen($header);
+    }
+
+    /**
+     * Response body callback
+     *
+     * Handles callback from curl when the response is received, it sets the response body as a member of the class.
+     *
+     * Has to be public for curl to be able to access it.
+     *
+     * @param $ch
+     * @param $body
+     *
+     * @return int
+     */
+    public function responseBodyCallback($ch, $body)
+    {
+        $this->responseBody .= $body;
+        return \strlen($body);
     }
 }

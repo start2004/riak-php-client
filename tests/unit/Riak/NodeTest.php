@@ -1,9 +1,8 @@
 <?php
 
-namespace Basho\Tests\Riak;
+namespace OpenAdapter\Riak\Tests\Riak;
 
-use Basho\Riak\Node;
-use Basho\Tests\TestCase;
+use OpenAdapter\Riak\Tests\TestCase;
 
 /**
  * Main class for testing Riak clustering

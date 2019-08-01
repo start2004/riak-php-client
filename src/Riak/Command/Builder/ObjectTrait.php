@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Riak\Command\Builder;
+namespace OpenAdapter\Riak\Command\Builder;
 
-use Basho\Riak\Api\Http;
-use Basho\Riak\Object as RObject;
+use OpenAdapter\Riak\Api\Http;
+use OpenAdapter\Riak\DataObject;
 
 /**
  * Allows easy code sharing for Object getters / setters within the Command Builders
@@ -13,14 +13,14 @@ use Basho\Riak\Object as RObject;
 trait ObjectTrait
 {
     /**
-     * @var \Basho\Riak\Object|null
+     * @var \OpenAdapter\Riak\DataObject|null
      */
-    protected $object = NULL;
+    protected $object = null;
 
     /**
      * @return Object|null
      */
-    public function getObject()
+    public function getDataObject()
     {
         return $this->object;
     }
@@ -33,9 +33,9 @@ trait ObjectTrait
      *
      * @return $this
      */
-    public function buildObject($data = NULL, $headers = NULL)
+    public function buildObject($data = null, $headers = null)
     {
-        $this->object = new RObject($data, $headers);
+        $this->object = new DataObject($data, $headers);
 
         return $this;
     }
@@ -43,11 +43,11 @@ trait ObjectTrait
     /**
      * Attach an already instantiated Object to the Command
      *
-     * @param \Basho\Riak\Object $object
+     * @param \OpenAdapter\Riak\DataObject $object
      *
      * @return $this
      */
-    public function withObject(RObject $object)
+    public function withObject(DataObject $object)
     {
         $this->object = $object;
 
@@ -63,7 +63,7 @@ trait ObjectTrait
      */
     public function buildJsonObject($data)
     {
-        $this->object = new RObject();
+        $this->object = new DataObject();
         $this->object->setData($data);
         $this->object->setContentType(Http::CONTENT_TYPE_JSON);
 

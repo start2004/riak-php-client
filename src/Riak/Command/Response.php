@@ -1,6 +1,6 @@
 <?php
 
-namespace Basho\Riak\Command;
+namespace OpenAdapter\Riak\Command;
 
 /**
  * Data structure for handling Command responses from Riak
@@ -35,12 +35,12 @@ class Response
      */
     public function isNotFound()
     {
-        return $this->code == '404' ? true : false;
+        return 404 === (int)$this->code;
     }
 
     public function isUnauthorized()
     {
-        return $this->code == '401' ? true : false;
+        return 401 === (int)$this->code;
     }
 
     /**

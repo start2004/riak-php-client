@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Riak\Command\Builder\Search;
+namespace OpenAdapter\Riak\Command\Builder\Search;
 
-use Basho\Riak;
-use Basho\Riak\Command;
+use OpenAdapter\Riak;
+use OpenAdapter\Riak\Command;
 
 /**
  * Builds the command to fetch a collection of objects from Riak using Yokozuna search
@@ -31,6 +31,7 @@ class FetchObjects extends Command\Builder implements Command\BuilderInterface
      * {@inheritdoc}
      *
      * @return Command\Search\Fetch;
+     * @throws Command\Builder\Exception
      */
     public function build()
     {

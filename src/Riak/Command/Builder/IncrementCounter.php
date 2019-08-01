@@ -1,9 +1,8 @@
 <?php
 
-namespace Basho\Riak\Command\Builder;
+namespace OpenAdapter\Riak\Command\Builder;
 
-use Basho\Riak;
-use Basho\Riak\Command;
+use OpenAdapter\Riak\Command;
 
 /**
  * Used to increment counter objects in Riak by the provided positive / negative integer
@@ -27,12 +26,13 @@ class IncrementCounter extends Command\Builder implements Command\BuilderInterfa
     /**
      * @var int|null
      */
-    protected $increment = NULL;
+    protected $increment = null;
 
     /**
      * {@inheritdoc}
      *
      * @return Command\DataType\Counter\Store
+     * @throws Exception
      */
     public function build()
     {

@@ -1,11 +1,10 @@
 <?php
 
-namespace Basho\Tests\Riak\Command\Builder;
+namespace OpenAdapter\Riak\Tests\Riak\Command\Builder;
 
-use Basho\Riak\Command;
-use Basho\Riak\TimeSeries\Cell;
-use Basho\Tests\TestCase;
-use Basho\Tests\TimeSeriesTrait;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\Tests\TestCase;
+use OpenAdapter\Riak\Tests\TimeSeriesTrait;
 
 /**
  * Tests the configuration of Riak commands via the Command Builder class
@@ -38,7 +37,7 @@ class StoreRowTest extends TestCase
         // build a command
         $command = $builder->build();
 
-        $this->assertInstanceOf('Basho\Riak\Command\TimeSeries\Store', $command);
+        $this->assertInstanceOf('OpenAdapter\Riak\Command\TimeSeries\Store', $command);
         $this->assertEquals(static::$table, $command->getTable());
         $this->assertEquals([$row], $command->getData());
     }
@@ -58,15 +57,16 @@ class StoreRowTest extends TestCase
         // build a command
         $command = $builder->build();
 
-        $this->assertInstanceOf('Basho\Riak\Command\TimeSeries\Store', $command);
+        $this->assertInstanceOf('OpenAdapter\Riak\Command\TimeSeries\Store', $command);
         $this->assertEquals(static::$table, $command->getTable());
         $this->assertEquals($rows, $command->getData());
     }
 
     /**
-     * @expectedException Basho\Riak\Command\Builder\Exception
+     * @expectedException OpenAdapter\Riak\Command\Builder\Exception
      */
-    public function testEmptyRowsException() {
+    public function testEmptyRowsException()
+    {
         // initialize builder
         $builder = (new Command\Builder\TimeSeries\StoreRows(static::$riak))
             ->inTable(static::$table);
@@ -74,7 +74,7 @@ class StoreRowTest extends TestCase
         // build a command
         $command = $builder->build();
 
-        $this->assertInstanceOf('Basho\Riak\Command\TimeSeries\Store', $command);
+        $this->assertInstanceOf('OpenAdapter\Riak\Command\TimeSeries\Store', $command);
         $this->assertEquals(static::$table, $command->getTable());
         $this->assertEquals($rows, $command->getData());
     }

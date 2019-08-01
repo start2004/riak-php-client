@@ -1,10 +1,10 @@
 <?php
 
-namespace Basho\Riak\Command\DataType\Hll;
+namespace OpenAdapter\Riak\Command\DataType\Hll;
 
-use Basho\Riak\Command;
-use Basho\Riak\CommandInterface;
-use Basho\Riak\Location;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\CommandInterface;
+use OpenAdapter\Riak\Location;
 
 /**
  * Stores an update to an hll
@@ -23,12 +23,12 @@ class Store extends Command implements CommandInterface
     /**
      * @var Command\DataType\Hll\Response|null
      */
-    protected $response = NULL;
+    protected $response = null;
 
     /**
      * @var Location|null
      */
-    protected $location = NULL;
+    protected $location = null;
 
     public function __construct(Command\Builder\UpdateHll $builder)
     {

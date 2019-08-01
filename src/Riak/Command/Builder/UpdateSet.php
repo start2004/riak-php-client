@@ -1,9 +1,8 @@
 <?php
 
-namespace Basho\Riak\Command\Builder;
+namespace OpenAdapter\Riak\Command\Builder;
 
-use Basho\Riak;
-use Basho\Riak\Command;
+use OpenAdapter\Riak\Command;
 
 /**
  * @author Christopher Mancini <cmancini at basho d0t com>
@@ -36,8 +35,7 @@ class UpdateSet extends Command\Builder implements Command\BuilderInterface
      */
     public function add($element)
     {
-        settype($element, 'string');
-        $this->add_all[] = $element;
+        $this->add_all[] = (string)$element;
 
         return $this;
     }
@@ -49,8 +47,7 @@ class UpdateSet extends Command\Builder implements Command\BuilderInterface
      */
     public function remove($element)
     {
-        settype($element, 'string');
-        $this->remove_all[] = $element;
+        $this->remove_all[] = (string)$element;
 
         return $this;
     }
@@ -97,6 +94,7 @@ class UpdateSet extends Command\Builder implements Command\BuilderInterface
      * {@inheritdoc}
      *
      * @return Command\DataType\Set\Store
+     * @throws Exception
      */
     public function build()
     {
@@ -112,8 +110,8 @@ class UpdateSet extends Command\Builder implements Command\BuilderInterface
     {
         $this->required('Bucket');
 
-        $count_add = count($this->add_all);
-        $count_remove = count($this->remove_all);
+        $count_add = \count($this->add_all);
+        $count_remove = \count($this->remove_all);
 
         if ($count_add + $count_remove < 1) {
             throw new Exception('At least one element to add or remove needs to be defined.');

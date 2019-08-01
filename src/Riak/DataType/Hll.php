@@ -1,8 +1,8 @@
 <?php
 
-namespace Basho\Riak\DataType;
+namespace OpenAdapter\Riak\DataType;
 
-use Basho\Riak\DataType;
+use OpenAdapter\Riak\DataType;
 
 /**
  * Class Hll

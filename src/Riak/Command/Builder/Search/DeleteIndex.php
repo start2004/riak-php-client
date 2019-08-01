@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Riak\Command\Builder\Search;
+namespace OpenAdapter\Riak\Command\Builder\Search;
 
-use Basho\Riak;
-use Basho\Riak\Command;
+use OpenAdapter\Riak;
+use OpenAdapter\Riak\Command;
 
 /**
  * @author Christopher Mancini <cmancini at basho d0t com>
@@ -42,11 +42,15 @@ class DeleteIndex extends Command\Builder implements Command\BuilderInterface
     /**
      * {@inheritdoc}
      *
-     * @return Command\Search\Index\Store
+     * @return Command\Search\Index\Delete
+     * @throws Command\Builder\Exception
      */
     public function build()
     {
-        $this->validate();
+        try {
+            $this->validate();
+        } catch (Command\Builder\Exception $e) {
+        }
 
         return new Command\Search\Index\Delete($this);
     }

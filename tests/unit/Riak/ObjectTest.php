@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Tests\Riak;
+namespace OpenAdapter\Riak\Tests\Riak;
 
-use Basho\Riak\Object as RObject;
-use Basho\Tests\TestCase;
+use OpenAdapter\Riak\DataObject as RObject;
+use OpenAdapter\Riak\Tests\TestCase;
 
 /**
  * Test set for key value objects
@@ -34,7 +34,7 @@ class ObjectTest extends TestCase
 
         $object = new RObject($data);
         $this->assertEmpty($object->getIndexes());
-        $this->assertEquals(NULL, $object->getIndex("foo_bin"));
+        $this->assertEquals(null, $object->getIndex("foo_bin"));
 
         // 2i headers will result in indexes
         $headers = ['My-Header' => 'cats', 'x-riak-index-foo_bin' => 'bar, baz', 'x-riak-index-foo_int' => '42, 50'];

@@ -1,6 +1,6 @@
 <?php
 
-namespace Basho\Riak\Command\Indexes;
+namespace OpenAdapter\Riak\Command\Indexes;
 
 
 /**
@@ -8,7 +8,7 @@ namespace Basho\Riak\Command\Indexes;
  *
  * @author Alex Moore <amoore at basho d0t com>
  */
-class Response extends \Basho\Riak\Command\Response
+class Response extends \OpenAdapter\Riak\Command\Response
 {
     /**
      * @var array
@@ -40,7 +40,7 @@ class Response extends \Basho\Riak\Command\Response
         $this->date = $date;
 
         // when timeout is used, cURL returns success for some reason
-        if (in_array($code, ['501', '503'])) {
+        if (\in_array((int)$code, [501, 503], true)) {
             $this->success = false;
         }
     }
@@ -79,7 +79,7 @@ class Response extends \Basho\Riak\Command\Response
      * Retrieves the date of the counter's retrieval
      *
      * @return string
-     * @throws \Basho\Riak\Command\Exception
+     * @throws \OpenAdapter\Riak\Command\Exception
      */
     public function getDate()
     {

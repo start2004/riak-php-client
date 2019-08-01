@@ -1,6 +1,6 @@
 <?php
 
-namespace Basho\Riak\Node;
+namespace OpenAdapter\Riak\Node;
 
 /**
  * Configuration data structure object for connecting to a Riak node.

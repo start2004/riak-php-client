@@ -1,8 +1,8 @@
 <?php
 
-namespace Basho\Riak\Command\TimeSeries;
+namespace OpenAdapter\Riak\Command\TimeSeries;
 
-use Basho\Riak\Command;
+use OpenAdapter\Riak\Command;
 
 /**
  * Response object for TS Fetch, Store, Delete
@@ -21,7 +21,7 @@ class Response extends Command\Response
     }
 
     /**
-     * @return \Basho\Riak\TimeSeries\Cell[]|null
+     * @return \OpenAdapter\Riak\TimeSeries\Cell[]|null
      */
     public function getRow()
     {

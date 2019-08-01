@@ -1,48 +1,20 @@
 <?php
 
-namespace Basho\Tests;
+namespace OpenAdapter\Riak\Tests;
 
-use Basho\Riak\TimeSeries\Cell;
+use OpenAdapter\Riak\TimeSeries\Cell;
 
 /**
  * Helps with reusability for timeseries commands
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-
 trait TimeSeriesTrait
 {
     protected static $table = "WeatherByRegion";
+    protected static $tableBlob = "GeoCheckin_Wide_1_5";
     protected static $key = [];
     protected static $now;
-
-    protected static function tableDefinition($table_name = "")
-    {
-        $table = "
-            CREATE TABLE %s (
-                region varchar not null,
-                state varchar not null,
-                time timestamp not null,
-                weather varchar not null,
-                temperature double,
-                uv_index sint64,
-                observed boolean not null,
-                PRIMARY KEY((region, state, quantum(time, 15, 'm')), region, state, time)
-            )";
-
-        return sprintf($table, $table_name ? $table_name : static::$table);
-    }
-
-    protected static function populateKey()
-    {
-        static::$now = new \DateTime("@1443816900");
-
-        static::$key = [
-            (new Cell("region"))->setValue("South Atlantic"),
-            (new Cell("state"))->setValue("South Carolina"),
-            (new Cell("time"))->setTimestampValue(static::$now->getTimestamp()),
-        ];
-    }
 
     public static function generateRows()
     {
@@ -91,5 +63,38 @@ trait TimeSeriesTrait
     public static function twoHoursAgo()
     {
         return static::$now->getTimestamp() - 60 * 60 * 2;
+    }
+
+    public static function threeHoursAgo()
+    {
+        return static::$now->getTimestamp() - 60 * 60 * 3;
+    }
+
+    protected static function tableDefinition($table_name = "")
+    {
+        $table = "
+            CREATE TABLE %s (
+                region varchar not null,
+                state varchar not null,
+                time timestamp not null,
+                weather varchar not null,
+                temperature double,
+                uv_index sint64,
+                observed boolean not null,
+                PRIMARY KEY((region, state, quantum(time, 15, 'm')), region, state, time)
+            )";
+
+        return sprintf($table, $table_name ? $table_name : static::$table);
+    }
+
+    protected static function populateKey()
+    {
+        static::$now = new \DateTime("@1443816900");
+
+        static::$key = [
+            (new Cell("region"))->setValue("South Atlantic"),
+            (new Cell("state"))->setValue("South Carolina"),
+            (new Cell("time"))->setTimestampValue(static::$now->getTimestamp()),
+        ];
     }
 }

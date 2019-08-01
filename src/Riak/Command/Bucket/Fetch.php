@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Riak\Command\Bucket;
+namespace OpenAdapter\Riak\Command\Bucket;
 
-use Basho\Riak\Command;
-use Basho\Riak\CommandInterface;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\CommandInterface;
 
 /**
  * Fetches properties for a Riak Bucket

@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Tests;
+namespace OpenAdapter\Riak\Tests;
 
-use Basho\Riak;
-use Basho\Riak\Command;
+use OpenAdapter\Riak;
+use OpenAdapter\Riak\Command;
 
 /**
  * Scenario tests for when storing / retrieving binary data
@@ -12,7 +12,6 @@ use Basho\Riak\Command;
  */
 class EncodedDataTest extends TestCase
 {
-    const TEST_IMG = "Basho_Man_Super.png";
     const BUCKET = "encodeddata";
     const BASE64_KEY = "base64";
     const BINARY_KEY = "binary.png";
@@ -21,10 +20,11 @@ class EncodedDataTest extends TestCase
     /**
      * Test storing and fetching an image represented in base64 encoding
      */
-    public function testBase64EncodedData() {
+    public function testBase64EncodedData()
+    {
         $image = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . static::TEST_IMG);
 
-        $object = (new Riak\Object($image))->setContentEncoding("base64")->setContentType(static::TEST_CONTENT_TYPE);
+        $object = (new Riak\DataObject($image))->setContentEncoding("base64")->setContentType(static::TEST_CONTENT_TYPE);
 
         $storeCommand = (new Command\Builder\StoreObject(static::$riak))
             ->withObject($object)
@@ -42,20 +42,21 @@ class EncodedDataTest extends TestCase
         $response = $fetchCommand->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('Basho\Riak\Object', $response->getObject());
-        $this->assertEquals(static::TEST_CONTENT_TYPE, $response->getObject()->getContentType());
+        $this->assertInstanceOf('OpenAdapter\Riak\DataObject', $response->getDataObject());
+        $this->assertEquals(static::TEST_CONTENT_TYPE, $response->getDataObject()->getContentType());
         $this->assertEquals(base64_encode($image), $storeCommand->getEncodedData());
-        $this->assertEquals($storeCommand->getEncodedData(), $response->getObject()->getData());
-        $this->assertEquals(md5($storeCommand->getEncodedData()), md5($response->getObject()->getData()));
+        $this->assertEquals($storeCommand->getEncodedData(), $response->getDataObject()->getData());
+        $this->assertEquals(md5($storeCommand->getEncodedData()), md5($response->getDataObject()->getData()));
     }
 
     /**
      * Test storing and fetching an image as a base64 embedded HTML img tag so it can be accessed via the browser
      */
-    public function testNoEncoding() {
+    public function testNoEncoding()
+    {
         $image = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . static::TEST_IMG);
 
-        $object = (new Riak\Object('<img src="data:image/png;base64,' . base64_encode($image) . '"/>'))->setContentEncoding("none")->setContentType("text/html");
+        $object = (new Riak\DataObject('<img src="data:image/png;base64,' . base64_encode($image) . '"/>'))->setContentEncoding("none")->setContentType("text/html");
 
         $storeCommand = (new Command\Builder\StoreObject(static::$riak))
             ->withObject($object)
@@ -74,18 +75,19 @@ class EncodedDataTest extends TestCase
         $response = $fetchCommand->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('Basho\Riak\Object', $response->getObject());
-        $this->assertEquals($object->getData(), $response->getObject()->getData());
+        $this->assertInstanceOf('OpenAdapter\Riak\DataObject', $response->getDataObject());
+        $this->assertEquals($object->getData(), $response->getDataObject()->getData());
     }
 
     /**
      * Test storing and fetching a Binary image
      */
-    public function testBinaryData() {
+    public function testBinaryData()
+    {
         $image = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . static::TEST_IMG);
         $md5 = md5($image);
 
-        $object = (new Riak\Object($image))->setContentEncoding("binary")->setContentType(static::TEST_CONTENT_TYPE);
+        $object = (new Riak\DataObject($image))->setContentEncoding("binary")->setContentType(static::TEST_CONTENT_TYPE);
 
         $storeCommand = (new Command\Builder\StoreObject(static::$riak))
             ->withObject($object)
@@ -104,11 +106,11 @@ class EncodedDataTest extends TestCase
         $response = $fetchCommand->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('Basho\Riak\Object', $response->getObject());
-        $this->assertEquals(static::TEST_CONTENT_TYPE, $response->getObject()->getContentType());
+        $this->assertInstanceOf('OpenAdapter\Riak\DataObject', $response->getDataObject());
+        $this->assertEquals(static::TEST_CONTENT_TYPE, $response->getDataObject()->getContentType());
 
         // Since Riak doesn't return ContentEncoding used to store the object, we have to access
         // the raw_data retrieved in the response to avoid data corruption from rawurldecode
-        $this->assertEquals($md5, md5($response->getObject()->getRawData()));
+        $this->assertEquals($md5, md5($response->getDataObject()->getRawData()));
     }
 }

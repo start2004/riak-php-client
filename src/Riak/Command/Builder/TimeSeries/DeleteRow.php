@@ -1,9 +1,8 @@
 <?php
 
-namespace Basho\Riak\Command\Builder\TimeSeries;
+namespace OpenAdapter\Riak\Command\Builder\TimeSeries;
 
-use Basho\Riak;
-use Basho\Riak\Command;
+use OpenAdapter\Riak\Command;
 
 /**
  * @author Christopher Mancini <cmancini at basho d0t com>
@@ -17,6 +16,7 @@ class DeleteRow extends Command\Builder implements Command\BuilderInterface
      * {@inheritdoc}
      *
      * @return Command\TimeSeries\Store
+     * @throws Command\Builder\Exception
      */
     public function build()
     {

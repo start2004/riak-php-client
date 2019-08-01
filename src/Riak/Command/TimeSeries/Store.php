@@ -1,9 +1,10 @@
 <?php
 
-namespace Basho\Riak\Command\TimeSeries;
+namespace OpenAdapter\Riak\Command\TimeSeries;
 
-use Basho\Riak\Command;
-use Basho\Riak\CommandInterface;
+use OpenAdapter\Riak;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\CommandInterface;
 
 /**
  * Used to store data within a TS table
@@ -19,7 +20,7 @@ class Store extends Command implements CommandInterface
      *
      * @var string|null
      */
-    protected $table = NULL;
+    protected $table = null;
 
     /**
      * Stores the rows
@@ -28,14 +29,17 @@ class Store extends Command implements CommandInterface
      */
     protected $rows = [];
 
+    public function __construct(Command\Builder\TimeSeries\StoreRows $builder)
+    {
+        parent::__construct($builder);
+
+        $this->table = $builder->getTable();
+        $this->rows = $builder->getRows();
+    }
+
     public function getTable()
     {
         return $this->table;
-    }
-
-    public function getData()
-    {
-        return $this->rows;
     }
 
     public function getEncodedData()
@@ -44,18 +48,20 @@ class Store extends Command implements CommandInterface
         foreach ($this->getData() as $row) {
             $cells = [];
             foreach ($row as $cell) {
-                $cells[$cell->getName()] = $cell->getValue();
+                /** @var $cell Riak\TimeSeries\Cell */
+                if ($cell->getType() == Riak\TimeSeries\Cell::BLOB_TYPE) {
+                    $cells[$cell->getName()] = base64_encode($cell->getValue());
+                } else {
+                    $cells[$cell->getName()] = $cell->getValue();
+                }
             }
             $rows[] = $cells;
         }
         return json_encode($rows);
     }
 
-    public function __construct(Command\Builder\TimeSeries\StoreRows $builder)
+    public function getData()
     {
-        parent::__construct($builder);
-
-        $this->table = $builder->getTable();
-        $this->rows = $builder->getRows();
+        return $this->rows;
     }
 }

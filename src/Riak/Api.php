@@ -1,6 +1,6 @@
 <?php
 
-namespace Basho\Riak;
+namespace OpenAdapter\Riak;
 
 /**
  * Extend this class to implement your own API bridge.
@@ -22,9 +22,9 @@ abstract class Api
     protected $response = null;
 
     /**
-     * @var Command|null
+     * @var Command
      */
-    protected $command = null;
+    protected $command;
 
     /**
      * @var Node|null
@@ -51,7 +51,7 @@ abstract class Api
     }
 
     /**
-     * @return Command|null
+     * @return Command
      */
     public function getCommand()
     {
@@ -59,7 +59,7 @@ abstract class Api
     }
 
     /**
-     * @param Command|null $command
+     * @param Command $command
      *
      * @return $this
      */

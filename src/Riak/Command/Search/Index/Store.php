@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Riak\Command\Search\Index;
+namespace OpenAdapter\Riak\Command\Search\Index;
 
-use Basho\Riak\Command;
-use Basho\Riak\CommandInterface;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\CommandInterface;
 
 /**
  * Riak Yokozuna Search Index Store

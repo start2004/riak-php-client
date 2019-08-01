@@ -15,9 +15,9 @@ Unless required by applicable law or agreed to in writing, software distributed 
 specific language governing permissions and limitations under the License.
 */
 
-namespace Basho\Riak\DataType;
+namespace OpenAdapter\Riak\DataType;
 
-use Basho\Riak\DataType;
+use OpenAdapter\Riak\DataType;
 
 /**
  * Class Set

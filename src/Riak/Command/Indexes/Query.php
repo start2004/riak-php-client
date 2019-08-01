@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Riak\Command\Indexes;
+namespace OpenAdapter\Riak\Command\Indexes;
 
-use Basho\Riak\Command;
-use Basho\Riak\CommandInterface;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\CommandInterface;
 
 /**
  * Riak 2i query information.
@@ -15,11 +15,11 @@ class Query extends Command implements CommandInterface
     /**
      * @var string
      */
-    protected $indexName = NULL;
+    protected $indexName = null;
 
-    protected $match = NULL;
-    protected $lowerBound = NULL;
-    protected $upperBound = NULL;
+    protected $match = null;
+    protected $lowerBound = null;
+    protected $upperBound = null;
 
     protected $isMatchQuery = false;
     protected $isRangeQuery = false;
@@ -27,7 +27,7 @@ class Query extends Command implements CommandInterface
     /**
      * @var Command\Indexes\Response|null
      */
-    protected $response = NULL;
+    protected $response = null;
 
     public function __construct(Command\Builder\QueryIndex $builder)
     {
@@ -36,60 +36,63 @@ class Query extends Command implements CommandInterface
         $this->bucket = $builder->getBucket();
         $this->indexName = $builder->getIndexName();
 
-        if($builder->isRangeQuery()) {
+        if ($builder->isRangeQuery()) {
             $this->lowerBound = $builder->getLowerBound();
             $this->upperBound = $builder->getUpperBound();
             $this->isRangeQuery = true;
-        }
-        else {
+        } else {
             $this->match = $builder->getMatchValue();
             $this->isMatchQuery = true;
         }
 
         $continuation = $builder->getContinuation();
-        if(!empty($continuation)) {
+        if (!empty($continuation)) {
             $this->parameters['continuation'] = $continuation;
         }
 
         $maxResults = $builder->getMaxResults();
-        if(!empty($maxResults)) {
+        if (!empty($maxResults)) {
             $this->parameters['max_results'] = $maxResults;
         }
 
         $returnTerms = $builder->getReturnTerms();
-        if(!empty($returnTerms)) {
-            $this->parameters['return_terms'] = ($returnTerms) ? 'true' : 'false';
+        if (!empty($returnTerms)) {
+            $this->parameters['return_terms'] = $returnTerms ? 'true' : 'false';
         }
 
         $paginationSort = $builder->getPaginationSort();
-        if(!empty($paginationSort)) {
-            $this->parameters['pagination_sort'] = ($paginationSort) ? 'true' : 'false';
+        if (!empty($paginationSort)) {
+            $this->parameters['pagination_sort'] = $paginationSort ? 'true' : 'false';
         }
 
         $termRegex = $builder->getTermFilter();
-        if(!empty($termRegex)) {
+        if (!empty($termRegex)) {
             $this->parameters['term_regex'] = $termRegex;
         }
 
         $timeout = $builder->getTimeout();
-        if(!empty($timeout)) {
+        if (!empty($timeout)) {
             $this->parameters['timeout'] = $timeout;
         }
     }
 
-    public function getIndexName() {
+    public function getIndexName()
+    {
         return $this->indexName;
     }
 
-    public function getMatchValue() {
+    public function getMatchValue()
+    {
         return $this->match;
     }
 
-    public function getLowerBound() {
+    public function getLowerBound()
+    {
         return $this->lowerBound;
     }
 
-    public function getUpperBound() {
+    public function getUpperBound()
+    {
         return $this->upperBound;
     }
 

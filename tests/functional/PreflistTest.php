@@ -1,8 +1,8 @@
 <?php
 
-namespace Basho\Tests;
+namespace OpenAdapter\Riak\Tests;
 
-use Basho\Riak\Command;
+use OpenAdapter\Riak\Command;
 
 /**
  * Class PreflistTest
@@ -34,12 +34,12 @@ class PreflistTest extends TestCase
                 $this->markTestSkipped('preflists are not supported');
             } else {
                 $this->assertEquals(200, $response->getCode());
-                $this->assertNotEmpty($response->getObject()->getData()->preflist);
-                $this->assertObjectHasAttribute("partition", $response->getObject()->getData()->preflist[0]);
-                $this->assertObjectHasAttribute("node", $response->getObject()->getData()->preflist[0]);
-                $this->assertObjectHasAttribute("primary", $response->getObject()->getData()->preflist[0]);
+                $this->assertNotEmpty($response->getDataObject()->getData()->preflist);
+                $this->assertObjectHasAttribute("partition", $response->getDataObject()->getData()->preflist[0]);
+                $this->assertObjectHasAttribute("node", $response->getDataObject()->getData()->preflist[0]);
+                $this->assertObjectHasAttribute("primary", $response->getDataObject()->getData()->preflist[0]);
             }
-        } catch (\Basho\Riak\Exception $e) {
+        } catch (\OpenAdapter\Riak\Exception $e) {
             $this->markTestSkipped('preflists are not supported');
         }
     }

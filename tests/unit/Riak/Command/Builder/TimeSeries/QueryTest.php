@@ -1,11 +1,9 @@
 <?php
 
-namespace Basho\Tests\Riak\Command\Builder;
+namespace OpenAdapter\Riak\Tests\Riak\Command\Builder;
 
-use Basho\Riak\Command;
-use Basho\Riak\TimeSeries\Cell;
-use Basho\Tests\TestCase;
-use Basho\Tests\TimeSeriesTrait;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\Tests\TestCase;
 
 /**
  * Tests the configuration of Riak commands via the Command Builder class
@@ -28,7 +26,7 @@ class QueryTest extends TestCase
         // build a command
         $command = $builder->build();
 
-        $this->assertInstanceOf('Basho\Riak\Command\TimeSeries\Query\Fetch', $command);
+        $this->assertInstanceOf('OpenAdapter\Riak\Command\TimeSeries\Query\Fetch', $command);
         $this->assertEquals(static::$query, $command->getData()["query"]);
     }
 }

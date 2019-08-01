@@ -1,10 +1,10 @@
 <?php
 
-namespace Basho\Tests\Riak\Command\Builder;
+namespace OpenAdapter\Riak\Tests\Riak\Command\Builder;
 
-use Basho\Riak\Api\Http;
-use Basho\Riak\Command;
-use Basho\Tests\TestCase;
+use OpenAdapter\Riak\Api\Http;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\Tests\TestCase;
 
 /**
  * Tests the configuration of Riak commands via the Command Builder class
@@ -24,10 +24,10 @@ class StoreObjectTest extends TestCase
         $builder->buildLocation('some_key', 'some_bucket');
         $command = $builder->build();
 
-        $this->assertInstanceOf('Basho\Riak\Command\Object\Store', $command);
-        $this->assertInstanceOf('Basho\Riak\Object', $command->getObject());
-        $this->assertInstanceOf('Basho\Riak\Bucket', $command->getBucket());
-        $this->assertInstanceOf('Basho\Riak\Location', $command->getLocation());
+        $this->assertInstanceOf('OpenAdapter\Riak\Command\DataObject\Store', $command);
+        $this->assertInstanceOf('OpenAdapter\Riak\DataObject', $command->getDataObject());
+        $this->assertInstanceOf('OpenAdapter\Riak\Bucket', $command->getBucket());
+        $this->assertInstanceOf('OpenAdapter\Riak\Location', $command->getLocation());
         $this->assertEquals('some_bucket', $command->getBucket()->getName());
         $this->assertEquals('default', $command->getBucket()->getType());
         $this->assertEquals('some_key', $command->getLocation()->getKey());
@@ -44,14 +44,14 @@ class StoreObjectTest extends TestCase
         $builder->buildBucket('some_bucket');
         $command = $builder->build();
 
-        $this->assertInstanceOf('Basho\Riak\Command\Object\Store', $command);
+        $this->assertInstanceOf('OpenAdapter\Riak\Command\DataObject\Store', $command);
         $this->assertEquals('some_bucket', $command->getBucket()->getName());
     }
 
     /**
      * Tests validate properly verifies the Object is not there
      *
-     * @expectedException \Basho\Riak\Command\Builder\Exception
+     * @expectedException \OpenAdapter\Riak\Command\Builder\Exception
      */
     public function testValidateObject()
     {
@@ -63,7 +63,7 @@ class StoreObjectTest extends TestCase
     /**
      * Tests validate properly verifies the Bucket is not there
      *
-     * @expectedException \Basho\Riak\Command\Builder\Exception
+     * @expectedException \OpenAdapter\Riak\Command\Builder\Exception
      */
     public function testValidateBucket()
     {
@@ -84,15 +84,15 @@ class StoreObjectTest extends TestCase
         $builder->buildBucket('some_bucket');
         $command = $builder->build();
 
-        $this->assertInstanceOf('Basho\Riak\Command\Object\Store', $command);
+        $this->assertInstanceOf('OpenAdapter\Riak\Command\DataObject\Store', $command);
 
-        $this->assertArrayHasKey('My-Header', $command->getObject()->getMetaData());
-        $this->assertEquals($command->getObject()->getMetaData()['My-Header'], 'cats');
+        $this->assertArrayHasKey('My-Header', $command->getDataObject()->getMetaData());
+        $this->assertEquals($command->getDataObject()->getMetaData()['My-Header'], 'cats');
 
-        $this->assertArrayHasKey('foo_bin', $command->getObject()->getIndexes());
-        $this->assertCount(2, $command->getObject()->getIndex('foo_bin'));
+        $this->assertArrayHasKey('foo_bin', $command->getDataObject()->getIndexes());
+        $this->assertCount(2, $command->getDataObject()->getIndex('foo_bin'));
 
-        $this->assertArrayHasKey('foo_int', $command->getObject()->getIndexes());
-        $this->assertCount(2, $command->getObject()->getIndex('foo_int'));
+        $this->assertArrayHasKey('foo_int', $command->getDataObject()->getIndexes());
+        $this->assertCount(2, $command->getDataObject()->getIndex('foo_int'));
     }
 }

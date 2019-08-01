@@ -1,21 +1,21 @@
 <?php
 
-namespace Basho\Riak\Api\Http\Translator;
+namespace OpenAdapter\Riak\Api\Http\Translator;
 
-use Basho\Riak\Api\Http;
-use Basho\Riak\Command;
-use Basho\Riak\Object as RObject;
+use OpenAdapter\Riak\Api\Http;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\DataObject as RObject;
 
 class ObjectResponse
 {
     /**
-     * @var Command\Object
+     * @var Command\DataObject
      */
     protected $command;
 
     protected $code;
 
-    public function __construct(Command\Object $command, $code)
+    public function __construct(Command\DataObject $command, $code)
     {
         $this->command = $command;
         $this->code = $code;
@@ -24,7 +24,8 @@ class ObjectResponse
     /**
      * @param $response
      * @param array $headers
-     * @return \Basho\Riak\Object[]
+     *
+     * @return \OpenAdapter\Riak\DataObject[]
      */
     public function parseResponse($response, $headers = [])
     {
@@ -34,7 +35,7 @@ class ObjectResponse
             $position = strpos($headers[Http::CONTENT_TYPE_KEY], 'boundary=');
             $boundary = '--' . substr($headers[Http::CONTENT_TYPE_KEY], $position + 9);
             $objects = $this->parseSiblings($response, $boundary, $headers[Http::VCLOCK_KEY]);
-        } elseif (in_array($this->code, ['200','201','204'])) {
+        } elseif (\in_array((int)$this->code, [200, 201, 204], true)) {
             $objects[] = $this->parseObject($response, $headers);
         }
 
@@ -54,14 +55,14 @@ class ObjectResponse
             foreach ($lines as $key => $line) {
                 if (strpos($line, ':')) {
                     $empties = 0;
-                    list ($key, $value) = explode(':', $line);
+                    [$key, $value] = explode(':', $line);
 
                     $value = trim($value);
 
                     if (!empty($value)) {
                         if (!isset($headers[$key])) {
                             $headers[$key] = $value;
-                        } elseif (is_array($headers[$key])) {
+                        } elseif (\is_array($headers[$key])) {
                             $headers[$key] = array_merge($headers[$key], [$value]);
                         } else {
                             $headers[$key] = array_merge([$headers[$key]], [$value]);
@@ -78,7 +79,7 @@ class ObjectResponse
                 }
             }
 
-            $data = implode(PHP_EOL, array_slice($lines, $slice_point));
+            $data = implode(PHP_EOL, \array_slice($lines, $slice_point));
             $siblings[] = $this->parseObject($data, $headers);
         }
 

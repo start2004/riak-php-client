@@ -1,6 +1,6 @@
 <?php
 
-namespace Basho\Riak;
+namespace OpenAdapter\Riak;
 
 /**
  * Interface ApiInterface
@@ -15,7 +15,7 @@ interface ApiInterface
      * Prepares the API bridge for the command to be sent
      *
      * @param Command $command
-     * @param Node    $node
+     * @param Node $node
      */
     public function prepare(Command $command, Node $node);
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace Basho\Riak\Command\DataType\Map;
+namespace OpenAdapter\Riak\Command\DataType\Map;
 
-use Basho\Riak\Command;
-use Basho\Riak\CommandInterface;
-use Basho\Riak\Location;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\CommandInterface;
+use OpenAdapter\Riak\Location;
 
 /**
  * Fetches a map data type from Riak
@@ -16,12 +16,12 @@ class Fetch extends Command implements CommandInterface
     /**
      * @var Command\DataType\Map\Response|null
      */
-    protected $response = NULL;
+    protected $response = null;
 
     /**
      * @var Location|null
      */
-    protected $location = NULL;
+    protected $location = null;
 
     public function __construct(Command\Builder\FetchMap $builder)
     {

@@ -1,15 +1,15 @@
 <?php
 
-namespace Basho\Riak\Command\Bucket;
+namespace OpenAdapter\Riak\Command\Bucket;
 
-use Basho\Riak\Bucket;
+use OpenAdapter\Riak\Bucket;
 
 /**
  * Container for a response related to an operation on an object
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-class Response extends \Basho\Riak\Command\Response
+class Response extends \OpenAdapter\Riak\Command\Response
 {
     /**
      * Bucket from the command re-instantiated with its fetched properties

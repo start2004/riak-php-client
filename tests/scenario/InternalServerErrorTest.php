@@ -1,9 +1,8 @@
 <?php
 
-namespace Basho\Tests;
+namespace OpenAdapter\Riak\Tests;
 
-use Basho\Riak;
-use Basho\Riak\Command;
+use OpenAdapter\Riak\Command;
 
 /**
  * Scenario tests for when an internal server error occurs
@@ -14,7 +13,7 @@ class InternalServerErrorTest extends TestCase
 {
     /**
      * Currently not executable on any Riak instance configured for multi-backend
-     * @expectedException \Basho\Riak\Exception
+     * @expectedException \OpenAdapter\Riak\Exception
      */
     public function testQueryInvalidIndex()
     {

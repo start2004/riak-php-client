@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Riak\Command;
+namespace OpenAdapter\Riak\Command;
 
-use Basho\Riak\Command;
-use Basho\Riak\CommandInterface;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\CommandInterface;
 
 /**
  * Riak real time stats

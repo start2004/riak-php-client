@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Tests\Riak;
+namespace OpenAdapter\Riak\Tests\Riak;
 
-use Basho\Riak\Api;
-use Basho\Tests\TestCase;
+use OpenAdapter\Riak\Api;
+use OpenAdapter\Riak\Tests\TestCase;
 
 /**
  * Test set for the HTTP Header <-> Secondary Index translator

@@ -1,9 +1,8 @@
 <?php
 
-namespace Basho\Tests;
+namespace OpenAdapter\Riak\Tests;
 
-use Basho\Riak;
-use Basho\Riak\Command;
+use OpenAdapter\Riak\Command;
 
 /**
  * Functional tests related to Counter CRDTs
@@ -18,12 +17,12 @@ class SearchOperationsTest extends TestCase
     protected static $default_schema = '';
 
     protected static $search_content = [
-        'tennis'       => ['name_s' => 'T. Ennis', 'forward_i' => 1, 'position_s' => 'LW'],
-        'zgirgensons'  => ['name_s' => 'Z. Girgensons', 'forward_i' => 1, 'position_s' => 'C'],
+        'tennis' => ['name_s' => 'T. Ennis', 'forward_i' => 1, 'position_s' => 'LW'],
+        'zgirgensons' => ['name_s' => 'Z. Girgensons', 'forward_i' => 1, 'position_s' => 'C'],
         'rristolainen' => ['name_s' => 'R. Ristolainen', 'forward_i' => 0, 'position_s' => 'RD'],
-        'zbogosian'    => ['name_s' => 'Z. Bogosian', 'forward_i' => 0, 'position_s' => 'LD'],
-        'alindback'    => ['name_s' => 'A. Lindback', 'forward_i' => 0, 'position_s' => 'G'],
-        'bgionta'      => ['name_s' => 'B. Gionta', 'forward_i' => 1, 'position_s' => 'RW', 'captain_i' => 1],
+        'zbogosian' => ['name_s' => 'Z. Bogosian', 'forward_i' => 0, 'position_s' => 'LD'],
+        'alindback' => ['name_s' => 'A. Lindback', 'forward_i' => 0, 'position_s' => 'G'],
+        'bgionta' => ['name_s' => 'B. Gionta', 'forward_i' => 1, 'position_s' => 'RW', 'captain_i' => 1],
     ];
 
     public static function setUpBeforeClass()

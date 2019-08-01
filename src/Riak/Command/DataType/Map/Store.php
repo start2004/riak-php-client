@@ -1,10 +1,10 @@
 <?php
 
-namespace Basho\Riak\Command\DataType\Map;
+namespace OpenAdapter\Riak\Command\DataType\Map;
 
-use Basho\Riak\Command;
-use Basho\Riak\CommandInterface;
-use Basho\Riak\Location;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\CommandInterface;
+use OpenAdapter\Riak\Location;
 
 /**
  * Stores a write to a map
@@ -18,12 +18,12 @@ class Store extends Command implements CommandInterface
     /**
      * @var Command\DataType\Map\Response|null
      */
-    protected $response = NULL;
+    protected $response = null;
 
     /**
      * @var Location|null
      */
-    protected $location = NULL;
+    protected $location = null;
 
     /**
      * Elements to remove from the map
@@ -80,11 +80,11 @@ class Store extends Command implements CommandInterface
     {
         $data = [];
 
-        if (count($this->remove)) {
+        if (\count($this->remove)) {
             $data['remove'] = $this->remove;
         }
 
-        if (count($this->registers) || count($this->flags) || count($this->counters) || count($this->sets) || count($this->maps)) {
+        if (\count($this->registers) || \count($this->flags) || \count($this->counters) || \count($this->sets) || \count($this->maps)) {
             $data['update'] = [];
         }
 
@@ -93,7 +93,7 @@ class Store extends Command implements CommandInterface
         }
 
         foreach ($this->flags as $key => $item) {
-            $data['update'][$key] = ($item === TRUE ? 'enable' : 'disable');
+            $data['update'][$key] = ($item === true ? 'enable' : 'disable');
         }
 
         foreach ($this->counters as $key => $item) {
@@ -105,7 +105,7 @@ class Store extends Command implements CommandInterface
             $data['update'][$key]['add_all'] = $item->getAddAll();
 
             $remove = $item->getRemoveAll();
-            if (count($remove)) {
+            if (\count($remove)) {
                 $data['update'][$key]['remove_all'] = $remove;
             }
         }

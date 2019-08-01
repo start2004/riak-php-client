@@ -15,14 +15,14 @@ Unless required by applicable law or agreed to in writing, software distributed 
 specific language governing permissions and limitations under the License.
 */
 
-namespace Basho\Riak\DataType;
+namespace OpenAdapter\Riak\DataType;
 
 /**
  * Exception
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-class Exception extends \Basho\Riak\Exception
+class Exception extends \OpenAdapter\Riak\Exception
 {
 
 }

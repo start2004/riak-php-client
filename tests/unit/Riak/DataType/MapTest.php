@@ -1,15 +1,15 @@
 <?php
 
-namespace Basho\Tests\Riak;
+namespace OpenAdapter\Riak\Tests\Riak;
 
-use Basho\Riak\DataType\Map;
+use OpenAdapter\Riak\DataType\Map;
 
 /**
  * Test set for counter crdt
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-class MapTest extends \PHPUnit_Framework_TestCase
+class MapTest extends \PHPUnit\Framework\TestCase
 {
     public function testType()
     {

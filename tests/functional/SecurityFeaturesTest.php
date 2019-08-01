@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Tests;
+namespace OpenAdapter\Riak\Tests;
 
-use Basho\Riak;
-use Basho\Riak\Command;
+use OpenAdapter\Riak;
+use OpenAdapter\Riak\Command;
 
 /**
  * Functional tests verifying TSL features
@@ -61,6 +61,6 @@ class SecurityFeaturesTest extends TestCase
         // expects 201 - Created
         $this->assertEquals('201', $response->getCode(), $response->getMessage());
         $this->assertNotEmpty($response->getLocation());
-        $this->assertInstanceOf('\Basho\Riak\Location', $response->getLocation());
+        $this->assertInstanceOf('\OpenAdapter\Riak\Location', $response->getLocation());
     }
 }
