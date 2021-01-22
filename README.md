@@ -105,6 +105,7 @@ if($response->getCode() == "200"){
 } else {}
 
 
+
 // delete object
 $command = (new Command\Builder\DeleteObject($riak))
     ->atLocation($location);
