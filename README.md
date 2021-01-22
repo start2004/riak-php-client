@@ -50,6 +50,8 @@ A fully traversable version of the API documentation for this library can be fou
 
 Below is a short example of using the client. More substantial sample code is available [in examples](/examples).
 
+#### 8087
+
 ```php
 // lib classes are included via the Composer autoloader files
 use Start2004\Riak;
@@ -57,24 +59,94 @@ use Start2004\Riak\Node;
 use Start2004\Riak\Command;
 
 // define the connection info to our Riak nodes
-$nodes = (new Node\Builder)
-    ->onPort(10018)
-    ->buildCluster(['riak1.company.com', 'riak2.company.com', 'riak3.company.com',]);
+$node = (new Node\Builder)
+    ->atHost('riak domain')
+    ->onPort(8087)
+    ->build();
 
 // instantiate the Riak client
-$riak = new Riak($nodes);
+$riak = new Riak([$node], [], new Riak\Api\Pb());
+$bucket = new Riak\Bucket("bucket name");
+
+// location
+$location = new Riak\Location("key name", $bucket);
+
+// dataObject
+$dataObject = new Riak\DataObject("store data");
+$dataObject->setContentType("text/html");
+$dataObject->setContentEncoding("identity");
 
 // build a command to be executed against Riak
 $command = (new Command\Builder\StoreObject($riak))
-    ->buildObject('some_data')
-    ->buildBucket('users')
-    ->build();
+    ->withObject($dataObject)
+    ->atLocation($location);
+
+// store
+$store = new Command\DataObject\Store($command);
     
 // Receive a response object
+$response = $store->execute();
+
+
+
+// fetch object
+$command = (new Command\Builder\FetchObject($riak))
+    ->atLocation($location)
+    ->build();
 $response = $command->execute();
 
-// Retrieve the Location of our newly stored object from the Response object
-$object_location = $response->getLocation();
+// data
+if($response->getCode() == "200"){
+    $dataObject = $response->getDataObject();
+    $contentType = $dataObject->getContentType();
+    $data = $dataObject->getData();
+} else {}
+
+
+// delete object
+$command = (new Command\Builder\DeleteObject($riak))
+    ->atLocation($location);
+$delete = new Command\DataObject\Delete($command);
+$response = $delete->execute();
+
+// delete result
+return !($response->getCode() === 404);
+```
+
+#### 8098
+
+```php
+// lib classes are included via the Composer autoloader files
+use Start2004\Riak;
+use Start2004\Riak\Node;
+use Start2004\Riak\Command;
+
+// define the connection info to our Riak nodes
+$node = (new Node\Builder)
+    ->atHost('riak domain')
+    ->onPort(8098)
+    ->build();
+
+// instantiate the Riak client
+$riak = new Riak([$node]);
+$bucket = new Riak\Bucket("bucket name");
+
+// location
+$location = new Riak\Location("key name", $bucket);
+
+// dataObject
+$dataObject = new Riak\DataObject("store data");
+$dataObject->setContentType("text/html");
+$dataObject->setContentEncoding("identity");
+
+// build a command to be executed against Riak
+$command = (new Command\Builder\StoreObject($riak))
+    ->withObject($dataObject)
+    ->atLocation($location)
+    ->build();
+
+// Receive a response object
+$response = $command->execute();
 ```
 
 ## Contributing
@@ -95,6 +167,10 @@ Thank you for being part of the community! We love you for it.
 * Add support for Riak TS Q2 2016
 
 ## License and Authors
+Merge:
+* basho/riak-pb (https://packagist.org/packages/basho/riak-pb)
+* open-adapter/riak-php-client (https://packagist.org/packages/open-adapter/riak-php-client)
+
 Active:
 * Author: Przemyslaw Pastusiak (https://github.com/pastusiak)
 
