@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenAdapter\Riak\Api\Http\Translator;
+namespace Start2004\Riak\Api\Http\Translator;
 
 /**
  * @author Alex Moore <amoore at basho d0t com>

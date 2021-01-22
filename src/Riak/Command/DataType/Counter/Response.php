@@ -1,19 +1,19 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\DataType\Counter;
+namespace Start2004\Riak\Command\DataType\Counter;
 
-use OpenAdapter\Riak\DataType\Counter;
-use OpenAdapter\Riak\Location;
+use Start2004\Riak\DataType\Counter;
+use Start2004\Riak\Location;
 
 /**
  * Container for a response related to an operation on an object
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-class Response extends \OpenAdapter\Riak\Command\Response
+class Response extends \Start2004\Riak\Command\Response
 {
     /**
-     * @var \OpenAdapter\Riak\DataType\Counter|null
+     * @var \Start2004\Riak\DataType\Counter|null
      */
     protected $counter = null;
 
@@ -40,7 +40,7 @@ class Response extends \OpenAdapter\Riak\Command\Response
      * Retrieves the Location value from the response headers
      *
      * @return Location
-     * @throws \OpenAdapter\Riak\Command\Exception
+     * @throws \Start2004\Riak\Command\Exception
      */
     public function getLocation()
     {
@@ -59,7 +59,7 @@ class Response extends \OpenAdapter\Riak\Command\Response
      * Retrieves the date of the counter's retrieval
      *
      * @return string
-     * @throws \OpenAdapter\Riak\Command\Exception
+     * @throws \Start2004\Riak\Command\Exception
      */
     public function getDate()
     {

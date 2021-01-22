@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenAdapter\Riak;
+namespace Start2004\Riak;
 
 /**
  * Immutable data structure storing the location of an Object or DataType

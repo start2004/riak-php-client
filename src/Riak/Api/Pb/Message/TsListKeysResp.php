@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_ts.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * TsListKeysResp message
  */
@@ -20,7 +20,7 @@ class TsListKeysResp extends \ProtobufMessage
         self::KEYS => array(
             'name' => 'keys',
             'repeated' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\TsRow'
+            'type' => '\Start2004\Riak\Api\Pb\Message\TsRow'
         ),
         self::DONE => array(
             'name' => 'done',
@@ -63,11 +63,11 @@ class TsListKeysResp extends \ProtobufMessage
     /**
      * Appends value to 'keys' list
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\TsRow $value Value to append
+     * @param \Start2004\Riak\Api\Pb\Message\TsRow $value Value to append
      *
      * @return null
      */
-    public function appendKeys(\OpenAdapter\Riak\Api\Pb\Message\TsRow $value)
+    public function appendKeys(\Start2004\Riak\Api\Pb\Message\TsRow $value)
     {
         return $this->append(self::KEYS, $value);
     }
@@ -85,7 +85,7 @@ class TsListKeysResp extends \ProtobufMessage
     /**
      * Returns 'keys' list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\TsRow[]
+     * @return \Start2004\Riak\Api\Pb\Message\TsRow[]
      */
     public function getKeys()
     {
@@ -107,7 +107,7 @@ class TsListKeysResp extends \ProtobufMessage
      *
      * @param int $offset Position in list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\TsRow
+     * @return \Start2004\Riak\Api\Pb\Message\TsRow
      */
     public function getKeysAt($offset)
     {

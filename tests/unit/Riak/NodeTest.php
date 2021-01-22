@@ -1,8 +1,8 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests\Riak;
+namespace Start2004\Riak\Tests\Riak;
 
-use OpenAdapter\Riak\Tests\TestCase;
+use Start2004\Riak\Tests\TestCase;
 
 /**
  * Main class for testing Riak clustering

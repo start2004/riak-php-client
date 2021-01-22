@@ -38,12 +38,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "OpenAdapter\\": "src/"
+      "Start2004\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "OpenAdapter\\Riak\\Tests\\": "tests/"
+      "Start2004\\Riak\\Tests\\": "tests/"
     }
   },
   "support": {

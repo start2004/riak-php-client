@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests;
+namespace Start2004\Riak\Tests;
 
-use OpenAdapter\Riak;
-use OpenAdapter\Riak\Command;
+use Start2004\Riak;
+use Start2004\Riak\Command;
 
 /**
  * Scenario tests for when storing / retrieving binary data
@@ -42,7 +42,7 @@ class EncodedDataTest extends TestCase
         $response = $fetchCommand->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('OpenAdapter\Riak\DataObject', $response->getDataObject());
+        $this->assertInstanceOf('Start2004\Riak\DataObject', $response->getDataObject());
         $this->assertEquals(static::TEST_CONTENT_TYPE, $response->getDataObject()->getContentType());
         $this->assertEquals(base64_encode($image), $storeCommand->getEncodedData());
         $this->assertEquals($storeCommand->getEncodedData(), $response->getDataObject()->getData());
@@ -75,7 +75,7 @@ class EncodedDataTest extends TestCase
         $response = $fetchCommand->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('OpenAdapter\Riak\DataObject', $response->getDataObject());
+        $this->assertInstanceOf('Start2004\Riak\DataObject', $response->getDataObject());
         $this->assertEquals($object->getData(), $response->getDataObject()->getData());
     }
 
@@ -106,7 +106,7 @@ class EncodedDataTest extends TestCase
         $response = $fetchCommand->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('OpenAdapter\Riak\DataObject', $response->getDataObject());
+        $this->assertInstanceOf('Start2004\Riak\DataObject', $response->getDataObject());
         $this->assertEquals(static::TEST_CONTENT_TYPE, $response->getDataObject()->getContentType());
 
         // Since Riak doesn't return ContentEncoding used to store the object, we have to access

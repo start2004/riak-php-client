@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_dt.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * DtFetchResp message
  */
@@ -31,7 +31,7 @@ class DtFetchResp extends \ProtobufMessage
         self::VALUE => array(
             'name' => 'value',
             'required' => false,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\DtValue'
+            'type' => '\Start2004\Riak\Api\Pb\Message\DtValue'
         ),
     );
 
@@ -114,11 +114,11 @@ class DtFetchResp extends \ProtobufMessage
     /**
      * Sets value of 'value' property
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\DtValue $value Property value
+     * @param \Start2004\Riak\Api\Pb\Message\DtValue $value Property value
      *
      * @return null
      */
-    public function setValue(\OpenAdapter\Riak\Api\Pb\Message\DtValue $value)
+    public function setValue(\Start2004\Riak\Api\Pb\Message\DtValue $value)
     {
         return $this->set(self::VALUE, $value);
     }
@@ -126,7 +126,7 @@ class DtFetchResp extends \ProtobufMessage
     /**
      * Returns value of 'value' property
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\DtValue
+     * @return \Start2004\Riak\Api\Pb\Message\DtValue
      */
     public function getValue()
     {

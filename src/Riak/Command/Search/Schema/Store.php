@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\Search\Schema;
+namespace Start2004\Riak\Command\Search\Schema;
 
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\CommandInterface;
+use Start2004\Riak\Command;
+use Start2004\Riak\CommandInterface;
 
 /**
  * Class Store

@@ -1,8 +1,8 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests\Riak;
+namespace Start2004\Riak\Tests\Riak;
 
-use OpenAdapter\Riak\DataType\Map;
+use Start2004\Riak\DataType\Map;
 
 /**
  * Test set for counter crdt

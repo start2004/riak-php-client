@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests\Riak;
+namespace Start2004\Riak\Tests\Riak;
 
-use OpenAdapter\Riak\Api;
-use OpenAdapter\Riak\Tests\TestCase;
+use Start2004\Riak\Api;
+use Start2004\Riak\Tests\TestCase;
 
 /**
  * Test set for the HTTP Header <-> Secondary Index translator

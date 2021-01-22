@@ -1,10 +1,10 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests\Riak\Node;
+namespace Start2004\Riak\Tests\Riak\Node;
 
-use OpenAdapter\Riak;
-use OpenAdapter\Riak\Node\Builder;
-use OpenAdapter\Riak\Tests\TestCase;
+use Start2004\Riak;
+use Start2004\Riak\Node\Builder;
+use Start2004\Riak\Tests\TestCase;
 
 /**
  * Tests the configuration of Riak nodes via the Node Builder class
@@ -22,7 +22,7 @@ class BuilderTest extends TestCase
     {
         $builder = new Builder();
 
-        $this->assertInstanceOf('OpenAdapter\Riak\Node\Builder', $builder);
+        $this->assertInstanceOf('Start2004\Riak\Node\Builder', $builder);
     }
 
     /**
@@ -93,6 +93,6 @@ class BuilderTest extends TestCase
         $this->assertEquals('unauthorizeduser', $node->getUserName());
         $this->assertEquals('hispassword', $node->getPassword());
         $this->assertEquals(getcwd() . '/tools/test-ca/certs/cacert.pem', $node->getCaFile());
-        $this->assertInstanceOf('OpenAdapter\Riak', $riak);
+        $this->assertInstanceOf('Start2004\Riak', $riak);
     }
 }

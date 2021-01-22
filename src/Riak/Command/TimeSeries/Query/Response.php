@@ -1,8 +1,8 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\TimeSeries\Query;
+namespace Start2004\Riak\Command\TimeSeries\Query;
 
-use OpenAdapter\Riak\Command;
+use Start2004\Riak\Command;
 
 /**
  * Response object for TS Fetch, Store, Delete
@@ -21,7 +21,7 @@ class Response extends Command\Response
     }
 
     /**
-     * @return \OpenAdapter\Riak\TimeSeries\Cell[]|null
+     * @return \Start2004\Riak\TimeSeries\Cell[]|null
      */
     public function getResult()
     {

@@ -1,8 +1,8 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests;
+namespace Start2004\Riak\Tests;
 
-use OpenAdapter\Riak;
+use Start2004\Riak;
 
 /**
  * Main class for testing Riak clustering
@@ -30,13 +30,13 @@ class RiakTest extends TestCase
         $nodes = static::getCluster();
         $riak = new Riak($nodes);
         $this->assertNotFalse($riak->getActiveNodeIndex());
-        $this->assertInstanceOf('OpenAdapter\Riak\Node', $riak->getActiveNode());
+        $this->assertInstanceOf('Start2004\Riak\Node', $riak->getActiveNode());
     }
 
     public function testApi()
     {
         $nodes = static::getCluster();
         $riak = new Riak($nodes);
-        $this->assertInstanceOf('OpenAdapter\Riak\Api', $riak->getApi());
+        $this->assertInstanceOf('Start2004\Riak\Api', $riak->getApi());
     }
 }

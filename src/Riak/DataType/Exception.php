@@ -15,14 +15,14 @@ Unless required by applicable law or agreed to in writing, software distributed 
 specific language governing permissions and limitations under the License.
 */
 
-namespace OpenAdapter\Riak\DataType;
+namespace Start2004\Riak\DataType;
 
 /**
  * Exception
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-class Exception extends \OpenAdapter\Riak\Exception
+class Exception extends \Start2004\Riak\Exception
 {
 
 }

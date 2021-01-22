@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_search.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * RpbSearchQueryReq message
  */

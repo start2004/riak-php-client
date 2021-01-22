@@ -1,8 +1,8 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests;
+namespace Start2004\Riak\Tests;
 
-use OpenAdapter\Riak\Command;
+use Start2004\Riak\Command;
 
 /**
  * Class CounterTest
@@ -79,7 +79,7 @@ class CounterOperationsTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Counter', $response->getCounter());
+        $this->assertInstanceOf('Start2004\Riak\DataType\Counter', $response->getCounter());
         $this->assertNotEmpty($response->getCounter()->getData());
         $this->assertTrue(is_integer($response->getCounter()->getData()));
         $this->assertEquals(1, $response->getCounter()->getData());
@@ -113,7 +113,7 @@ class CounterOperationsTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Counter', $response->getCounter());
+        $this->assertInstanceOf('Start2004\Riak\DataType\Counter', $response->getCounter());
         $this->assertNotEmpty($response->getCounter()->getData());
         $this->assertTrue(is_integer($response->getCounter()->getData()));
         $this->assertEquals(2, $response->getCounter()->getData());
@@ -147,7 +147,7 @@ class CounterOperationsTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Counter', $response->getCounter());
+        $this->assertInstanceOf('Start2004\Riak\DataType\Counter', $response->getCounter());
         $this->assertNotEmpty($response->getCounter()->getData());
         $this->assertTrue(is_integer($response->getCounter()->getData()));
         $this->assertEquals(1, $response->getCounter()->getData());

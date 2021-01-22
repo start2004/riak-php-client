@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_ts.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * TsCoverageReq message
  */
@@ -22,7 +22,7 @@ class TsCoverageReq extends \ProtobufMessage
         self::QUERY => array(
             'name' => 'query',
             'required' => false,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\TsInterpolation'
+            'type' => '\Start2004\Riak\Api\Pb\Message\TsInterpolation'
         ),
         self::TABLE => array(
             'name' => 'table',
@@ -77,11 +77,11 @@ class TsCoverageReq extends \ProtobufMessage
     /**
      * Sets value of 'query' property
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\TsInterpolation $value Property value
+     * @param \Start2004\Riak\Api\Pb\Message\TsInterpolation $value Property value
      *
      * @return null
      */
-    public function setQuery(\OpenAdapter\Riak\Api\Pb\Message\TsInterpolation $value)
+    public function setQuery(\Start2004\Riak\Api\Pb\Message\TsInterpolation $value)
     {
         return $this->set(self::QUERY, $value);
     }
@@ -89,7 +89,7 @@ class TsCoverageReq extends \ProtobufMessage
     /**
      * Returns value of 'query' property
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\TsInterpolation
+     * @return \Start2004\Riak\Api\Pb\Message\TsInterpolation
      */
     public function getQuery()
     {

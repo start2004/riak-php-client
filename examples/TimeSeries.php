@@ -2,9 +2,9 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use OpenAdapter\Riak;
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\Node;
+use Start2004\Riak;
+use Start2004\Riak\Command;
+use Start2004\Riak\Node;
 
 $node = (new Node\Builder)
     ->atHost('riak-test')

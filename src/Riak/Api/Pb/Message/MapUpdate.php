@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_dt.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * MapUpdate message
  */
@@ -24,17 +24,17 @@ class MapUpdate extends \ProtobufMessage
         self::FIELD => array(
             'name' => 'field',
             'required' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\MapField'
+            'type' => '\Start2004\Riak\Api\Pb\Message\MapField'
         ),
         self::COUNTER_OP => array(
             'name' => 'counter_op',
             'required' => false,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\CounterOp'
+            'type' => '\Start2004\Riak\Api\Pb\Message\CounterOp'
         ),
         self::SET_OP => array(
             'name' => 'set_op',
             'required' => false,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\SetOp'
+            'type' => '\Start2004\Riak\Api\Pb\Message\SetOp'
         ),
         self::REGISTER_OP => array(
             'name' => 'register_op',
@@ -49,7 +49,7 @@ class MapUpdate extends \ProtobufMessage
         self::MAP_OP => array(
             'name' => 'map_op',
             'required' => false,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\MapOp'
+            'type' => '\Start2004\Riak\Api\Pb\Message\MapOp'
         ),
     );
 
@@ -91,11 +91,11 @@ class MapUpdate extends \ProtobufMessage
     /**
      * Sets value of 'field' property
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\MapField $value Property value
+     * @param \Start2004\Riak\Api\Pb\Message\MapField $value Property value
      *
      * @return null
      */
-    public function setField(\OpenAdapter\Riak\Api\Pb\Message\MapField $value)
+    public function setField(\Start2004\Riak\Api\Pb\Message\MapField $value)
     {
         return $this->set(self::FIELD, $value);
     }
@@ -103,7 +103,7 @@ class MapUpdate extends \ProtobufMessage
     /**
      * Returns value of 'field' property
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\MapField
+     * @return \Start2004\Riak\Api\Pb\Message\MapField
      */
     public function getField()
     {
@@ -113,11 +113,11 @@ class MapUpdate extends \ProtobufMessage
     /**
      * Sets value of 'counter_op' property
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\CounterOp $value Property value
+     * @param \Start2004\Riak\Api\Pb\Message\CounterOp $value Property value
      *
      * @return null
      */
-    public function setCounterOp(\OpenAdapter\Riak\Api\Pb\Message\CounterOp $value)
+    public function setCounterOp(\Start2004\Riak\Api\Pb\Message\CounterOp $value)
     {
         return $this->set(self::COUNTER_OP, $value);
     }
@@ -125,7 +125,7 @@ class MapUpdate extends \ProtobufMessage
     /**
      * Returns value of 'counter_op' property
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\CounterOp
+     * @return \Start2004\Riak\Api\Pb\Message\CounterOp
      */
     public function getCounterOp()
     {
@@ -135,11 +135,11 @@ class MapUpdate extends \ProtobufMessage
     /**
      * Sets value of 'set_op' property
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\SetOp $value Property value
+     * @param \Start2004\Riak\Api\Pb\Message\SetOp $value Property value
      *
      * @return null
      */
-    public function setSetOp(\OpenAdapter\Riak\Api\Pb\Message\SetOp $value)
+    public function setSetOp(\Start2004\Riak\Api\Pb\Message\SetOp $value)
     {
         return $this->set(self::SET_OP, $value);
     }
@@ -147,7 +147,7 @@ class MapUpdate extends \ProtobufMessage
     /**
      * Returns value of 'set_op' property
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\SetOp
+     * @return \Start2004\Riak\Api\Pb\Message\SetOp
      */
     public function getSetOp()
     {
@@ -201,11 +201,11 @@ class MapUpdate extends \ProtobufMessage
     /**
      * Sets value of 'map_op' property
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\MapOp $value Property value
+     * @param \Start2004\Riak\Api\Pb\Message\MapOp $value Property value
      *
      * @return null
      */
-    public function setMapOp(\OpenAdapter\Riak\Api\Pb\Message\MapOp $value)
+    public function setMapOp(\Start2004\Riak\Api\Pb\Message\MapOp $value)
     {
         return $this->set(self::MAP_OP, $value);
     }
@@ -213,7 +213,7 @@ class MapUpdate extends \ProtobufMessage
     /**
      * Returns value of 'map_op' property
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\MapOp
+     * @return \Start2004\Riak\Api\Pb\Message\MapOp
      */
     public function getMapOp()
     {

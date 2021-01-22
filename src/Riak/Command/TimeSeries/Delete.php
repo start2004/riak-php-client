@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\TimeSeries;
+namespace Start2004\Riak\Command\TimeSeries;
 
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\CommandInterface;
+use Start2004\Riak\Command;
+use Start2004\Riak\CommandInterface;
 
 /**
  * Used to fetch data within a TS table
@@ -27,7 +27,7 @@ class Delete extends Command implements CommandInterface
     /**
      * Stores the key
      *
-     * @var \OpenAdapter\Riak\TimeSeries\Cell[]
+     * @var \Start2004\Riak\TimeSeries\Cell[]
      */
     protected $key = [];
 

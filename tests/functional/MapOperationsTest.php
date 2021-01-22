@@ -1,8 +1,8 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests;
+namespace Start2004\Riak\Tests;
 
-use OpenAdapter\Riak\Command;
+use Start2004\Riak\Command;
 
 /**
  * Functional tests related to Counter CRDTs
@@ -92,12 +92,12 @@ class MapOperationsTest extends TestCase
         $map = $response->getMap();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Map', $response->getMap());
+        $this->assertInstanceOf('Start2004\Riak\DataType\Map', $response->getMap());
 
-        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Set', $map->getSet('ATLANTIC_DIVISION'));
+        $this->assertInstanceOf('Start2004\Riak\DataType\Set', $map->getSet('ATLANTIC_DIVISION'));
         $this->assertEquals(1, count($map->getSet('ATLANTIC_DIVISION')->getData()));
 
-        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Counter', $map->getCounter('teams'));
+        $this->assertInstanceOf('Start2004\Riak\DataType\Counter', $map->getCounter('teams'));
         $this->assertEquals(1, $map->getCounter('teams')->getData());
         $this->assertNotEmpty($map->getContext());
 
@@ -138,12 +138,12 @@ class MapOperationsTest extends TestCase
         $map = $response->getMap();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Map', $response->getMap());
+        $this->assertInstanceOf('Start2004\Riak\DataType\Map', $response->getMap());
 
-        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Set', $map->getSet('ATLANTIC_DIVISION'));
+        $this->assertInstanceOf('Start2004\Riak\DataType\Set', $map->getSet('ATLANTIC_DIVISION'));
         $this->assertEquals(3, count($map->getSet('ATLANTIC_DIVISION')->getData()));
 
-        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Counter', $map->getCounter('teams'));
+        $this->assertInstanceOf('Start2004\Riak\DataType\Counter', $map->getCounter('teams'));
         $this->assertEquals(3, $map->getCounter('teams')->getData());
 
         $this->assertTrue($map->getFlag('expansion_year'));
@@ -154,7 +154,7 @@ class MapOperationsTest extends TestCase
     /**
      * @depends      testAddExisting
      *
-     * @expectedException \OpenAdapter\Riak\DataType\Exception
+     * @expectedException \Start2004\Riak\DataType\Exception
      */
     public function testRemoveExisting()
     {
@@ -184,12 +184,12 @@ class MapOperationsTest extends TestCase
         $map = $response->getMap();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Map', $response->getMap());
+        $this->assertInstanceOf('Start2004\Riak\DataType\Map', $response->getMap());
 
-        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Set', $map->getSet('ATLANTIC_DIVISION'));
+        $this->assertInstanceOf('Start2004\Riak\DataType\Set', $map->getSet('ATLANTIC_DIVISION'));
         $this->assertEquals(3, count($map->getSet('ATLANTIC_DIVISION')->getData()));
 
-        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Counter', $map->getCounter('teams'));
+        $this->assertInstanceOf('Start2004\Riak\DataType\Counter', $map->getCounter('teams'));
         $this->assertEquals(3, $map->getCounter('teams')->getData());
 
         $this->assertTrue($map->getFlag('expansion_year'));
@@ -225,9 +225,9 @@ class MapOperationsTest extends TestCase
         $map = $response->getMap();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Map', $response->getMap());
+        $this->assertInstanceOf('Start2004\Riak\DataType\Map', $response->getMap());
 
-        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Map', $map->getMap('preferences'));
+        $this->assertInstanceOf('Start2004\Riak\DataType\Map', $map->getMap('preferences'));
         $this->assertEquals('Email Alerts', $map->getMap('preferences')->getRegister('label'));
         $this->assertFalse($map->getMap('preferences')->getFlag('notifications'));
 

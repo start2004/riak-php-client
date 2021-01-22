@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_kv.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * RpbContent message
  */
@@ -54,7 +54,7 @@ class RpbContent extends \ProtobufMessage
         self::LINKS => array(
             'name' => 'links',
             'repeated' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\RpbLink'
+            'type' => '\Start2004\Riak\Api\Pb\Message\RpbLink'
         ),
         self::LAST_MOD => array(
             'name' => 'last_mod',
@@ -69,12 +69,12 @@ class RpbContent extends \ProtobufMessage
         self::USERMETA => array(
             'name' => 'usermeta',
             'repeated' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\RpbPair'
+            'type' => '\Start2004\Riak\Api\Pb\Message\RpbPair'
         ),
         self::INDEXES => array(
             'name' => 'indexes',
             'repeated' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\RpbPair'
+            'type' => '\Start2004\Riak\Api\Pb\Message\RpbPair'
         ),
         self::DELETED => array(
             'name' => 'deleted',
@@ -236,11 +236,11 @@ class RpbContent extends \ProtobufMessage
     /**
      * Appends value to 'links' list
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\RpbLink $value Value to append
+     * @param \Start2004\Riak\Api\Pb\Message\RpbLink $value Value to append
      *
      * @return null
      */
-    public function appendLinks(\OpenAdapter\Riak\Api\Pb\Message\RpbLink $value)
+    public function appendLinks(\Start2004\Riak\Api\Pb\Message\RpbLink $value)
     {
         return $this->append(self::LINKS, $value);
     }
@@ -258,7 +258,7 @@ class RpbContent extends \ProtobufMessage
     /**
      * Returns 'links' list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbLink[]
+     * @return \Start2004\Riak\Api\Pb\Message\RpbLink[]
      */
     public function getLinks()
     {
@@ -280,7 +280,7 @@ class RpbContent extends \ProtobufMessage
      *
      * @param int $offset Position in list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbLink
+     * @return \Start2004\Riak\Api\Pb\Message\RpbLink
      */
     public function getLinksAt($offset)
     {
@@ -344,11 +344,11 @@ class RpbContent extends \ProtobufMessage
     /**
      * Appends value to 'usermeta' list
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\RpbPair $value Value to append
+     * @param \Start2004\Riak\Api\Pb\Message\RpbPair $value Value to append
      *
      * @return null
      */
-    public function appendUsermeta(\OpenAdapter\Riak\Api\Pb\Message\RpbPair $value)
+    public function appendUsermeta(\Start2004\Riak\Api\Pb\Message\RpbPair $value)
     {
         return $this->append(self::USERMETA, $value);
     }
@@ -366,7 +366,7 @@ class RpbContent extends \ProtobufMessage
     /**
      * Returns 'usermeta' list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbPair[]
+     * @return \Start2004\Riak\Api\Pb\Message\RpbPair[]
      */
     public function getUsermeta()
     {
@@ -388,7 +388,7 @@ class RpbContent extends \ProtobufMessage
      *
      * @param int $offset Position in list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbPair
+     * @return \Start2004\Riak\Api\Pb\Message\RpbPair
      */
     public function getUsermetaAt($offset)
     {
@@ -408,11 +408,11 @@ class RpbContent extends \ProtobufMessage
     /**
      * Appends value to 'indexes' list
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\RpbPair $value Value to append
+     * @param \Start2004\Riak\Api\Pb\Message\RpbPair $value Value to append
      *
      * @return null
      */
-    public function appendIndexes(\OpenAdapter\Riak\Api\Pb\Message\RpbPair $value)
+    public function appendIndexes(\Start2004\Riak\Api\Pb\Message\RpbPair $value)
     {
         return $this->append(self::INDEXES, $value);
     }
@@ -430,7 +430,7 @@ class RpbContent extends \ProtobufMessage
     /**
      * Returns 'indexes' list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbPair[]
+     * @return \Start2004\Riak\Api\Pb\Message\RpbPair[]
      */
     public function getIndexes()
     {
@@ -452,7 +452,7 @@ class RpbContent extends \ProtobufMessage
      *
      * @param int $offset Position in list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbPair
+     * @return \Start2004\Riak\Api\Pb\Message\RpbPair
      */
     public function getIndexesAt($offset)
     {

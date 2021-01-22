@@ -1,8 +1,8 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests\Riak\Search;
+namespace Start2004\Riak\Tests\Riak\Search;
 
-use OpenAdapter\Riak\Search\Doc;
+use Start2004\Riak\Search\Doc;
 use PHPUnit\Framework\TestCase as TestCase;
 
 /**
@@ -32,8 +32,8 @@ class DocTest extends TestCase
     public function testGetLocation()
     {
         $result = $this->doc->getLocation();
-        $this->assertInstanceOf('\OpenAdapter\Riak\Location', $result);
-        $this->assertInstanceOf('\OpenAdapter\Riak\Bucket', $result->getBucket());
+        $this->assertInstanceOf('\Start2004\Riak\Location', $result);
+        $this->assertInstanceOf('\Start2004\Riak\Bucket', $result->getBucket());
         $this->assertEquals('tests', $result->getBucket()->getType());
         $this->assertEquals('test', $result->getBucket()->getName());
         $this->assertEquals('5', $result->getKey());

@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenAdapter\Riak\Command;
+namespace Start2004\Riak\Command;
 
 /**
  * BuilderInterface

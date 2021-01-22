@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * RpbBucketProps message
  */
@@ -62,7 +62,7 @@ class RpbBucketProps extends \ProtobufMessage
         self::PRECOMMIT => array(
             'name' => 'precommit',
             'repeated' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\RpbCommitHook'
+            'type' => '\Start2004\Riak\Api\Pb\Message\RpbCommitHook'
         ),
         self::HAS_PRECOMMIT => array(
             'default' => false, 
@@ -73,7 +73,7 @@ class RpbBucketProps extends \ProtobufMessage
         self::POSTCOMMIT => array(
             'name' => 'postcommit',
             'repeated' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\RpbCommitHook'
+            'type' => '\Start2004\Riak\Api\Pb\Message\RpbCommitHook'
         ),
         self::HAS_POSTCOMMIT => array(
             'default' => false, 
@@ -84,12 +84,12 @@ class RpbBucketProps extends \ProtobufMessage
         self::CHASH_KEYFUN => array(
             'name' => 'chash_keyfun',
             'required' => false,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\RpbModFun'
+            'type' => '\Start2004\Riak\Api\Pb\Message\RpbModFun'
         ),
         self::LINKFUN => array(
             'name' => 'linkfun',
             'required' => false,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\RpbModFun'
+            'type' => '\Start2004\Riak\Api\Pb\Message\RpbModFun'
         ),
         self::OLD_VCLOCK => array(
             'name' => 'old_vclock',
@@ -320,11 +320,11 @@ class RpbBucketProps extends \ProtobufMessage
     /**
      * Appends value to 'precommit' list
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\RpbCommitHook $value Value to append
+     * @param \Start2004\Riak\Api\Pb\Message\RpbCommitHook $value Value to append
      *
      * @return null
      */
-    public function appendPrecommit(\OpenAdapter\Riak\Api\Pb\Message\RpbCommitHook $value)
+    public function appendPrecommit(\Start2004\Riak\Api\Pb\Message\RpbCommitHook $value)
     {
         return $this->append(self::PRECOMMIT, $value);
     }
@@ -342,7 +342,7 @@ class RpbBucketProps extends \ProtobufMessage
     /**
      * Returns 'precommit' list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbCommitHook[]
+     * @return \Start2004\Riak\Api\Pb\Message\RpbCommitHook[]
      */
     public function getPrecommit()
     {
@@ -364,7 +364,7 @@ class RpbBucketProps extends \ProtobufMessage
      *
      * @param int $offset Position in list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbCommitHook
+     * @return \Start2004\Riak\Api\Pb\Message\RpbCommitHook
      */
     public function getPrecommitAt($offset)
     {
@@ -406,11 +406,11 @@ class RpbBucketProps extends \ProtobufMessage
     /**
      * Appends value to 'postcommit' list
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\RpbCommitHook $value Value to append
+     * @param \Start2004\Riak\Api\Pb\Message\RpbCommitHook $value Value to append
      *
      * @return null
      */
-    public function appendPostcommit(\OpenAdapter\Riak\Api\Pb\Message\RpbCommitHook $value)
+    public function appendPostcommit(\Start2004\Riak\Api\Pb\Message\RpbCommitHook $value)
     {
         return $this->append(self::POSTCOMMIT, $value);
     }
@@ -428,7 +428,7 @@ class RpbBucketProps extends \ProtobufMessage
     /**
      * Returns 'postcommit' list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbCommitHook[]
+     * @return \Start2004\Riak\Api\Pb\Message\RpbCommitHook[]
      */
     public function getPostcommit()
     {
@@ -450,7 +450,7 @@ class RpbBucketProps extends \ProtobufMessage
      *
      * @param int $offset Position in list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbCommitHook
+     * @return \Start2004\Riak\Api\Pb\Message\RpbCommitHook
      */
     public function getPostcommitAt($offset)
     {
@@ -492,11 +492,11 @@ class RpbBucketProps extends \ProtobufMessage
     /**
      * Sets value of 'chash_keyfun' property
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\RpbModFun $value Property value
+     * @param \Start2004\Riak\Api\Pb\Message\RpbModFun $value Property value
      *
      * @return null
      */
-    public function setChashKeyfun(\OpenAdapter\Riak\Api\Pb\Message\RpbModFun $value)
+    public function setChashKeyfun(\Start2004\Riak\Api\Pb\Message\RpbModFun $value)
     {
         return $this->set(self::CHASH_KEYFUN, $value);
     }
@@ -504,7 +504,7 @@ class RpbBucketProps extends \ProtobufMessage
     /**
      * Returns value of 'chash_keyfun' property
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbModFun
+     * @return \Start2004\Riak\Api\Pb\Message\RpbModFun
      */
     public function getChashKeyfun()
     {
@@ -514,11 +514,11 @@ class RpbBucketProps extends \ProtobufMessage
     /**
      * Sets value of 'linkfun' property
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\RpbModFun $value Property value
+     * @param \Start2004\Riak\Api\Pb\Message\RpbModFun $value Property value
      *
      * @return null
      */
-    public function setLinkfun(\OpenAdapter\Riak\Api\Pb\Message\RpbModFun $value)
+    public function setLinkfun(\Start2004\Riak\Api\Pb\Message\RpbModFun $value)
     {
         return $this->set(self::LINKFUN, $value);
     }
@@ -526,7 +526,7 @@ class RpbBucketProps extends \ProtobufMessage
     /**
      * Returns value of 'linkfun' property
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbModFun
+     * @return \Start2004\Riak\Api\Pb\Message\RpbModFun
      */
     public function getLinkfun()
     {

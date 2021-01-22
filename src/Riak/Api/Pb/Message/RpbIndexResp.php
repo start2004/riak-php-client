@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_kv.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * RpbIndexResp message
  */
@@ -27,7 +27,7 @@ class RpbIndexResp extends \ProtobufMessage
         self::RESULTS => array(
             'name' => 'results',
             'repeated' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\RpbPair'
+            'type' => '\Start2004\Riak\Api\Pb\Message\RpbPair'
         ),
         self::CONTINUATION => array(
             'name' => 'continuation',
@@ -141,11 +141,11 @@ class RpbIndexResp extends \ProtobufMessage
     /**
      * Appends value to 'results' list
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\RpbPair $value Value to append
+     * @param \Start2004\Riak\Api\Pb\Message\RpbPair $value Value to append
      *
      * @return null
      */
-    public function appendResults(\OpenAdapter\Riak\Api\Pb\Message\RpbPair $value)
+    public function appendResults(\Start2004\Riak\Api\Pb\Message\RpbPair $value)
     {
         return $this->append(self::RESULTS, $value);
     }
@@ -163,7 +163,7 @@ class RpbIndexResp extends \ProtobufMessage
     /**
      * Returns 'results' list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbPair[]
+     * @return \Start2004\Riak\Api\Pb\Message\RpbPair[]
      */
     public function getResults()
     {
@@ -185,7 +185,7 @@ class RpbIndexResp extends \ProtobufMessage
      *
      * @param int $offset Position in list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbPair
+     * @return \Start2004\Riak\Api\Pb\Message\RpbPair
      */
     public function getResultsAt($offset)
     {

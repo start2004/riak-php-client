@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_kv.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * RpbIndexObject message
  */
@@ -25,7 +25,7 @@ class RpbIndexObject extends \ProtobufMessage
         self::OBJECT => array(
             'name' => 'object',
             'required' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\RpbGetResp'
+            'type' => '\Start2004\Riak\Api\Pb\Message\RpbGetResp'
         ),
     );
 
@@ -85,11 +85,11 @@ class RpbIndexObject extends \ProtobufMessage
     /**
      * Sets value of 'object' property
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\RpbGetResp $value Property value
+     * @param \Start2004\Riak\Api\Pb\Message\RpbGetResp $value Property value
      *
      * @return null
      */
-    public function setObject(\OpenAdapter\Riak\Api\Pb\Message\RpbGetResp $value)
+    public function setObject(\Start2004\Riak\Api\Pb\Message\RpbGetResp $value)
     {
         return $this->set(self::OBJECT, $value);
     }
@@ -97,7 +97,7 @@ class RpbIndexObject extends \ProtobufMessage
     /**
      * Returns value of 'object' property
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbGetResp
+     * @return \Start2004\Riak\Api\Pb\Message\RpbGetResp
      */
     public function getObject()
     {

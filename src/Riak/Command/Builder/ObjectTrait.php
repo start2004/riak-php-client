@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\Builder;
+namespace Start2004\Riak\Command\Builder;
 
-use OpenAdapter\Riak\Api\Http;
-use OpenAdapter\Riak\DataObject;
+use Start2004\Riak\Api\Http;
+use Start2004\Riak\DataObject;
 
 /**
  * Allows easy code sharing for Object getters / setters within the Command Builders
@@ -13,7 +13,7 @@ use OpenAdapter\Riak\DataObject;
 trait ObjectTrait
 {
     /**
-     * @var \OpenAdapter\Riak\DataObject|null
+     * @var \Start2004\Riak\DataObject|null
      */
     protected $object = null;
 
@@ -43,7 +43,7 @@ trait ObjectTrait
     /**
      * Attach an already instantiated Object to the Command
      *
-     * @param \OpenAdapter\Riak\DataObject $object
+     * @param \Start2004\Riak\DataObject $object
      *
      * @return $this
      */

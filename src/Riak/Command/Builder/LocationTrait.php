@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\Builder;
+namespace Start2004\Riak\Command\Builder;
 
-use OpenAdapter\Riak\Bucket;
-use OpenAdapter\Riak\Location;
+use Start2004\Riak\Bucket;
+use Start2004\Riak\Location;
 
 /**
  * Allows easy code sharing for Location getters / setters within the Command Builders

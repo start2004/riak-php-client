@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\TimeSeries\Query;
+namespace Start2004\Riak\Command\TimeSeries\Query;
 
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\CommandInterface;
+use Start2004\Riak\Command;
+use Start2004\Riak\CommandInterface;
 
 /**
  * Used to store data within a TS table

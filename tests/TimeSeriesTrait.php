@@ -1,8 +1,8 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests;
+namespace Start2004\Riak\Tests;
 
-use OpenAdapter\Riak\TimeSeries\Cell;
+use Start2004\Riak\TimeSeries\Cell;
 
 /**
  * Helps with reusability for timeseries commands

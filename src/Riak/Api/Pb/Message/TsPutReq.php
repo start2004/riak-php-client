@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_ts.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * TsPutReq message
  */
@@ -26,12 +26,12 @@ class TsPutReq extends \ProtobufMessage
         self::COLUMNS => array(
             'name' => 'columns',
             'repeated' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\TsColumnDescription'
+            'type' => '\Start2004\Riak\Api\Pb\Message\TsColumnDescription'
         ),
         self::ROWS => array(
             'name' => 'rows',
             'repeated' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\TsRow'
+            'type' => '\Start2004\Riak\Api\Pb\Message\TsRow'
         ),
     );
 
@@ -92,11 +92,11 @@ class TsPutReq extends \ProtobufMessage
     /**
      * Appends value to 'columns' list
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\TsColumnDescription $value Value to append
+     * @param \Start2004\Riak\Api\Pb\Message\TsColumnDescription $value Value to append
      *
      * @return null
      */
-    public function appendColumns(\OpenAdapter\Riak\Api\Pb\Message\TsColumnDescription $value)
+    public function appendColumns(\Start2004\Riak\Api\Pb\Message\TsColumnDescription $value)
     {
         return $this->append(self::COLUMNS, $value);
     }
@@ -114,7 +114,7 @@ class TsPutReq extends \ProtobufMessage
     /**
      * Returns 'columns' list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\TsColumnDescription[]
+     * @return \Start2004\Riak\Api\Pb\Message\TsColumnDescription[]
      */
     public function getColumns()
     {
@@ -136,7 +136,7 @@ class TsPutReq extends \ProtobufMessage
      *
      * @param int $offset Position in list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\TsColumnDescription
+     * @return \Start2004\Riak\Api\Pb\Message\TsColumnDescription
      */
     public function getColumnsAt($offset)
     {
@@ -156,11 +156,11 @@ class TsPutReq extends \ProtobufMessage
     /**
      * Appends value to 'rows' list
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\TsRow $value Value to append
+     * @param \Start2004\Riak\Api\Pb\Message\TsRow $value Value to append
      *
      * @return null
      */
-    public function appendRows(\OpenAdapter\Riak\Api\Pb\Message\TsRow $value)
+    public function appendRows(\Start2004\Riak\Api\Pb\Message\TsRow $value)
     {
         return $this->append(self::ROWS, $value);
     }
@@ -178,7 +178,7 @@ class TsPutReq extends \ProtobufMessage
     /**
      * Returns 'rows' list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\TsRow[]
+     * @return \Start2004\Riak\Api\Pb\Message\TsRow[]
      */
     public function getRows()
     {
@@ -200,7 +200,7 @@ class TsPutReq extends \ProtobufMessage
      *
      * @param int $offset Position in list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\TsRow
+     * @return \Start2004\Riak\Api\Pb\Message\TsRow
      */
     public function getRowsAt($offset)
     {

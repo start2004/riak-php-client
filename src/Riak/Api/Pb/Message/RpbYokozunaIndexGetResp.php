@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_yokozuna.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * RpbYokozunaIndexGetResp message
  */
@@ -19,7 +19,7 @@ class RpbYokozunaIndexGetResp extends \ProtobufMessage
         self::INDEX => array(
             'name' => 'index',
             'repeated' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\RpbYokozunaIndex'
+            'type' => '\Start2004\Riak\Api\Pb\Message\RpbYokozunaIndex'
         ),
     );
 
@@ -56,11 +56,11 @@ class RpbYokozunaIndexGetResp extends \ProtobufMessage
     /**
      * Appends value to 'index' list
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\RpbYokozunaIndex $value Value to append
+     * @param \Start2004\Riak\Api\Pb\Message\RpbYokozunaIndex $value Value to append
      *
      * @return null
      */
-    public function appendIndex(\OpenAdapter\Riak\Api\Pb\Message\RpbYokozunaIndex $value)
+    public function appendIndex(\Start2004\Riak\Api\Pb\Message\RpbYokozunaIndex $value)
     {
         return $this->append(self::INDEX, $value);
     }
@@ -78,7 +78,7 @@ class RpbYokozunaIndexGetResp extends \ProtobufMessage
     /**
      * Returns 'index' list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbYokozunaIndex[]
+     * @return \Start2004\Riak\Api\Pb\Message\RpbYokozunaIndex[]
      */
     public function getIndex()
     {
@@ -100,7 +100,7 @@ class RpbYokozunaIndexGetResp extends \ProtobufMessage
      *
      * @param int $offset Position in list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbYokozunaIndex
+     * @return \Start2004\Riak\Api\Pb\Message\RpbYokozunaIndex
      */
     public function getIndexAt($offset)
     {

@@ -1,8 +1,8 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\Builder\TimeSeries;
+namespace Start2004\Riak\Command\Builder\TimeSeries;
 
-use OpenAdapter\Riak\Command;
+use Start2004\Riak\Command;
 
 /**
  * @author Christopher Mancini <cmancini at basho d0t com>

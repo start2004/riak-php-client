@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_yokozuna.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * RpbYokozunaSchemaPutReq message
  */
@@ -19,7 +19,7 @@ class RpbYokozunaSchemaPutReq extends \ProtobufMessage
         self::SCHEMA => array(
             'name' => 'schema',
             'required' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\RpbYokozunaSchema'
+            'type' => '\Start2004\Riak\Api\Pb\Message\RpbYokozunaSchema'
         ),
     );
 
@@ -56,11 +56,11 @@ class RpbYokozunaSchemaPutReq extends \ProtobufMessage
     /**
      * Sets value of 'schema' property
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\RpbYokozunaSchema $value Property value
+     * @param \Start2004\Riak\Api\Pb\Message\RpbYokozunaSchema $value Property value
      *
      * @return null
      */
-    public function setSchema(\OpenAdapter\Riak\Api\Pb\Message\RpbYokozunaSchema $value)
+    public function setSchema(\Start2004\Riak\Api\Pb\Message\RpbYokozunaSchema $value)
     {
         return $this->set(self::SCHEMA, $value);
     }
@@ -68,7 +68,7 @@ class RpbYokozunaSchemaPutReq extends \ProtobufMessage
     /**
      * Returns value of 'schema' property
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbYokozunaSchema
+     * @return \Start2004\Riak\Api\Pb\Message\RpbYokozunaSchema
      */
     public function getSchema()
     {

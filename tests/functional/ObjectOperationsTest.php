@@ -1,8 +1,8 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests;
+namespace Start2004\Riak\Tests;
 
-use OpenAdapter\Riak\Command;
+use Start2004\Riak\Command;
 
 /**
  * Functional tests related to Key-Value objects
@@ -14,7 +14,7 @@ class ObjectOperationsTest extends TestCase
     private static $key = '';
 
     /**
-     * @var \OpenAdapter\Riak\DataObject|null
+     * @var \Start2004\Riak\DataObject|null
      */
     private static $object = null;
 
@@ -39,7 +39,7 @@ class ObjectOperationsTest extends TestCase
         // expects 201 - Created
         $this->assertEquals('201', $response->getCode());
         $this->assertNotEmpty($response->getLocation());
-        $this->assertInstanceOf('\OpenAdapter\Riak\Location', $response->getLocation());
+        $this->assertInstanceOf('\Start2004\Riak\Location', $response->getLocation());
     }
 
     public function testFetchNotFound()
@@ -83,12 +83,12 @@ class ObjectOperationsTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('OpenAdapter\Riak\DataObject', $response->getDataObject());
+        $this->assertInstanceOf('Start2004\Riak\DataObject', $response->getDataObject());
         $this->assertEquals('some_data', $response->getDataObject()->getData());
         $this->assertNotEmpty($response->getDataObject()->getVclock());
 
         // confirm we are using the HTTP api bridge
-        if (static::$riak->getApi() instanceof \OpenAdapter\Riak\Api\Http) {
+        if (static::$riak->getApi() instanceof \Start2004\Riak\Api\Http) {
             $headers = static::$riak->getApi()->getResponseHeaders();
             $this->assertNotEmpty($headers);
             $this->assertNotEmpty($headers["Last-Modified"]);

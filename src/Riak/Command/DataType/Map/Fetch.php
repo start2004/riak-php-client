@@ -1,10 +1,10 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\DataType\Map;
+namespace Start2004\Riak\Command\DataType\Map;
 
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\CommandInterface;
-use OpenAdapter\Riak\Location;
+use Start2004\Riak\Command;
+use Start2004\Riak\CommandInterface;
+use Start2004\Riak\Location;
 
 /**
  * Fetches a map data type from Riak

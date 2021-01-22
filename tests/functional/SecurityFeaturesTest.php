@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests;
+namespace Start2004\Riak\Tests;
 
-use OpenAdapter\Riak;
-use OpenAdapter\Riak\Command;
+use Start2004\Riak;
+use Start2004\Riak\Command;
 
 /**
  * Functional tests verifying TSL features
@@ -61,6 +61,6 @@ class SecurityFeaturesTest extends TestCase
         // expects 201 - Created
         $this->assertEquals('201', $response->getCode(), $response->getMessage());
         $this->assertNotEmpty($response->getLocation());
-        $this->assertInstanceOf('\OpenAdapter\Riak\Location', $response->getLocation());
+        $this->assertInstanceOf('\Start2004\Riak\Location', $response->getLocation());
     }
 }

@@ -2,9 +2,9 @@
 /**
  * Auto generated from riak_kv.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
-namespace OpenAdapter\Riak\Api\Pb\Message\RpbIndexReq {
+namespace Start2004\Riak\Api\Pb\Message\RpbIndexReq {
 /**
  * IndexQueryType enum embedded in RpbIndexReq message
  */

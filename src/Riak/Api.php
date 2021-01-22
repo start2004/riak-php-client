@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenAdapter\Riak;
+namespace Start2004\Riak;
 
 /**
  * Extend this class to implement your own API bridge.

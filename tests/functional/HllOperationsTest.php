@@ -1,8 +1,8 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests;
+namespace Start2004\Riak\Tests;
 
-use OpenAdapter\Riak\Command;
+use Start2004\Riak\Command;
 
 /**
  * Functional tests related to Hll CRDTs
@@ -99,7 +99,7 @@ class HllOperationsTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Hll', $response->getHll());
+        $this->assertInstanceOf('Start2004\Riak\DataType\Hll', $response->getHll());
         $this->assertNotEmpty($response->getHll()->getData());
         $this->assertTrue(is_int($response->getHll()->getData()));
         $this->assertEquals(7, $response->getHll()->getData());
@@ -127,7 +127,7 @@ class HllOperationsTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Hll', $response->getHll());
+        $this->assertInstanceOf('Start2004\Riak\DataType\Hll', $response->getHll());
         $this->assertNotEmpty($response->getHll()->getData());
         $this->assertTrue(is_int($response->getHll()->getData()));
         $this->assertEquals(7, $response->getHll()->getData());
@@ -156,7 +156,7 @@ class HllOperationsTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Hll', $response->getHll());
+        $this->assertInstanceOf('Start2004\Riak\DataType\Hll', $response->getHll());
         $this->assertNotEmpty($response->getHll()->getData());
         $this->assertTrue(is_int($response->getHll()->getData()));
         $this->assertEquals(8, $response->getHll()->getData());

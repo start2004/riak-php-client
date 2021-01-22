@@ -1,10 +1,10 @@
 <?php
 
-namespace OpenAdapter\Riak\Api\Http\Translator;
+namespace Start2004\Riak\Api\Http\Translator;
 
-use OpenAdapter\Riak\Api\Http;
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\DataObject as RObject;
+use Start2004\Riak\Api\Http;
+use Start2004\Riak\Command;
+use Start2004\Riak\DataObject as RObject;
 
 class ObjectResponse
 {
@@ -25,7 +25,7 @@ class ObjectResponse
      * @param $response
      * @param array $headers
      *
-     * @return \OpenAdapter\Riak\DataObject[]
+     * @return \Start2004\Riak\DataObject[]
      */
     public function parseResponse($response, $headers = [])
     {

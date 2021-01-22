@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\MapReduce;
+namespace Start2004\Riak\Command\MapReduce;
 
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\CommandInterface;
+use Start2004\Riak\Command;
+use Start2004\Riak\CommandInterface;
 
 /**
  * Used to fetch a result set from Riak using MapReduce

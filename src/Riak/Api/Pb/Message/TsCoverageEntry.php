@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_ts.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * TsCoverageEntry message
  */
@@ -37,7 +37,7 @@ class TsCoverageEntry extends \ProtobufMessage
         self::RANGE => array(
             'name' => 'range',
             'required' => false,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\TsRange'
+            'type' => '\Start2004\Riak\Api\Pb\Message\TsRange'
         ),
     );
 
@@ -143,11 +143,11 @@ class TsCoverageEntry extends \ProtobufMessage
     /**
      * Sets value of 'range' property
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\TsRange $value Property value
+     * @param \Start2004\Riak\Api\Pb\Message\TsRange $value Property value
      *
      * @return null
      */
-    public function setRange(\OpenAdapter\Riak\Api\Pb\Message\TsRange $value)
+    public function setRange(\Start2004\Riak\Api\Pb\Message\TsRange $value)
     {
         return $this->set(self::RANGE, $value);
     }
@@ -155,7 +155,7 @@ class TsCoverageEntry extends \ProtobufMessage
     /**
      * Returns value of 'range' property
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\TsRange
+     * @return \Start2004\Riak\Api\Pb\Message\TsRange
      */
     public function getRange()
     {

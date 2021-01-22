@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_dt.proto at 2016-12-13 21:45:39
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * DtValue message
  */
@@ -33,7 +33,7 @@ class DtValue extends \ProtobufMessage
         self::MAP_VALUE => array(
             'name' => 'map_value',
             'repeated' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\MapEntry'
+            'type' => '\Start2004\Riak\Api\Pb\Message\MapEntry'
         ),
         self::HLL_VALUE => array(
             'name' => 'hll_value',
@@ -170,11 +170,11 @@ class DtValue extends \ProtobufMessage
     /**
      * Appends value to 'map_value' list
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\MapEntry $value Value to append
+     * @param \Start2004\Riak\Api\Pb\Message\MapEntry $value Value to append
      *
      * @return null
      */
-    public function appendMapValue(\OpenAdapter\Riak\Api\Pb\Message\MapEntry $value)
+    public function appendMapValue(\Start2004\Riak\Api\Pb\Message\MapEntry $value)
     {
         return $this->append(self::MAP_VALUE, $value);
     }
@@ -192,7 +192,7 @@ class DtValue extends \ProtobufMessage
     /**
      * Returns 'map_value' list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\MapEntry[]
+     * @return \Start2004\Riak\Api\Pb\Message\MapEntry[]
      */
     public function getMapValue()
     {
@@ -214,7 +214,7 @@ class DtValue extends \ProtobufMessage
      *
      * @param int $offset Position in list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\MapEntry
+     * @return \Start2004\Riak\Api\Pb\Message\MapEntry
      */
     public function getMapValueAt($offset)
     {

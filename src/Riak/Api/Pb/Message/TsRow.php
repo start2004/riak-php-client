@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_ts.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * TsRow message
  */
@@ -19,7 +19,7 @@ class TsRow extends \ProtobufMessage
         self::CELLS => array(
             'name' => 'cells',
             'repeated' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\TsCell'
+            'type' => '\Start2004\Riak\Api\Pb\Message\TsCell'
         ),
     );
 
@@ -56,11 +56,11 @@ class TsRow extends \ProtobufMessage
     /**
      * Appends value to 'cells' list
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\TsCell $value Value to append
+     * @param \Start2004\Riak\Api\Pb\Message\TsCell $value Value to append
      *
      * @return null
      */
-    public function appendCells(\OpenAdapter\Riak\Api\Pb\Message\TsCell $value)
+    public function appendCells(\Start2004\Riak\Api\Pb\Message\TsCell $value)
     {
         return $this->append(self::CELLS, $value);
     }
@@ -78,7 +78,7 @@ class TsRow extends \ProtobufMessage
     /**
      * Returns 'cells' list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\TsCell[]
+     * @return \Start2004\Riak\Api\Pb\Message\TsCell[]
      */
     public function getCells()
     {
@@ -100,7 +100,7 @@ class TsRow extends \ProtobufMessage
      *
      * @param int $offset Position in list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\TsCell
+     * @return \Start2004\Riak\Api\Pb\Message\TsCell
      */
     public function getCellsAt($offset)
     {

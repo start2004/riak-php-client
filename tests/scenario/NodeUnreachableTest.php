@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests;
+namespace Start2004\Riak\Tests;
 
-use OpenAdapter\Riak;
-use OpenAdapter\Riak\Command;
+use Start2004\Riak;
+use Start2004\Riak\Command;
 
 /**
  * Scenario tests for when Nodes become unreachable
@@ -13,7 +13,7 @@ use OpenAdapter\Riak\Command;
 class NodeUnreachableTest extends TestCase
 {
     /**
-     * @expectedException \OpenAdapter\Riak\Exception
+     * @expectedException \Start2004\Riak\Exception
      */
     public function testUnreachableNode()
     {
@@ -28,7 +28,7 @@ class NodeUnreachableTest extends TestCase
     }
 
     /**
-     * @expectedException \OpenAdapter\Riak\Exception
+     * @expectedException \Start2004\Riak\Exception
      */
     public function testUnreachableNodes()
     {
@@ -42,7 +42,7 @@ class NodeUnreachableTest extends TestCase
     }
 
     /**
-     * @expectedException \OpenAdapter\Riak\Exception
+     * @expectedException \Start2004\Riak\Exception
      */
     public function testMaxConnections()
     {
@@ -72,7 +72,7 @@ class NodeUnreachableTest extends TestCase
             ->build()
             ->execute();
 
-        $this->assertInstanceOf('OpenAdapter\Riak\Command\Response', $response);
+        $this->assertInstanceOf('Start2004\Riak\Command\Response', $response);
         $this->assertTrue($response->isSuccess());
     }
 }

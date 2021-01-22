@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak;
+namespace Start2004\Riak;
 
-use OpenAdapter\Riak;
-use OpenAdapter\Riak\Api\Http\Translator\SecondaryIndex;
+use Start2004\Riak;
+use Start2004\Riak\Api\Http\Translator\SecondaryIndex;
 
 /**
  * Main class for data objects in Riak

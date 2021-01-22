@@ -1,10 +1,10 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests;
+namespace Start2004\Riak\Tests;
 
-use OpenAdapter\Riak;
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\TimeSeries\Cell;
+use Start2004\Riak;
+use Start2004\Riak\Command;
+use Start2004\Riak\TimeSeries\Cell;
 
 /**
  * Functional tests related to TimeSeries operations
@@ -56,7 +56,7 @@ class TimeSeriesOperationsTest extends TestCase
             ->withTable(static::$table . 'notfound')
             ->build();
 
-        $this->assertInstanceOf('OpenAdapter\Riak\Command\TimeSeries\Query\Fetch', $command);
+        $this->assertInstanceOf('Start2004\Riak\Command\TimeSeries\Query\Fetch', $command);
 
         $response = $command->execute();
 
@@ -80,7 +80,7 @@ class TimeSeriesOperationsTest extends TestCase
             ->withTable(static::$table)
             ->build();
 
-        $this->assertInstanceOf('OpenAdapter\Riak\Command\TimeSeries\Query\Fetch', $command);
+        $this->assertInstanceOf('Start2004\Riak\Command\TimeSeries\Query\Fetch', $command);
 
         $response = $command->execute();
 

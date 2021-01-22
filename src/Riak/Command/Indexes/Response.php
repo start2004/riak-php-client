@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\Indexes;
+namespace Start2004\Riak\Command\Indexes;
 
 
 /**
@@ -8,7 +8,7 @@ namespace OpenAdapter\Riak\Command\Indexes;
  *
  * @author Alex Moore <amoore at basho d0t com>
  */
-class Response extends \OpenAdapter\Riak\Command\Response
+class Response extends \Start2004\Riak\Command\Response
 {
     /**
      * @var array
@@ -79,7 +79,7 @@ class Response extends \OpenAdapter\Riak\Command\Response
      * Retrieves the date of the counter's retrieval
      *
      * @return string
-     * @throws \OpenAdapter\Riak\Command\Exception
+     * @throws \Start2004\Riak\Command\Exception
      */
     public function getDate()
     {

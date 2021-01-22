@@ -1,8 +1,8 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests\Riak;
+namespace Start2004\Riak\Tests\Riak;
 
-use OpenAdapter\Riak\DataType\Hll;
+use Start2004\Riak\DataType\Hll;
 
 /**
  * Test for HyperLogLog CRDT

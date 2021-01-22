@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\DataObject\Keys;
+namespace Start2004\Riak\Command\DataObject\Keys;
 
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\CommandInterface;
+use Start2004\Riak\Command;
+use Start2004\Riak\CommandInterface;
 
 /**
  * Lists Riak Kv Object keys

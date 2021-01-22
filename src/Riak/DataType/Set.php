@@ -15,9 +15,9 @@ Unless required by applicable law or agreed to in writing, software distributed 
 specific language governing permissions and limitations under the License.
 */
 
-namespace OpenAdapter\Riak\DataType;
+namespace Start2004\Riak\DataType;
 
-use OpenAdapter\Riak\DataType;
+use Start2004\Riak\DataType;
 
 /**
  * Class Set

@@ -1,16 +1,16 @@
 <?php
 
-namespace OpenAdapter\Riak\Node;
+namespace Start2004\Riak\Node;
 
-use OpenAdapter\Riak\Node;
+use Start2004\Riak\Node;
 
 /**
- * This class follows the Builder design pattern and is the preferred method for creating OpenAdapter\Riak\Node objects for
+ * This class follows the Builder design pattern and is the preferred method for creating Start2004\Riak\Node objects for
  * connecting to your Riak node cluster.
  *
  * <code>
  *  // simple local development / testing cluster
- *  use OpenAdapter\Riak\Node;
+ *  use Start2004\Riak\Node;
  *
  *  $nodes = (new Node\Builder)
  *      ->buildLocalhost([10018, 10028, 10038, 10048, 10058]);
@@ -18,7 +18,7 @@ use OpenAdapter\Riak\Node;
  *
  * <code>
  *  // password authentication to production cluster
- *  use OpenAdapter\Riak\Node;
+ *  use Start2004\Riak\Node;
  *
  *  $nodes = (new Node\Builder)
  *      ->onPort(8098)
@@ -29,7 +29,7 @@ use OpenAdapter\Riak\Node;
  *
  * <code>
  *  // certificate authentication to production load balanced cluster
- *  use OpenAdapter\Riak\Node;
+ *  use Start2004\Riak\Node;
  *
  *  $node = (new Node\Builder)
  *      ->atHost('riak.company.int')
@@ -41,7 +41,7 @@ use OpenAdapter\Riak\Node;
  *
  * <code>
  *  // pam authentication to production load balanced cluster
- *  use OpenAdapter\Riak\Node;
+ *  use Start2004\Riak\Node;
  *
  *  $node = (new Node\Builder)
  *      ->atHost('riak.company.int')

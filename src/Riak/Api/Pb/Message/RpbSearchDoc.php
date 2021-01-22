@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_search.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * RpbSearchDoc message
  */
@@ -19,7 +19,7 @@ class RpbSearchDoc extends \ProtobufMessage
         self::FIELDS => array(
             'name' => 'fields',
             'repeated' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\RpbPair'
+            'type' => '\Start2004\Riak\Api\Pb\Message\RpbPair'
         ),
     );
 
@@ -56,11 +56,11 @@ class RpbSearchDoc extends \ProtobufMessage
     /**
      * Appends value to 'fields' list
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\RpbPair $value Value to append
+     * @param \Start2004\Riak\Api\Pb\Message\RpbPair $value Value to append
      *
      * @return null
      */
-    public function appendFields(\OpenAdapter\Riak\Api\Pb\Message\RpbPair $value)
+    public function appendFields(\Start2004\Riak\Api\Pb\Message\RpbPair $value)
     {
         return $this->append(self::FIELDS, $value);
     }
@@ -78,7 +78,7 @@ class RpbSearchDoc extends \ProtobufMessage
     /**
      * Returns 'fields' list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbPair[]
+     * @return \Start2004\Riak\Api\Pb\Message\RpbPair[]
      */
     public function getFields()
     {
@@ -100,7 +100,7 @@ class RpbSearchDoc extends \ProtobufMessage
      *
      * @param int $offset Position in list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbPair
+     * @return \Start2004\Riak\Api\Pb\Message\RpbPair
      */
     public function getFieldsAt($offset)
     {

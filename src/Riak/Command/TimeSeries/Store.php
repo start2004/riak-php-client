@@ -1,10 +1,10 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\TimeSeries;
+namespace Start2004\Riak\Command\TimeSeries;
 
-use OpenAdapter\Riak;
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\CommandInterface;
+use Start2004\Riak;
+use Start2004\Riak\Command;
+use Start2004\Riak\CommandInterface;
 
 /**
  * Used to store data within a TS table

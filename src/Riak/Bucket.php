@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenAdapter\Riak;
+namespace Start2004\Riak;
 
 /**
  * Core data structure for a Riak Bucket.

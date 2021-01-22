@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_ts.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * TsCoverageResp message
  */
@@ -19,7 +19,7 @@ class TsCoverageResp extends \ProtobufMessage
         self::ENTRIES => array(
             'name' => 'entries',
             'repeated' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\TsCoverageEntry'
+            'type' => '\Start2004\Riak\Api\Pb\Message\TsCoverageEntry'
         ),
     );
 
@@ -56,11 +56,11 @@ class TsCoverageResp extends \ProtobufMessage
     /**
      * Appends value to 'entries' list
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\TsCoverageEntry $value Value to append
+     * @param \Start2004\Riak\Api\Pb\Message\TsCoverageEntry $value Value to append
      *
      * @return null
      */
-    public function appendEntries(\OpenAdapter\Riak\Api\Pb\Message\TsCoverageEntry $value)
+    public function appendEntries(\Start2004\Riak\Api\Pb\Message\TsCoverageEntry $value)
     {
         return $this->append(self::ENTRIES, $value);
     }
@@ -78,7 +78,7 @@ class TsCoverageResp extends \ProtobufMessage
     /**
      * Returns 'entries' list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\TsCoverageEntry[]
+     * @return \Start2004\Riak\Api\Pb\Message\TsCoverageEntry[]
      */
     public function getEntries()
     {
@@ -100,7 +100,7 @@ class TsCoverageResp extends \ProtobufMessage
      *
      * @param int $offset Position in list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\TsCoverageEntry
+     * @return \Start2004\Riak\Api\Pb\Message\TsCoverageEntry
      */
     public function getEntriesAt($offset)
     {

@@ -1,19 +1,19 @@
 <?php
 
-namespace OpenAdapter\Riak\Api;
+namespace Start2004\Riak\Api;
 
-use OpenAdapter\Riak\Api;
-use OpenAdapter\Riak\ApiInterface;
-use OpenAdapter\Riak\Bucket;
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\DataObject;
-use OpenAdapter\Riak\DataType\Counter;
-use OpenAdapter\Riak\DataType\Hll;
-use OpenAdapter\Riak\DataType\Map;
-use OpenAdapter\Riak\DataType\Set;
-use OpenAdapter\Riak\Location;
-use OpenAdapter\Riak\Node;
-use OpenAdapter\Riak\Search\Doc;
+use Start2004\Riak\Api;
+use Start2004\Riak\ApiInterface;
+use Start2004\Riak\Bucket;
+use Start2004\Riak\Command;
+use Start2004\Riak\DataObject;
+use Start2004\Riak\DataType\Counter;
+use Start2004\Riak\DataType\Hll;
+use Start2004\Riak\DataType\Map;
+use Start2004\Riak\DataType\Set;
+use Start2004\Riak\Location;
+use Start2004\Riak\Node;
+use Start2004\Riak\Search\Doc;
 
 /**
  * Handles communications between end user app & Riak via Riak HTTP API using cURL
@@ -200,80 +200,80 @@ class Http extends Api implements ApiInterface
         }
         switch (\get_class($this->command)) {
             /** @noinspection PhpMissingBreakStatementInspection */
-            case 'OpenAdapter\Riak\Command\Bucket\Store':
+            case 'Start2004\Riak\Command\Bucket\Store':
                 $this->headers[static::CONTENT_TYPE_KEY] = static::CONTENT_TYPE_JSON;
-            case 'OpenAdapter\Riak\Command\Bucket\Fetch':
-            case 'OpenAdapter\Riak\Command\Bucket\Delete':
+            case 'Start2004\Riak\Command\Bucket\Fetch':
+            case 'Start2004\Riak\Command\Bucket\Delete':
                 $this->path = sprintf('/types/%s/buckets/%s/props', $bucket->getType(), $bucket->getName());
                 break;
             /** @noinspection PhpMissingBreakStatementInspection */
-            case 'OpenAdapter\Riak\Command\DataObject\Fetch':
+            case 'Start2004\Riak\Command\DataObject\Fetch':
                 $this->headers['Accept'] = '*/*, multipart/mixed';
-            case 'OpenAdapter\Riak\Command\DataObject\Store':
-            case 'OpenAdapter\Riak\Command\DataObject\Delete':
+            case 'Start2004\Riak\Command\DataObject\Store':
+            case 'Start2004\Riak\Command\DataObject\Delete':
                 $this->path = sprintf('/types/%s/buckets/%s/keys/%s', $bucket->getType(), $bucket->getName(), $key);
                 break;
-            case 'OpenAdapter\Riak\Command\DataObject\Keys\Fetch':
+            case 'Start2004\Riak\Command\DataObject\Keys\Fetch':
                 $this->headers[static::CONTENT_TYPE_KEY] = static::CONTENT_TYPE_JSON;
                 $this->path = sprintf('/types/%s/buckets/%s/keys', $bucket->getType(), $bucket->getName());
                 break;
-            case 'OpenAdapter\Riak\Command\DataType\Counter\Store':
-            case 'OpenAdapter\Riak\Command\DataType\GSet\Store':
-            case 'OpenAdapter\Riak\Command\DataType\Set\Store':
+            case 'Start2004\Riak\Command\DataType\Counter\Store':
+            case 'Start2004\Riak\Command\DataType\GSet\Store':
+            case 'Start2004\Riak\Command\DataType\Set\Store':
                 /** @noinspection PhpMissingBreakStatementInspection */
-            case 'OpenAdapter\Riak\Command\DataType\Map\Store':
-            case 'OpenAdapter\Riak\Command\DataType\Hll\Store':
+            case 'Start2004\Riak\Command\DataType\Map\Store':
+            case 'Start2004\Riak\Command\DataType\Hll\Store':
                 $this->headers[static::CONTENT_TYPE_KEY] = static::CONTENT_TYPE_JSON;
-            case 'OpenAdapter\Riak\Command\DataType\Counter\Fetch':
-            case 'OpenAdapter\Riak\Command\DataType\Set\Fetch':
-            case 'OpenAdapter\Riak\Command\DataType\Map\Fetch':
-            case 'OpenAdapter\Riak\Command\DataType\Hll\Fetch':
+            case 'Start2004\Riak\Command\DataType\Counter\Fetch':
+            case 'Start2004\Riak\Command\DataType\Set\Fetch':
+            case 'Start2004\Riak\Command\DataType\Map\Fetch':
+            case 'Start2004\Riak\Command\DataType\Hll\Fetch':
                 $this->path = sprintf('/types/%s/buckets/%s/datatypes/%s', $bucket->getType(), $bucket->getName(), $key);
                 break;
             /** @noinspection PhpMissingBreakStatementInspection */
-            case 'OpenAdapter\Riak\Command\Search\Index\Store':
+            case 'Start2004\Riak\Command\Search\Index\Store':
                 $this->headers[static::CONTENT_TYPE_KEY] = static::CONTENT_TYPE_JSON;
-            case 'OpenAdapter\Riak\Command\Search\Index\Fetch':
-            case 'OpenAdapter\Riak\Command\Search\Index\Delete':
+            case 'Start2004\Riak\Command\Search\Index\Fetch':
+            case 'Start2004\Riak\Command\Search\Index\Delete':
                 $this->path = sprintf('/search/index/%s', $this->command);
                 break;
             /** @noinspection PhpMissingBreakStatementInspection */
-            case 'OpenAdapter\Riak\Command\Search\Schema\Store':
+            case 'Start2004\Riak\Command\Search\Schema\Store':
                 $this->headers[static::CONTENT_TYPE_KEY] = static::CONTENT_TYPE_XML;
-            case 'OpenAdapter\Riak\Command\Search\Schema\Fetch':
+            case 'Start2004\Riak\Command\Search\Schema\Fetch':
                 $this->path = sprintf('/search/schema/%s', $this->command);
                 break;
-            case 'OpenAdapter\Riak\Command\Search\Fetch':
+            case 'Start2004\Riak\Command\Search\Fetch':
                 $this->path = sprintf('/search/query/%s', $this->command);
                 break;
-            case 'OpenAdapter\Riak\Command\MapReduce\Fetch':
+            case 'Start2004\Riak\Command\MapReduce\Fetch':
                 $this->headers[static::CONTENT_TYPE_KEY] = static::CONTENT_TYPE_JSON;
                 $this->path = sprintf('/%s', $this->config['mapred_prefix']);
                 break;
-            case 'OpenAdapter\Riak\Command\Indexes\Query':
+            case 'Start2004\Riak\Command\Indexes\Query':
                 $this->path = $this->createIndexQueryPath($bucket);
                 break;
-            case 'OpenAdapter\Riak\Command\Ping':
+            case 'Start2004\Riak\Command\Ping':
                 $this->path = '/ping';
                 break;
-            case 'OpenAdapter\Riak\Command\Stats':
+            case 'Start2004\Riak\Command\Stats':
                 $this->path = '/stats';
                 break;
-            case 'OpenAdapter\Riak\Command\DataObject\FetchPreflist':
+            case 'Start2004\Riak\Command\DataObject\FetchPreflist':
                 $this->path = sprintf('/types/%s/buckets/%s/keys/%s/preflist', $bucket->getType(), $bucket->getName(), $key);
                 break;
-            case 'OpenAdapter\Riak\Command\TimeSeries\Fetch':
-            case 'OpenAdapter\Riak\Command\TimeSeries\Delete':
+            case 'Start2004\Riak\Command\TimeSeries\Fetch':
+            case 'Start2004\Riak\Command\TimeSeries\Delete':
                 /** @var $command Command\TimeSeries\Fetch */
                 $command = $this->command;
                 $this->path = sprintf('%s/tables/%s/keys/%s', static::TS_API_PREFIX, $command->getTable(), implode('/', $command->getData()));
                 break;
-            case 'OpenAdapter\Riak\Command\TimeSeries\Store':
+            case 'Start2004\Riak\Command\TimeSeries\Store':
                 /** @var $command Command\TimeSeries\Store */
                 $command = $this->command;
                 $this->path = sprintf('%s/tables/%s/keys', static::TS_API_PREFIX, $command->getTable());
                 break;
-            case 'OpenAdapter\Riak\Command\TimeSeries\Query\Fetch':
+            case 'Start2004\Riak\Command\TimeSeries\Query\Fetch':
                 $this->path = sprintf('%s/query', static::TS_API_PREFIX);
                 break;
             default:
@@ -587,8 +587,8 @@ class Http extends Api implements ApiInterface
         }
 
         switch (\get_class($this->command)) {
-            case 'OpenAdapter\Riak\Command\Bucket\Store':
-            case 'OpenAdapter\Riak\Command\Bucket\Fetch':
+            case 'Start2004\Riak\Command\Bucket\Store':
+            case 'Start2004\Riak\Command\Bucket\Fetch':
                 $bucket = null;
                 $modified = $this->getResponseHeader(static::LAST_MODIFIED_KEY, '');
                 $properties = json_decode($body, true);
@@ -598,8 +598,8 @@ class Http extends Api implements ApiInterface
                 $response = new Command\Bucket\Response($this->success, $this->statusCode, $this->error, $bucket, $modified);
                 break;
 
-            case 'OpenAdapter\Riak\Command\DataObject\Fetch':
-            case 'OpenAdapter\Riak\Command\DataObject\Store':
+            case 'Start2004\Riak\Command\DataObject\Fetch':
+            case 'Start2004\Riak\Command\DataObject\Store':
                 /** @var Command\DataObject $command */
                 $command = $this->command;
                 $objects = (new Api\Http\Translator\ObjectResponse($command, $this->statusCode))
@@ -607,11 +607,11 @@ class Http extends Api implements ApiInterface
                 $response = new Command\DataObject\Response($this->success, $this->statusCode, $this->error, $location, $objects);
                 break;
 
-            case 'OpenAdapter\Riak\Command\DataObject\FetchPreflist':
+            case 'Start2004\Riak\Command\DataObject\FetchPreflist':
                 $response = new Command\DataObject\Response($this->success, $this->statusCode, $this->error, $location, [new DataObject(json_decode($body))]);
                 break;
 
-            case 'OpenAdapter\Riak\Command\DataObject\Keys\Fetch':
+            case 'Start2004\Riak\Command\DataObject\Keys\Fetch':
                 $data = json_decode($body);
                 $keys = [];
                 foreach ($data->keys as $key) {
@@ -620,8 +620,8 @@ class Http extends Api implements ApiInterface
                 $response = new Command\DataObject\Keys\Response($this->success, $this->statusCode, $this->error, $keys);
                 break;
 
-            case 'OpenAdapter\Riak\Command\DataType\Counter\Store':
-            case 'OpenAdapter\Riak\Command\DataType\Counter\Fetch':
+            case 'Start2004\Riak\Command\DataType\Counter\Store':
+            case 'Start2004\Riak\Command\DataType\Counter\Fetch':
                 $counter = null;
                 $json_object = json_decode($body);
                 if ($json_object && isset($json_object->value)) {
@@ -632,9 +632,9 @@ class Http extends Api implements ApiInterface
                 );
                 break;
 
-            case 'OpenAdapter\Riak\Command\DataType\GSet\Store':
-            case 'OpenAdapter\Riak\Command\DataType\Set\Store':
-            case 'OpenAdapter\Riak\Command\DataType\Set\Fetch':
+            case 'Start2004\Riak\Command\DataType\GSet\Store':
+            case 'Start2004\Riak\Command\DataType\Set\Store':
+            case 'Start2004\Riak\Command\DataType\Set\Fetch':
                 $set = null;
                 $json_object = json_decode($body);
                 if ($json_object && isset($json_object->value)) {
@@ -649,8 +649,8 @@ class Http extends Api implements ApiInterface
                 );
                 break;
 
-            case 'OpenAdapter\Riak\Command\DataType\Map\Store':
-            case 'OpenAdapter\Riak\Command\DataType\Map\Fetch':
+            case 'Start2004\Riak\Command\DataType\Map\Store':
+            case 'Start2004\Riak\Command\DataType\Map\Fetch':
                 $map = null;
                 $json_object = json_decode($body, true);
                 if ($json_object && isset($json_object['value'])) {
@@ -661,8 +661,8 @@ class Http extends Api implements ApiInterface
                 );
                 break;
 
-            case 'OpenAdapter\Riak\Command\DataType\Hll\Store':
-            case 'OpenAdapter\Riak\Command\DataType\Hll\Fetch':
+            case 'Start2004\Riak\Command\DataType\Hll\Store':
+            case 'Start2004\Riak\Command\DataType\Hll\Fetch':
                 $hll = null;
                 $json_object = json_decode($body);
                 if ($json_object && isset($json_object->value)) {
@@ -673,7 +673,7 @@ class Http extends Api implements ApiInterface
                 );
                 break;
 
-            case 'OpenAdapter\Riak\Command\Search\Fetch':
+            case 'Start2004\Riak\Command\Search\Fetch':
                 $results = \in_array((int)$this->statusCode, [200, 204], true) ? json_decode($body) : null;
                 $docs = [];
                 if (!empty($results->response->docs)) {
@@ -685,24 +685,24 @@ class Http extends Api implements ApiInterface
 
                 $response = new Command\Search\Response($this->success, $this->statusCode, $this->error, $numFound, $docs);
                 break;
-            case 'OpenAdapter\Riak\Command\Search\Index\Store':
-            case 'OpenAdapter\Riak\Command\Search\Index\Fetch':
+            case 'Start2004\Riak\Command\Search\Index\Store':
+            case 'Start2004\Riak\Command\Search\Index\Fetch':
                 $index = json_decode($body);
                 $response = new Command\Search\Index\Response($this->success, $this->statusCode, $this->error, $index);
                 break;
 
-            case 'OpenAdapter\Riak\Command\Search\Schema\Store':
-            case 'OpenAdapter\Riak\Command\Search\Schema\Fetch':
+            case 'Start2004\Riak\Command\Search\Schema\Store':
+            case 'Start2004\Riak\Command\Search\Schema\Fetch':
                 $response = new Command\Search\Schema\Response(
                     $this->success, $this->statusCode, $this->error, $body, $this->getResponseHeader(static::CONTENT_TYPE_KEY)
                 );
                 break;
 
-            case 'OpenAdapter\Riak\Command\MapReduce\Fetch':
+            case 'Start2004\Riak\Command\MapReduce\Fetch':
                 $results = \in_array((int)$this->statusCode, [200, 204], true) ? json_decode($body) : null;
                 $response = new Command\MapReduce\Response($this->success, $this->statusCode, $this->error, $results);
                 break;
-            case 'OpenAdapter\Riak\Command\Indexes\Query':
+            case 'Start2004\Riak\Command\Indexes\Query':
                 $json_object = \in_array((int)$this->statusCode, [200, 204], true) ? json_decode($body, true) : null;
                 $results = [];
                 $termsReturned = false;
@@ -727,14 +727,14 @@ class Http extends Api implements ApiInterface
                     $this->success, $this->statusCode, $this->error, $results, $termsReturned, $continuation, $done, $this->getResponseHeader('Date')
                 );
                 break;
-            case 'OpenAdapter\Riak\Command\Stats':
+            case 'Start2004\Riak\Command\Stats':
                 $response = new Command\Stats\Response($this->success, $this->statusCode, $this->error, json_decode($body, true));
                 break;
-            case 'OpenAdapter\Riak\Command\TimeSeries\Fetch':
+            case 'Start2004\Riak\Command\TimeSeries\Fetch':
                 $row = \in_array((int)$this->statusCode, [200, 201, 204], true) ? json_decode($body, true) : [];
                 $response = new Command\TimeSeries\Response($this->success, $this->statusCode, $this->error, [$row]);
                 break;
-            case 'OpenAdapter\Riak\Command\TimeSeries\Query\Fetch':
+            case 'Start2004\Riak\Command\TimeSeries\Query\Fetch':
                 $results = \in_array((int)$this->statusCode, [200, 204], true) ? json_decode($body) : [];
                 $rows = [];
                 if (isset($results->rows)) {
@@ -748,12 +748,12 @@ class Http extends Api implements ApiInterface
                 }
                 $response = new Command\TimeSeries\Query\Response($this->success, $this->statusCode, $this->error, $rows);
                 break;
-            case 'OpenAdapter\Riak\Command\TimeSeries\Store':
-            case 'OpenAdapter\Riak\Command\TimeSeries\Delete':
-            case 'OpenAdapter\Riak\Command\DataObject\Delete':
-            case 'OpenAdapter\Riak\Command\Bucket\Delete':
-            case 'OpenAdapter\Riak\Command\Search\Index\Delete':
-            case 'OpenAdapter\Riak\Command\Ping':
+            case 'Start2004\Riak\Command\TimeSeries\Store':
+            case 'Start2004\Riak\Command\TimeSeries\Delete':
+            case 'Start2004\Riak\Command\DataObject\Delete':
+            case 'Start2004\Riak\Command\Bucket\Delete':
+            case 'Start2004\Riak\Command\Search\Index\Delete':
+            case 'Start2004\Riak\Command\Ping':
             default:
                 $response = new Command\Response($this->success, $this->statusCode, $this->error);
                 break;

@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenAdapter\Riak\Api\Pb;
+namespace Start2004\Riak\Api\Pb;
 
 class Message
 {

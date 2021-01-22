@@ -1,18 +1,18 @@
 <?php
 
-namespace OpenAdapter\Riak\Command;
+namespace Start2004\Riak\Command;
 
-use OpenAdapter\Riak;
-use OpenAdapter\Riak\Command;
+use Start2004\Riak;
+use Start2004\Riak\Command;
 
 /**
- * This class follows the Builder design pattern and is the preferred method for creating OpenAdapter\Riak\Command
+ * This class follows the Builder design pattern and is the preferred method for creating Start2004\Riak\Command
  * objects for interacting with your Riak data cluster.
  *
  * <code>
- * use OpenAdapter\Riak\Command;
- * use OpenAdapter\Riak\Bucket;
- * use OpenAdapter\Riak\Location;
+ * use Start2004\Riak\Command;
+ * use Start2004\Riak\Bucket;
+ * use Start2004\Riak\Location;
  *
  * $bucket = new Bucket('users');
  *
@@ -135,7 +135,7 @@ abstract class Builder
     protected function required($objectName)
     {
         $method = "get{$objectName}";
-        $class = "OpenAdapter\Riak\\{$objectName}";
+        $class = "Start2004\Riak\\{$objectName}";
         $value = $this->$method();
         if (null === $value) {
             throw new Builder\Exception("Expected non-empty value for {$objectName}");

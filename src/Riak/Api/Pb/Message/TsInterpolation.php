@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_ts.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * TsInterpolation message
  */
@@ -25,7 +25,7 @@ class TsInterpolation extends \ProtobufMessage
         self::INTERPOLATIONS => array(
             'name' => 'interpolations',
             'repeated' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\RpbPair'
+            'type' => '\Start2004\Riak\Api\Pb\Message\RpbPair'
         ),
     );
 
@@ -85,11 +85,11 @@ class TsInterpolation extends \ProtobufMessage
     /**
      * Appends value to 'interpolations' list
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\RpbPair $value Value to append
+     * @param \Start2004\Riak\Api\Pb\Message\RpbPair $value Value to append
      *
      * @return null
      */
-    public function appendInterpolations(\OpenAdapter\Riak\Api\Pb\Message\RpbPair $value)
+    public function appendInterpolations(\Start2004\Riak\Api\Pb\Message\RpbPair $value)
     {
         return $this->append(self::INTERPOLATIONS, $value);
     }
@@ -107,7 +107,7 @@ class TsInterpolation extends \ProtobufMessage
     /**
      * Returns 'interpolations' list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbPair[]
+     * @return \Start2004\Riak\Api\Pb\Message\RpbPair[]
      */
     public function getInterpolations()
     {
@@ -129,7 +129,7 @@ class TsInterpolation extends \ProtobufMessage
      *
      * @param int $offset Position in list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbPair
+     * @return \Start2004\Riak\Api\Pb\Message\RpbPair
      */
     public function getInterpolationsAt($offset)
     {

@@ -1,8 +1,8 @@
 <?php
 
-namespace OpenAdapter\Riak;
+namespace Start2004\Riak;
 
-use OpenAdapter\Riak\Node\Config;
+use Start2004\Riak\Node\Config;
 
 /**
  * Contains the connection configuration to connect to a Riak node.

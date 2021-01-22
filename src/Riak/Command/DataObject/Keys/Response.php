@@ -1,16 +1,16 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\DataObject\Keys;
+namespace Start2004\Riak\Command\DataObject\Keys;
 
 /**
  * Container for a response related to an operation on an object
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-class Response extends \OpenAdapter\Riak\Command\Response
+class Response extends \Start2004\Riak\Command\Response
 {
     /**
-     * @var \OpenAdapter\Riak\Location[]
+     * @var \Start2004\Riak\Location[]
      */
     protected $keys = [];
 
@@ -24,7 +24,7 @@ class Response extends \OpenAdapter\Riak\Command\Response
     /**
      * Fetches the keys from the response
      *
-     * @return \OpenAdapter\Riak\Location[]
+     * @return \Start2004\Riak\Location[]
      */
     public function getKeys()
     {

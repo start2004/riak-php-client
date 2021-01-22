@@ -1,8 +1,8 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\Builder;
+namespace Start2004\Riak\Command\Builder;
 
-use OpenAdapter\Riak\Command;
+use Start2004\Riak\Command;
 
 /**
  * @author Luke Bakken <lbakken@basho.com>

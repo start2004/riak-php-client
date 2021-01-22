@@ -1,12 +1,12 @@
 <?php
 
-namespace OpenAdapter;
+namespace Start2004;
 
-use OpenAdapter\Riak\Api;
-use OpenAdapter\Riak\Api\Http;
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\Exception;
-use OpenAdapter\Riak\Node;
+use Start2004\Riak\Api;
+use Start2004\Riak\Api\Http;
+use Start2004\Riak\Command;
+use Start2004\Riak\Exception;
+use Start2004\Riak\Node;
 
 /**
  * This class maintains the list of nodes in the Riak cluster.
@@ -85,7 +85,7 @@ class Riak
     /**
      * Construct a new Client object, defaults to port 8098.
      *
-     * @param Node[] $nodes an array of OpenAdapter\Riak\Node objects
+     * @param Node[] $nodes an array of Start2004\Riak\Node objects
      * @param array $config a configuration object
      * @param Api $api
      *

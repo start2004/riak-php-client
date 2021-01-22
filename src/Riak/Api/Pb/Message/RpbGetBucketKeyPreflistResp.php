@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_kv.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * RpbGetBucketKeyPreflistResp message
  */
@@ -19,7 +19,7 @@ class RpbGetBucketKeyPreflistResp extends \ProtobufMessage
         self::PREFLIST => array(
             'name' => 'preflist',
             'repeated' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\RpbBucketKeyPreflistItem'
+            'type' => '\Start2004\Riak\Api\Pb\Message\RpbBucketKeyPreflistItem'
         ),
     );
 
@@ -56,11 +56,11 @@ class RpbGetBucketKeyPreflistResp extends \ProtobufMessage
     /**
      * Appends value to 'preflist' list
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\RpbBucketKeyPreflistItem $value Value to append
+     * @param \Start2004\Riak\Api\Pb\Message\RpbBucketKeyPreflistItem $value Value to append
      *
      * @return null
      */
-    public function appendPreflist(\OpenAdapter\Riak\Api\Pb\Message\RpbBucketKeyPreflistItem $value)
+    public function appendPreflist(\Start2004\Riak\Api\Pb\Message\RpbBucketKeyPreflistItem $value)
     {
         return $this->append(self::PREFLIST, $value);
     }
@@ -78,7 +78,7 @@ class RpbGetBucketKeyPreflistResp extends \ProtobufMessage
     /**
      * Returns 'preflist' list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbBucketKeyPreflistItem[]
+     * @return \Start2004\Riak\Api\Pb\Message\RpbBucketKeyPreflistItem[]
      */
     public function getPreflist()
     {
@@ -100,7 +100,7 @@ class RpbGetBucketKeyPreflistResp extends \ProtobufMessage
      *
      * @param int $offset Position in list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbBucketKeyPreflistItem
+     * @return \Start2004\Riak\Api\Pb\Message\RpbBucketKeyPreflistItem
      */
     public function getPreflistAt($offset)
     {

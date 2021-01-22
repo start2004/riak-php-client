@@ -1,8 +1,8 @@
 <?php
 
-namespace OpenAdapter\Riak;
+namespace Start2004\Riak;
 
-use OpenAdapter\Riak\Command\Builder;
+use Start2004\Riak\Command\Builder;
 
 /**
  * The command class is used to build a read or write command to be executed against a Riak node.
@@ -40,7 +40,7 @@ abstract class Command
     protected $response = null;
 
     /**
-     * @var \OpenAdapter\Riak|null
+     * @var \Start2004\Riak|null
      */
     protected $riak = null;
 

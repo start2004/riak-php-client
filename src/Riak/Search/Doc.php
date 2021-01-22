@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak\Search;
+namespace Start2004\Riak\Search;
 
-use OpenAdapter\Riak\Bucket;
-use OpenAdapter\Riak\Location;
+use Start2004\Riak\Bucket;
+use Start2004\Riak\Location;
 
 /**
  * Data structure for document objects returned from Solr

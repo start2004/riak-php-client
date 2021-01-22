@@ -2,7 +2,7 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use OpenAdapter\Riak;
+use Start2004\Riak;
 
 class User
 {

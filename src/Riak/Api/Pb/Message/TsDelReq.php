@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_ts.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * TsDelReq message
  */
@@ -27,7 +27,7 @@ class TsDelReq extends \ProtobufMessage
         self::KEY => array(
             'name' => 'key',
             'repeated' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\TsCell'
+            'type' => '\Start2004\Riak\Api\Pb\Message\TsCell'
         ),
         self::VCLOCK => array(
             'name' => 'vclock',
@@ -99,11 +99,11 @@ class TsDelReq extends \ProtobufMessage
     /**
      * Appends value to 'key' list
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\TsCell $value Value to append
+     * @param \Start2004\Riak\Api\Pb\Message\TsCell $value Value to append
      *
      * @return null
      */
-    public function appendKey(\OpenAdapter\Riak\Api\Pb\Message\TsCell $value)
+    public function appendKey(\Start2004\Riak\Api\Pb\Message\TsCell $value)
     {
         return $this->append(self::KEY, $value);
     }
@@ -121,7 +121,7 @@ class TsDelReq extends \ProtobufMessage
     /**
      * Returns 'key' list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\TsCell[]
+     * @return \Start2004\Riak\Api\Pb\Message\TsCell[]
      */
     public function getKey()
     {
@@ -143,7 +143,7 @@ class TsDelReq extends \ProtobufMessage
      *
      * @param int $offset Position in list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\TsCell
+     * @return \Start2004\Riak\Api\Pb\Message\TsCell
      */
     public function getKeyAt($offset)
     {

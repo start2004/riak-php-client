@@ -1,18 +1,18 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\Object;
+namespace Start2004\Riak\Command\Object;
 
-use OpenAdapter\Riak\Location;
+use Start2004\Riak\Location;
 
 /**
  * Container for a response related to an operation on an object
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-class Response extends \OpenAdapter\Riak\Command\Response
+class Response extends \Start2004\Riak\Command\Response
 {
     /**
-     * @var \OpenAdapter\Riak\Object[]
+     * @var \Start2004\Riak\Object[]
      */
     protected $objects = [];
 
@@ -38,7 +38,7 @@ class Response extends \OpenAdapter\Riak\Command\Response
      * Retrieves the Location value from the response headers
      *
      * @return Location
-     * @throws \OpenAdapter\Riak\Command\Exception
+     * @throws \Start2004\Riak\Command\Exception
      */
     public function getLocation()
     {
@@ -46,7 +46,7 @@ class Response extends \OpenAdapter\Riak\Command\Response
     }
 
     /**
-     * @return \OpenAdapter\Riak\Object|null
+     * @return \Start2004\Riak\Object|null
      */
     public function getObject()
     {

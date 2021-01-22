@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_kv.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * RpbGetResp message
  */
@@ -21,7 +21,7 @@ class RpbGetResp extends \ProtobufMessage
         self::CONTENT => array(
             'name' => 'content',
             'repeated' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\RpbContent'
+            'type' => '\Start2004\Riak\Api\Pb\Message\RpbContent'
         ),
         self::VCLOCK => array(
             'name' => 'vclock',
@@ -70,11 +70,11 @@ class RpbGetResp extends \ProtobufMessage
     /**
      * Appends value to 'content' list
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\RpbContent $value Value to append
+     * @param \Start2004\Riak\Api\Pb\Message\RpbContent $value Value to append
      *
      * @return null
      */
-    public function appendContent(\OpenAdapter\Riak\Api\Pb\Message\RpbContent $value)
+    public function appendContent(\Start2004\Riak\Api\Pb\Message\RpbContent $value)
     {
         return $this->append(self::CONTENT, $value);
     }
@@ -92,7 +92,7 @@ class RpbGetResp extends \ProtobufMessage
     /**
      * Returns 'content' list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbContent[]
+     * @return \Start2004\Riak\Api\Pb\Message\RpbContent[]
      */
     public function getContent()
     {
@@ -114,7 +114,7 @@ class RpbGetResp extends \ProtobufMessage
      *
      * @param int $offset Position in list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbContent
+     * @return \Start2004\Riak\Api\Pb\Message\RpbContent
      */
     public function getContentAt($offset)
     {

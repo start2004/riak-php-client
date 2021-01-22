@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_dt.proto at 2016-12-13 21:45:39
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * DtOp message
  */
@@ -23,27 +23,27 @@ class DtOp extends \ProtobufMessage
         self::COUNTER_OP => array(
             'name' => 'counter_op',
             'required' => false,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\CounterOp'
+            'type' => '\Start2004\Riak\Api\Pb\Message\CounterOp'
         ),
         self::SET_OP => array(
             'name' => 'set_op',
             'required' => false,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\SetOp'
+            'type' => '\Start2004\Riak\Api\Pb\Message\SetOp'
         ),
         self::MAP_OP => array(
             'name' => 'map_op',
             'required' => false,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\MapOp'
+            'type' => '\Start2004\Riak\Api\Pb\Message\MapOp'
         ),
         self::HLL_OP => array(
             'name' => 'hll_op',
             'required' => false,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\HllOp'
+            'type' => '\Start2004\Riak\Api\Pb\Message\HllOp'
         ),
         self::GSET_OP => array(
             'name' => 'gset_op',
             'required' => false,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\GSetOp'
+            'type' => '\Start2004\Riak\Api\Pb\Message\GSetOp'
         ),
     );
 
@@ -84,11 +84,11 @@ class DtOp extends \ProtobufMessage
     /**
      * Sets value of 'counter_op' property
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\CounterOp $value Property value
+     * @param \Start2004\Riak\Api\Pb\Message\CounterOp $value Property value
      *
      * @return null
      */
-    public function setCounterOp(\OpenAdapter\Riak\Api\Pb\Message\CounterOp $value)
+    public function setCounterOp(\Start2004\Riak\Api\Pb\Message\CounterOp $value)
     {
         return $this->set(self::COUNTER_OP, $value);
     }
@@ -96,7 +96,7 @@ class DtOp extends \ProtobufMessage
     /**
      * Returns value of 'counter_op' property
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\CounterOp
+     * @return \Start2004\Riak\Api\Pb\Message\CounterOp
      */
     public function getCounterOp()
     {
@@ -106,11 +106,11 @@ class DtOp extends \ProtobufMessage
     /**
      * Sets value of 'set_op' property
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\SetOp $value Property value
+     * @param \Start2004\Riak\Api\Pb\Message\SetOp $value Property value
      *
      * @return null
      */
-    public function setSetOp(\OpenAdapter\Riak\Api\Pb\Message\SetOp $value)
+    public function setSetOp(\Start2004\Riak\Api\Pb\Message\SetOp $value)
     {
         return $this->set(self::SET_OP, $value);
     }
@@ -118,7 +118,7 @@ class DtOp extends \ProtobufMessage
     /**
      * Returns value of 'set_op' property
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\SetOp
+     * @return \Start2004\Riak\Api\Pb\Message\SetOp
      */
     public function getSetOp()
     {
@@ -128,11 +128,11 @@ class DtOp extends \ProtobufMessage
     /**
      * Sets value of 'map_op' property
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\MapOp $value Property value
+     * @param \Start2004\Riak\Api\Pb\Message\MapOp $value Property value
      *
      * @return null
      */
-    public function setMapOp(\OpenAdapter\Riak\Api\Pb\Message\MapOp $value)
+    public function setMapOp(\Start2004\Riak\Api\Pb\Message\MapOp $value)
     {
         return $this->set(self::MAP_OP, $value);
     }
@@ -140,7 +140,7 @@ class DtOp extends \ProtobufMessage
     /**
      * Returns value of 'map_op' property
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\MapOp
+     * @return \Start2004\Riak\Api\Pb\Message\MapOp
      */
     public function getMapOp()
     {
@@ -150,11 +150,11 @@ class DtOp extends \ProtobufMessage
     /**
      * Sets value of 'hll_op' property
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\HllOp $value Property value
+     * @param \Start2004\Riak\Api\Pb\Message\HllOp $value Property value
      *
      * @return null
      */
-    public function setHllOp(\OpenAdapter\Riak\Api\Pb\Message\HllOp $value)
+    public function setHllOp(\Start2004\Riak\Api\Pb\Message\HllOp $value)
     {
         return $this->set(self::HLL_OP, $value);
     }
@@ -162,7 +162,7 @@ class DtOp extends \ProtobufMessage
     /**
      * Returns value of 'hll_op' property
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\HllOp
+     * @return \Start2004\Riak\Api\Pb\Message\HllOp
      */
     public function getHllOp()
     {
@@ -172,11 +172,11 @@ class DtOp extends \ProtobufMessage
     /**
      * Sets value of 'gset_op' property
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\GSetOp $value Property value
+     * @param \Start2004\Riak\Api\Pb\Message\GSetOp $value Property value
      *
      * @return null
      */
-    public function setGsetOp(\OpenAdapter\Riak\Api\Pb\Message\GSetOp $value)
+    public function setGsetOp(\Start2004\Riak\Api\Pb\Message\GSetOp $value)
     {
         return $this->set(self::GSET_OP, $value);
     }
@@ -184,7 +184,7 @@ class DtOp extends \ProtobufMessage
     /**
      * Returns value of 'gset_op' property
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\GSetOp
+     * @return \Start2004\Riak\Api\Pb\Message\GSetOp
      */
     public function getGsetOp()
     {

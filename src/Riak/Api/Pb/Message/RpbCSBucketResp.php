@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_kv.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * RpbCSBucketResp message
  */
@@ -21,7 +21,7 @@ class RpbCSBucketResp extends \ProtobufMessage
         self::OBJECTS => array(
             'name' => 'objects',
             'repeated' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\RpbIndexObject'
+            'type' => '\Start2004\Riak\Api\Pb\Message\RpbIndexObject'
         ),
         self::CONTINUATION => array(
             'name' => 'continuation',
@@ -70,11 +70,11 @@ class RpbCSBucketResp extends \ProtobufMessage
     /**
      * Appends value to 'objects' list
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\RpbIndexObject $value Value to append
+     * @param \Start2004\Riak\Api\Pb\Message\RpbIndexObject $value Value to append
      *
      * @return null
      */
-    public function appendObjects(\OpenAdapter\Riak\Api\Pb\Message\RpbIndexObject $value)
+    public function appendObjects(\Start2004\Riak\Api\Pb\Message\RpbIndexObject $value)
     {
         return $this->append(self::OBJECTS, $value);
     }
@@ -92,7 +92,7 @@ class RpbCSBucketResp extends \ProtobufMessage
     /**
      * Returns 'objects' list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbIndexObject[]
+     * @return \Start2004\Riak\Api\Pb\Message\RpbIndexObject[]
      */
     public function getObjects()
     {
@@ -114,7 +114,7 @@ class RpbCSBucketResp extends \ProtobufMessage
      *
      * @param int $offset Position in list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbIndexObject
+     * @return \Start2004\Riak\Api\Pb\Message\RpbIndexObject
      */
     public function getObjectsAt($offset)
     {

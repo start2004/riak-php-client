@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests;
+namespace Start2004\Riak\Tests;
 
-use OpenAdapter\Riak;
-use OpenAdapter\Riak\Command;
+use Start2004\Riak;
+use Start2004\Riak\Command;
 
 /**
  * Scenario tests for when Kv Object changes result in a conflict

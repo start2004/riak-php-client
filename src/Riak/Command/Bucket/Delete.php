@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\Bucket;
+namespace Start2004\Riak\Command\Bucket;
 
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\CommandInterface;
+use Start2004\Riak\Command;
+use Start2004\Riak\CommandInterface;
 
 /**
  * Used to remove a bucket property from a Riak bucket

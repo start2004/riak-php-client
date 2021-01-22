@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * RpbSetBucketTypeReq message
  */
@@ -25,7 +25,7 @@ class RpbSetBucketTypeReq extends \ProtobufMessage
         self::PROPS => array(
             'name' => 'props',
             'required' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\RpbBucketProps'
+            'type' => '\Start2004\Riak\Api\Pb\Message\RpbBucketProps'
         ),
     );
 
@@ -85,11 +85,11 @@ class RpbSetBucketTypeReq extends \ProtobufMessage
     /**
      * Sets value of 'props' property
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\RpbBucketProps $value Property value
+     * @param \Start2004\Riak\Api\Pb\Message\RpbBucketProps $value Property value
      *
      * @return null
      */
-    public function setProps(\OpenAdapter\Riak\Api\Pb\Message\RpbBucketProps $value)
+    public function setProps(\Start2004\Riak\Api\Pb\Message\RpbBucketProps $value)
     {
         return $this->set(self::PROPS, $value);
     }
@@ -97,7 +97,7 @@ class RpbSetBucketTypeReq extends \ProtobufMessage
     /**
      * Returns value of 'props' property
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbBucketProps
+     * @return \Start2004\Riak\Api\Pb\Message\RpbBucketProps
      */
     public function getProps()
     {

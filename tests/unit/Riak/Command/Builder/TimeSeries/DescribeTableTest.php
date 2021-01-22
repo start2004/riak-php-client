@@ -1,10 +1,10 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests\Riak\Command\Builder;
+namespace Start2004\Riak\Tests\Riak\Command\Builder;
 
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\Tests\TestCase;
-use OpenAdapter\Riak\Tests\TimeSeriesTrait;
+use Start2004\Riak\Command;
+use Start2004\Riak\Tests\TestCase;
+use Start2004\Riak\Tests\TimeSeriesTrait;
 
 /**
  * Tests the configuration of Riak commands via the Command Builder class
@@ -27,7 +27,7 @@ class DescribeTableTest extends TestCase
         // build a command
         $command = $builder->build();
 
-        $this->assertInstanceOf('OpenAdapter\Riak\Command\TimeSeries\Query\Fetch', $command);
+        $this->assertInstanceOf('Start2004\Riak\Command\TimeSeries\Query\Fetch', $command);
         $this->assertEquals("DESCRIBE " . static::$table, $command->getData()["query"]);
     }
 }

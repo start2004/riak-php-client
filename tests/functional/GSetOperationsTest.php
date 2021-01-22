@@ -1,8 +1,8 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests;
+namespace Start2004\Riak\Tests;
 
-use OpenAdapter\Riak\Command;
+use Start2004\Riak\Command;
 
 /**
  * Functional tests related to GSet CRDTs
@@ -99,7 +99,7 @@ class GSetTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Set', $response->getSet());
+        $this->assertInstanceOf('Start2004\Riak\DataType\Set', $response->getSet());
         $this->assertNotEmpty($response->getSet()->getData());
         $this->assertTrue(is_array($response->getSet()->getData()));
         $this->assertEquals(7, count($response->getSet()->getData()));
@@ -129,7 +129,7 @@ class GSetTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('OpenAdapter\Riak\DataType\Set', $response->getSet());
+        $this->assertInstanceOf('Start2004\Riak\DataType\Set', $response->getSet());
         $this->assertNotEmpty($response->getSet()->getData());
         $this->assertTrue(is_array($response->getSet()->getData()));
         $this->assertEquals(8, count($response->getSet()->getData()));

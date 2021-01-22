@@ -1,19 +1,19 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\DataType\Hll;
+namespace Start2004\Riak\Command\DataType\Hll;
 
-use OpenAdapter\Riak\DataType\Hll;
-use OpenAdapter\Riak\Location;
+use Start2004\Riak\DataType\Hll;
+use Start2004\Riak\Location;
 
 /**
  * Container for a response related to an operation on an hll data type
  *
  * @author Luke Bakken <lbakken@basho.com>
  */
-class Response extends \OpenAdapter\Riak\Command\Response
+class Response extends \Start2004\Riak\Command\Response
 {
     /**
-     * @var \OpenAdapter\Riak\DataType\Hll|null
+     * @var \Start2004\Riak\DataType\Hll|null
      */
     protected $hll = null;
 
@@ -30,7 +30,7 @@ class Response extends \OpenAdapter\Riak\Command\Response
      * Retrieves the Location value from the response headers
      *
      * @return Location
-     * @throws \OpenAdapter\Riak\Command\Exception
+     * @throws \Start2004\Riak\Command\Exception
      */
     public function getLocation()
     {
@@ -49,7 +49,7 @@ class Response extends \OpenAdapter\Riak\Command\Response
      * Retrieves the date of the hll's retrieval
      *
      * @return string
-     * @throws \OpenAdapter\Riak\Command\Exception
+     * @throws \Start2004\Riak\Command\Exception
      */
     public function getDate()
     {

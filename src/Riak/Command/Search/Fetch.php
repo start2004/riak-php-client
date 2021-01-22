@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\Search;
+namespace Start2004\Riak\Command\Search;
 
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\CommandInterface;
+use Start2004\Riak\Command;
+use Start2004\Riak\CommandInterface;
 
 /**
  * Used to fetch a search results from Riak

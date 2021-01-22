@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_dt.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * MapOp message
  */
@@ -20,12 +20,12 @@ class MapOp extends \ProtobufMessage
         self::REMOVES => array(
             'name' => 'removes',
             'repeated' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\MapField'
+            'type' => '\Start2004\Riak\Api\Pb\Message\MapField'
         ),
         self::UPDATES => array(
             'name' => 'updates',
             'repeated' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\MapUpdate'
+            'type' => '\Start2004\Riak\Api\Pb\Message\MapUpdate'
         ),
     );
 
@@ -63,11 +63,11 @@ class MapOp extends \ProtobufMessage
     /**
      * Appends value to 'removes' list
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\MapField $value Value to append
+     * @param \Start2004\Riak\Api\Pb\Message\MapField $value Value to append
      *
      * @return null
      */
-    public function appendRemoves(\OpenAdapter\Riak\Api\Pb\Message\MapField $value)
+    public function appendRemoves(\Start2004\Riak\Api\Pb\Message\MapField $value)
     {
         return $this->append(self::REMOVES, $value);
     }
@@ -85,7 +85,7 @@ class MapOp extends \ProtobufMessage
     /**
      * Returns 'removes' list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\MapField[]
+     * @return \Start2004\Riak\Api\Pb\Message\MapField[]
      */
     public function getRemoves()
     {
@@ -107,7 +107,7 @@ class MapOp extends \ProtobufMessage
      *
      * @param int $offset Position in list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\MapField
+     * @return \Start2004\Riak\Api\Pb\Message\MapField
      */
     public function getRemovesAt($offset)
     {
@@ -127,11 +127,11 @@ class MapOp extends \ProtobufMessage
     /**
      * Appends value to 'updates' list
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\MapUpdate $value Value to append
+     * @param \Start2004\Riak\Api\Pb\Message\MapUpdate $value Value to append
      *
      * @return null
      */
-    public function appendUpdates(\OpenAdapter\Riak\Api\Pb\Message\MapUpdate $value)
+    public function appendUpdates(\Start2004\Riak\Api\Pb\Message\MapUpdate $value)
     {
         return $this->append(self::UPDATES, $value);
     }
@@ -149,7 +149,7 @@ class MapOp extends \ProtobufMessage
     /**
      * Returns 'updates' list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\MapUpdate[]
+     * @return \Start2004\Riak\Api\Pb\Message\MapUpdate[]
      */
     public function getUpdates()
     {
@@ -171,7 +171,7 @@ class MapOp extends \ProtobufMessage
      *
      * @param int $offset Position in list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\MapUpdate
+     * @return \Start2004\Riak\Api\Pb\Message\MapUpdate
      */
     public function getUpdatesAt($offset)
     {

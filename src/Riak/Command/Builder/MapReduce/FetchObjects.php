@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\Builder\MapReduce;
+namespace Start2004\Riak\Command\Builder\MapReduce;
 
-use OpenAdapter\Riak;
-use OpenAdapter\Riak\Command;
+use Start2004\Riak;
+use Start2004\Riak\Command;
 
 /**
  * Builds the command to fetch a collection of objects from Riak using Yokozuna search

@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests;
+namespace Start2004\Riak\Tests;
 
-use OpenAdapter\Riak;
-use OpenAdapter\Riak\Node;
+use Start2004\Riak;
+use Start2004\Riak\Node;
 
 /**
  * Main class for testing Riak clustering
@@ -29,7 +29,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
     const TEST_IMG = "Basho_Man_Super.png";
 
     /**
-     * @var \OpenAdapter\Riak|null
+     * @var \Start2004\Riak|null
      */
     static $riak = null;
 

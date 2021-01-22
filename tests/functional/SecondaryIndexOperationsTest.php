@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests;
+namespace Start2004\Riak\Tests;
 
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\DataObject as RObject;
+use Start2004\Riak\Command;
+use Start2004\Riak\DataObject as RObject;
 
 /**
  * Functional tests related to secondary indexes
@@ -16,7 +16,7 @@ class SecondaryIndexOperationsTest extends TestCase
     private static $bucket = '';
 
     /**
-     * @var \OpenAdapter\Riak\DataObject|null
+     * @var \Start2004\Riak\DataObject|null
      */
     private static $object = null;
 
@@ -63,7 +63,7 @@ class SecondaryIndexOperationsTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('OpenAdapter\Riak\DataObject', $response->getDataObject());
+        $this->assertInstanceOf('Start2004\Riak\DataObject', $response->getDataObject());
         $this->assertEquals('person', $response->getDataObject()->getData());
         $this->assertNotEmpty($response->getDataObject()->getVClock());
         $indexes = $response->getDataObject()->getIndexes();
@@ -102,7 +102,7 @@ class SecondaryIndexOperationsTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('OpenAdapter\Riak\DataObject', $response->getDataObject());
+        $this->assertInstanceOf('Start2004\Riak\DataObject', $response->getDataObject());
         $this->assertEquals('person', $response->getDataObject()->getData());
         $indexes = $response->getDataObject()->getIndexes();
         $this->assertEquals($indexes['lucky_numbers_int'], [42]);

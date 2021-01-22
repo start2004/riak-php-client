@@ -1,21 +1,21 @@
 <?php
 
-namespace OpenAdapter\Riak\Api;
+namespace Start2004\Riak\Api;
 
-use OpenAdapter\Riak\Api;
-use OpenAdapter\Riak\ApiInterface;
-use OpenAdapter\Riak\Bucket;
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\DataType;
-use OpenAdapter\Riak\Location;
-use OpenAdapter\Riak\Node;
-use OpenAdapter\Riak\DataObject;
-use OpenAdapter\Riak\Search\Doc;
+use Start2004\Riak\Api;
+use Start2004\Riak\ApiInterface;
+use Start2004\Riak\Bucket;
+use Start2004\Riak\Command;
+use Start2004\Riak\DataType;
+use Start2004\Riak\Location;
+use Start2004\Riak\Node;
+use Start2004\Riak\DataObject;
+use Start2004\Riak\Search\Doc;
 
 /**
  * Handles communications between end user app & Riak PB API using persistent sockets
  *
- * @author Christopher Mancini <cmancini at OpenAdapter d0t com>
+ * @author Christopher Mancini <cmancini at Start2004 d0t com>
  */
 class Pb extends Api implements ApiInterface
 {
@@ -79,11 +79,11 @@ class Pb extends Api implements ApiInterface
         $message = null;
 
         switch (get_class($this->command)) {
-            case 'OpenAdapter\Riak\Command\Bucket\Fetch':
+            case 'Start2004\Riak\Command\Bucket\Fetch':
                 $this->messageCode = Api\Pb\Message::RpbGetBucketReq;
                 $message = new Api\Pb\Message\RpbGetBucketReq();
                 break;
-            case 'OpenAdapter\Riak\Command\Bucket\Store':
+            case 'Start2004\Riak\Command\Bucket\Store':
                 $this->messageCode = Api\Pb\Message::RpbSetBucketReq;
                 $message = new Api\Pb\Message\RpbSetBucketReq();
                 $props = new Api\Pb\Message\RpbBucketProps();
@@ -94,61 +94,61 @@ class Pb extends Api implements ApiInterface
                 }
                 $message->setProps($props);
                 break;
-            case 'OpenAdapter\Riak\Command\Bucket\Delete':
+            case 'Start2004\Riak\Command\Bucket\Delete':
                 $this->messageCode = Api\Pb\Message::RpbPutReq;
                 $message = new Api\Pb\Message\RpbPutReq();
                 break;
-            case 'OpenAdapter\Riak\Command\DataObject\Fetch':
+            case 'Start2004\Riak\Command\DataObject\Fetch':
                 $this->messageCode = Api\Pb\Message::RpbGetReq;
                 $message = new Api\Pb\Message\RpbGetReq();
                 break;
-            case 'OpenAdapter\Riak\Command\DataObject\Store':
+            case 'Start2004\Riak\Command\DataObject\Store':
                 $this->messageCode = Api\Pb\Message::RpbPutReq;
                 $message = new Api\Pb\Message\RpbPutReq();
                 $message->setVclock($this->command->getObject()->getVclock());
                 $message->setContent($this->prepareContent());
                 break;
-            case 'OpenAdapter\Riak\Command\DataObject\Delete':
+            case 'Start2004\Riak\Command\DataObject\Delete':
                 $this->messageCode = Api\Pb\Message::RpbDelReq;
                 $message = new Api\Pb\Message\RpbDelReq();
                 break;
-            case 'OpenAdapter\Riak\Command\DataObject\FetchPreflist':
+            case 'Start2004\Riak\Command\DataObject\FetchPreflist':
                 $this->messageCode = Api\Pb\Message::RpbGetBucketKeyPreflistReq;
                 $message = new Api\Pb\Message\RpbGetBucketKeyPreflistReq();
                 break;
-            case 'OpenAdapter\Riak\Command\DataType\Counter\Fetch':
-            case 'OpenAdapter\Riak\Command\DataType\GSet\Fetch':
-            case 'OpenAdapter\Riak\Command\DataType\Set\Fetch':
-            case 'OpenAdapter\Riak\Command\DataType\Map\Fetch':
-            case 'OpenAdapter\Riak\Command\DataType\Hll\Fetch':
+            case 'Start2004\Riak\Command\DataType\Counter\Fetch':
+            case 'Start2004\Riak\Command\DataType\GSet\Fetch':
+            case 'Start2004\Riak\Command\DataType\Set\Fetch':
+            case 'Start2004\Riak\Command\DataType\Map\Fetch':
+            case 'Start2004\Riak\Command\DataType\Hll\Fetch':
                 $this->messageCode = Api\Pb\Message::DtFetchReq;
                 $message = new Api\Pb\Message\DtFetchReq();
                 break;
-            case 'OpenAdapter\Riak\Command\DataType\Counter\Store':
+            case 'Start2004\Riak\Command\DataType\Counter\Store':
                 $message = $this->buildCounterUpdateMessage($this->command->getData()['increment']);
                 break;
-            case 'OpenAdapter\Riak\Command\DataType\GSet\Store':
+            case 'Start2004\Riak\Command\DataType\GSet\Store':
                 $data = $this->command->getData();
                 $message = $this->buildGSetUpdateMessage($data['add_all']);
                 break;
-            case 'OpenAdapter\Riak\Command\DataType\Set\Store':
+            case 'Start2004\Riak\Command\DataType\Set\Store':
                 $data = $this->command->getData();
                 $message = $this->buildSetUpdateMessage($data['add_all'], $data['remove_all']);
                 break;
-            case 'OpenAdapter\Riak\Command\DataType\Map\Store':
+            case 'Start2004\Riak\Command\DataType\Map\Store':
                 $data = $this->command->getData();
                 $message = $this->buildMapUpdateMessage($data['update'], !empty($data['remove']) ? $data['remove'] : []);
                 break;
-            case 'OpenAdapter\Riak\Command\DataType\Hll\Store':
+            case 'Start2004\Riak\Command\DataType\Hll\Store':
                 $data = $this->command->getData();
                 $message = $this->buildHllUpdateMessage($data['add_all']);
                 break;
-            case 'OpenAdapter\Riak\Command\Search\Index\Fetch':
+            case 'Start2004\Riak\Command\Search\Index\Fetch':
                 $this->messageCode = Api\Pb\Message::RpbYokozunaIndexGetReq;
                 $message = new Api\Pb\Message\RpbYokozunaIndexGetReq();
                 $message->setName("{$this->command}");
                 break;
-            case 'OpenAdapter\Riak\Command\Search\Index\Store':
+            case 'Start2004\Riak\Command\Search\Index\Store':
                 $this->messageCode = Api\Pb\Message::RpbYokozunaIndexPutReq;
                 $message = new Api\Pb\Message\RpbYokozunaIndexPutReq();
                 $index = new Api\Pb\Message\RpbYokozunaIndex();
@@ -156,17 +156,17 @@ class Pb extends Api implements ApiInterface
                 $index->setSchema($this->command->getData()['schema']);
                 $message->setIndex($index);
                 break;
-            case 'OpenAdapter\Riak\Command\Search\Index\Delete':
+            case 'Start2004\Riak\Command\Search\Index\Delete':
                 $this->messageCode = Api\Pb\Message::RpbYokozunaIndexDeleteReq;
                 $message = new Api\Pb\Message\RpbYokozunaIndexDeleteReq();
                 $message->setName("{$this->command}");
                 break;
-            case 'OpenAdapter\Riak\Command\Search\Schema\Fetch':
+            case 'Start2004\Riak\Command\Search\Schema\Fetch':
                 $this->messageCode = Api\Pb\Message::RpbYokozunaSchemaGetReq;
                 $message = new Api\Pb\Message\RpbYokozunaSchemaGetReq();
                 $message->setName("{$this->command}");
                 break;
-            case 'OpenAdapter\Riak\Command\Search\Schema\Store':
+            case 'Start2004\Riak\Command\Search\Schema\Store':
                 $this->messageCode = Api\Pb\Message::RpbYokozunaSchemaPutReq;
                 $message = new Api\Pb\Message\RpbYokozunaSchemaPutReq();
                 $schema = new Api\Pb\Message\RpbYokozunaSchema();
@@ -174,7 +174,7 @@ class Pb extends Api implements ApiInterface
                 $schema->setContent($this->command->getData());
                 $message->setSchema($schema);
                 break;
-            case 'OpenAdapter\Riak\Command\Search\Fetch':
+            case 'Start2004\Riak\Command\Search\Fetch':
                 $this->messageCode = Api\Pb\Message::RpbSearchQueryReq;
                 $message = new Api\Pb\Message\RpbSearchQueryReq();
                 $message->setIndex("{$this->command}");
@@ -200,13 +200,13 @@ class Pb extends Api implements ApiInterface
                     }
                 }
                 break;
-            case 'OpenAdapter\Riak\Command\MapReduce\Fetch':
+            case 'Start2004\Riak\Command\MapReduce\Fetch':
                 $this->messageCode = Api\Pb\Message::RpbMapRedReq;
                 $message = new Api\Pb\Message\RpbMapRedReq();
                 $message->setContentType(Http::CONTENT_TYPE_JSON);
                 $message->setRequest($this->command->getEncodedData());
                 break;
-            case 'OpenAdapter\Riak\Command\Indexes\Query':
+            case 'Start2004\Riak\Command\Indexes\Query':
                 $this->messageCode = Api\Pb\Message::RpbIndexReq;
                 $message = new Api\Pb\Message\RpbIndexReq();
 
@@ -236,15 +236,15 @@ class Pb extends Api implements ApiInterface
                     }
                 }
                 break;
-            case 'OpenAdapter\Riak\Command\Ping':
+            case 'Start2004\Riak\Command\Ping':
                 $this->messageCode = Api\Pb\Message::RpbPingReq;
                 $message = '';
                 break;
             /** @noinspection PhpMissingBreakStatementInspection */
-            case 'OpenAdapter\Riak\Command\TimeSeries\Delete':
+            case 'Start2004\Riak\Command\TimeSeries\Delete':
                 $this->messageCode = Api\Pb\Message::TsDelReq;
                 $message = new Api\Pb\Message\TsDelReq();
-            case 'OpenAdapter\Riak\Command\TimeSeries\Fetch':
+            case 'Start2004\Riak\Command\TimeSeries\Fetch':
                 if (!$message) {
                     $this->messageCode = Api\Pb\Message::TsGetReq;
                     $message = new Api\Pb\Message\TsGetReq();
@@ -257,7 +257,7 @@ class Pb extends Api implements ApiInterface
                     $message->appendKey(Api\Pb\Translator\TimeSeries::toPbCell($cell));
                 }
                 break;
-            case 'OpenAdapter\Riak\Command\TimeSeries\Store':
+            case 'Start2004\Riak\Command\TimeSeries\Store':
                 $this->messageCode = Api\Pb\Message::TsPutReq;
                 $message = new Api\Pb\Message\TsPutReq();
 
@@ -268,7 +268,7 @@ class Pb extends Api implements ApiInterface
                     $message->appendRows(Api\Pb\Translator\TimeSeries::toPbRow($row));
                 }
                 break;
-            case 'OpenAdapter\Riak\Command\TimeSeries\Query\Fetch':
+            case 'Start2004\Riak\Command\TimeSeries\Query\Fetch':
                 $this->messageCode = Api\Pb\Message::TsQueryReq;
                 $message = new Api\Pb\Message\TsQueryReq();
 
@@ -341,7 +341,7 @@ class Pb extends Api implements ApiInterface
      *  404 = Not found
      *  503 = Service Unavailable / Timeout
      *
-     * @param $message_code     PB Message identifier @see OpenAdapter\Riak\Api\Pb\Message
+     * @param $message_code     PB Message identifier @see Start2004\Riak\Api\Pb\Message
      * @param string $message Binary message
      * @throws Exception
      * @internal param string $response
@@ -524,15 +524,15 @@ class Pb extends Api implements ApiInterface
                     $this->response = new Command\DataType\Map\Response($this->success, $code, '', $location, $map);
                 } else {
                     $command = get_class($this->command);
-                    if ($command == 'OpenAdapter\Riak\Command\DataType\Counter\Store') {
+                    if ($command == 'Start2004\Riak\Command\DataType\Counter\Store') {
                         $this->response = new Command\DataType\Counter\Response($this->success, $code, '', $location);
-                    } elseif ($command == 'OpenAdapter\Riak\Command\DataType\GSet\Store') {
+                    } elseif ($command == 'Start2004\Riak\Command\DataType\GSet\Store') {
                         $this->response = new Command\DataType\Set\Response($this->success, $code, '', $location);
-                    } elseif ($command == 'OpenAdapter\Riak\Command\DataType\Set\Store') {
+                    } elseif ($command == 'Start2004\Riak\Command\DataType\Set\Store') {
                         $this->response = new Command\DataType\Set\Response($this->success, $code, '', $location);
-                    } elseif ($command == 'OpenAdapter\Riak\Command\DataType\Map\Store') {
+                    } elseif ($command == 'Start2004\Riak\Command\DataType\Map\Store') {
                         $this->response = new Command\DataType\Map\Response($this->success, $code, '', $location);
-                    } elseif ($command == 'OpenAdapter\Riak\Command\DataType\Hll\Store') {
+                    } elseif ($command == 'Start2004\Riak\Command\DataType\Hll\Store') {
                         $this->response = new Command\DataType\Hll\Response($this->success, $code, '', $location);
                     }
                 }
@@ -970,7 +970,7 @@ class Pb extends Api implements ApiInterface
      */
     protected function packMessage($code, $payload = '')
     {
-        // https://github.com/OpenAdapter/riak_pb#protocol
+        // https://github.com/Start2004/riak_pb#protocol
         return pack("NC", 1 + strlen($payload), $code) . $payload;
     }
 

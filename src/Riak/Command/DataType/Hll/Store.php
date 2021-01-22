@@ -1,10 +1,10 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\DataType\Hll;
+namespace Start2004\Riak\Command\DataType\Hll;
 
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\CommandInterface;
-use OpenAdapter\Riak\Location;
+use Start2004\Riak\Command;
+use Start2004\Riak\CommandInterface;
+use Start2004\Riak\Location;
 
 /**
  * Stores an update to an hll

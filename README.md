@@ -52,9 +52,9 @@ Below is a short example of using the client. More substantial sample code is av
 
 ```php
 // lib classes are included via the Composer autoloader files
-use OpenAdapter\Riak;
-use OpenAdapter\Riak\Node;
-use OpenAdapter\Riak\Command;
+use Start2004\Riak;
+use Start2004\Riak\Node;
+use Start2004\Riak\Command;
 
 // define the connection info to our Riak nodes
 $nodes = (new Node\Builder)

@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_kv.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * RpbPutReq message
  */
@@ -49,7 +49,7 @@ class RpbPutReq extends \ProtobufMessage
         self::CONTENT => array(
             'name' => 'content',
             'required' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\RpbContent'
+            'type' => '\Start2004\Riak\Api\Pb\Message\RpbContent'
         ),
         self::W => array(
             'name' => 'w',
@@ -227,11 +227,11 @@ class RpbPutReq extends \ProtobufMessage
     /**
      * Sets value of 'content' property
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\RpbContent $value Property value
+     * @param \Start2004\Riak\Api\Pb\Message\RpbContent $value Property value
      *
      * @return null
      */
-    public function setContent(\OpenAdapter\Riak\Api\Pb\Message\RpbContent $value)
+    public function setContent(\Start2004\Riak\Api\Pb\Message\RpbContent $value)
     {
         return $this->set(self::CONTENT, $value);
     }
@@ -239,7 +239,7 @@ class RpbPutReq extends \ProtobufMessage
     /**
      * Returns value of 'content' property
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbContent
+     * @return \Start2004\Riak\Api\Pb\Message\RpbContent
      */
     public function getContent()
     {

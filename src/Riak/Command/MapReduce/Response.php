@@ -1,13 +1,13 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\MapReduce;
+namespace Start2004\Riak\Command\MapReduce;
 
 /**
  * Container for a response related to an operation on an object
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-class Response extends \OpenAdapter\Riak\Command\Response
+class Response extends \Start2004\Riak\Command\Response
 {
     protected $results = '';
 

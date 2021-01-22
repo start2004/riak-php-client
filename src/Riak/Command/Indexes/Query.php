@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\Indexes;
+namespace Start2004\Riak\Command\Indexes;
 
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\CommandInterface;
+use Start2004\Riak\Command;
+use Start2004\Riak\CommandInterface;
 
 /**
  * Riak 2i query information.

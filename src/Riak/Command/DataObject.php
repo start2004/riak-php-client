@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak\Command;
+namespace Start2004\Riak\Command;
 
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\Location;
+use Start2004\Riak\Command;
+use Start2004\Riak\Location;
 
 /**
  * Base class for Commands performing operations on Kv Objects
@@ -18,7 +18,7 @@ abstract class DataObject extends Command
     protected $response = null;
 
     /**
-     * @var \OpenAdapter\Riak\DataObject|null
+     * @var \Start2004\Riak\DataObject|null
      */
     protected $object = null;
 

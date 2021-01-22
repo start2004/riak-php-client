@@ -2,9 +2,9 @@
 /**
  * Auto generated from riak_dt.proto at 2016-12-13 21:45:39
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
-namespace OpenAdapter\Riak\Api\Pb\Message\DtFetchResp {
+namespace Start2004\Riak\Api\Pb\Message\DtFetchResp {
 /**
  * DataType enum embedded in DtFetchResp message
  */

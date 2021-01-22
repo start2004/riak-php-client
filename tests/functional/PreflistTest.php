@@ -1,8 +1,8 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests;
+namespace Start2004\Riak\Tests;
 
-use OpenAdapter\Riak\Command;
+use Start2004\Riak\Command;
 
 /**
  * Class PreflistTest
@@ -39,7 +39,7 @@ class PreflistTest extends TestCase
                 $this->assertObjectHasAttribute("node", $response->getDataObject()->getData()->preflist[0]);
                 $this->assertObjectHasAttribute("primary", $response->getDataObject()->getData()->preflist[0]);
             }
-        } catch (\OpenAdapter\Riak\Exception $e) {
+        } catch (\Start2004\Riak\Exception $e) {
             $this->markTestSkipped('preflists are not supported');
         }
     }

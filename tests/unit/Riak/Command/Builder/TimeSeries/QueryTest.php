@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests\Riak\Command\Builder;
+namespace Start2004\Riak\Tests\Riak\Command\Builder;
 
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\Tests\TestCase;
+use Start2004\Riak\Command;
+use Start2004\Riak\Tests\TestCase;
 
 /**
  * Tests the configuration of Riak commands via the Command Builder class
@@ -26,7 +26,7 @@ class QueryTest extends TestCase
         // build a command
         $command = $builder->build();
 
-        $this->assertInstanceOf('OpenAdapter\Riak\Command\TimeSeries\Query\Fetch', $command);
+        $this->assertInstanceOf('Start2004\Riak\Command\TimeSeries\Query\Fetch', $command);
         $this->assertEquals(static::$query, $command->getData()["query"]);
     }
 }

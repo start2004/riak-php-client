@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenAdapter\Riak\Tests\Riak\Command\Builder;
+namespace Start2004\Riak\Tests\Riak\Command\Builder;
 
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\Tests\TestCase;
+use Start2004\Riak\Command;
+use Start2004\Riak\Tests\TestCase;
 
 /**
  * Tests the configuration of Riak commands via the Command Builder class
@@ -25,8 +25,8 @@ class QueryIndexTest extends TestCase
 
         $command = $builder->build();
 
-        $this->assertInstanceOf('OpenAdapter\Riak\Command\Indexes\Query', $command);
-        $this->assertInstanceOf('OpenAdapter\Riak\Bucket', $command->getBucket());
+        $this->assertInstanceOf('Start2004\Riak\Command\Indexes\Query', $command);
+        $this->assertInstanceOf('Start2004\Riak\Bucket', $command->getBucket());
         $this->assertEquals('some_bucket', $command->getBucket()->getName());
         $this->assertEquals('some_bucket_type', $command->getBucket()->getType());
         $this->assertEquals('foo_int', $command->getIndexName());
@@ -36,7 +36,7 @@ class QueryIndexTest extends TestCase
     /**
      * Tests validate properly verifies the index name is not there
      *
-     * @expectedException \OpenAdapter\Riak\Command\Builder\Exception
+     * @expectedException \Start2004\Riak\Command\Builder\Exception
      */
     public function testValidateLocation()
     {
@@ -49,7 +49,7 @@ class QueryIndexTest extends TestCase
     /**
      * Tests validate properly verifies the scalar match value is not there
      *
-     * @expectedException \OpenAdapter\Riak\Command\Builder\Exception
+     * @expectedException \Start2004\Riak\Command\Builder\Exception
      */
     public function testValidateScalarValue()
     {
@@ -64,7 +64,7 @@ class QueryIndexTest extends TestCase
     /**
      * Tests validate properly verifies the range lower bound value is not there
      *
-     * @expectedException \OpenAdapter\Riak\Command\Builder\Exception
+     * @expectedException \Start2004\Riak\Command\Builder\Exception
      */
     public function testValidateRangeLowerBound()
     {
@@ -79,7 +79,7 @@ class QueryIndexTest extends TestCase
     /**
      * Tests validate properly verifies the range upper bound value is not there
      *
-     * @expectedException \OpenAdapter\Riak\Command\Builder\Exception
+     * @expectedException \Start2004\Riak\Command\Builder\Exception
      */
     public function testValidateRangeUpperBound()
     {

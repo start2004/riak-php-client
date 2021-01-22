@@ -1,8 +1,8 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\Builder;
+namespace Start2004\Riak\Command\Builder;
 
-use OpenAdapter\Riak\Command;
+use Start2004\Riak\Command;
 
 /**
  * Used to increment counter objects in Riak by the provided positive / negative integer

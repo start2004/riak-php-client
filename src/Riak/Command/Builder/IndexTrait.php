@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\Builder;
+namespace Start2004\Riak\Command\Builder;
 
 /**
  * Allows easy code sharing for Bucket getters / setters within the Command Builders

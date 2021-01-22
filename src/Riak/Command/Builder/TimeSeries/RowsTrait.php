@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\Builder\TimeSeries;
+namespace Start2004\Riak\Command\Builder\TimeSeries;
 
 /**
  * @author Christopher Mancini <cmancini at basho d0t com>
@@ -37,7 +37,7 @@ trait RowsTrait
     }
 
     /**
-     * @param \OpenAdapter\Riak\TimeSeries\Cell[] $row
+     * @param \Start2004\Riak\TimeSeries\Cell[] $row
      *
      * @return RowsTrait
      */

@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_yokozuna.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * RpbYokozunaIndexPutReq message
  */
@@ -20,7 +20,7 @@ class RpbYokozunaIndexPutReq extends \ProtobufMessage
         self::INDEX => array(
             'name' => 'index',
             'required' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\RpbYokozunaIndex'
+            'type' => '\Start2004\Riak\Api\Pb\Message\RpbYokozunaIndex'
         ),
         self::TIMEOUT => array(
             'name' => 'timeout',
@@ -63,11 +63,11 @@ class RpbYokozunaIndexPutReq extends \ProtobufMessage
     /**
      * Sets value of 'index' property
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\RpbYokozunaIndex $value Property value
+     * @param \Start2004\Riak\Api\Pb\Message\RpbYokozunaIndex $value Property value
      *
      * @return null
      */
-    public function setIndex(\OpenAdapter\Riak\Api\Pb\Message\RpbYokozunaIndex $value)
+    public function setIndex(\Start2004\Riak\Api\Pb\Message\RpbYokozunaIndex $value)
     {
         return $this->set(self::INDEX, $value);
     }
@@ -75,7 +75,7 @@ class RpbYokozunaIndexPutReq extends \ProtobufMessage
     /**
      * Returns value of 'index' property
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbYokozunaIndex
+     * @return \Start2004\Riak\Api\Pb\Message\RpbYokozunaIndex
      */
     public function getIndex()
     {

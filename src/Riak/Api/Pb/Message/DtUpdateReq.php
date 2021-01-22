@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_dt.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * DtUpdateReq message
  */
@@ -51,7 +51,7 @@ class DtUpdateReq extends \ProtobufMessage
         self::OP => array(
             'name' => 'op',
             'required' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\DtOp'
+            'type' => '\Start2004\Riak\Api\Pb\Message\DtOp'
         ),
         self::W => array(
             'name' => 'w',
@@ -230,11 +230,11 @@ class DtUpdateReq extends \ProtobufMessage
     /**
      * Sets value of 'op' property
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\DtOp $value Property value
+     * @param \Start2004\Riak\Api\Pb\Message\DtOp $value Property value
      *
      * @return null
      */
-    public function setOp(\OpenAdapter\Riak\Api\Pb\Message\DtOp $value)
+    public function setOp(\Start2004\Riak\Api\Pb\Message\DtOp $value)
     {
         return $this->set(self::OP, $value);
     }
@@ -242,7 +242,7 @@ class DtUpdateReq extends \ProtobufMessage
     /**
      * Returns value of 'op' property
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\DtOp
+     * @return \Start2004\Riak\Api\Pb\Message\DtOp
      */
     public function getOp()
     {

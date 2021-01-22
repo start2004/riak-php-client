@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak_dt.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * MapEntry message
  */
@@ -24,7 +24,7 @@ class MapEntry extends \ProtobufMessage
         self::FIELD => array(
             'name' => 'field',
             'required' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\MapField'
+            'type' => '\Start2004\Riak\Api\Pb\Message\MapField'
         ),
         self::COUNTER_VALUE => array(
             'name' => 'counter_value',
@@ -49,7 +49,7 @@ class MapEntry extends \ProtobufMessage
         self::MAP_VALUE => array(
             'name' => 'map_value',
             'repeated' => true,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\MapEntry'
+            'type' => '\Start2004\Riak\Api\Pb\Message\MapEntry'
         ),
     );
 
@@ -91,11 +91,11 @@ class MapEntry extends \ProtobufMessage
     /**
      * Sets value of 'field' property
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\MapField $value Property value
+     * @param \Start2004\Riak\Api\Pb\Message\MapField $value Property value
      *
      * @return null
      */
-    public function setField(\OpenAdapter\Riak\Api\Pb\Message\MapField $value)
+    public function setField(\Start2004\Riak\Api\Pb\Message\MapField $value)
     {
         return $this->set(self::FIELD, $value);
     }
@@ -103,7 +103,7 @@ class MapEntry extends \ProtobufMessage
     /**
      * Returns value of 'field' property
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\MapField
+     * @return \Start2004\Riak\Api\Pb\Message\MapField
      */
     public function getField()
     {
@@ -243,11 +243,11 @@ class MapEntry extends \ProtobufMessage
     /**
      * Appends value to 'map_value' list
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\MapEntry $value Value to append
+     * @param \Start2004\Riak\Api\Pb\Message\MapEntry $value Value to append
      *
      * @return null
      */
-    public function appendMapValue(\OpenAdapter\Riak\Api\Pb\Message\MapEntry $value)
+    public function appendMapValue(\Start2004\Riak\Api\Pb\Message\MapEntry $value)
     {
         return $this->append(self::MAP_VALUE, $value);
     }
@@ -265,7 +265,7 @@ class MapEntry extends \ProtobufMessage
     /**
      * Returns 'map_value' list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\MapEntry[]
+     * @return \Start2004\Riak\Api\Pb\Message\MapEntry[]
      */
     public function getMapValue()
     {
@@ -287,7 +287,7 @@ class MapEntry extends \ProtobufMessage
      *
      * @param int $offset Position in list
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\MapEntry
+     * @return \Start2004\Riak\Api\Pb\Message\MapEntry
      */
     public function getMapValueAt($offset)
     {

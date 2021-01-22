@@ -1,14 +1,14 @@
 <?php
 
-namespace OpenAdapter\Riak\Api\Pb\Translator;
+namespace Start2004\Riak\Api\Pb\Translator;
 
-use OpenAdapter\Riak;
-use OpenAdapter\Riak\Api\Exception;
-use OpenAdapter\Riak\Api\Pb;
-use OpenAdapter\Riak\Api\Pb\Message\MapField;
-use OpenAdapter\Riak\Api\Pb\Message\MapEntry;
-use OpenAdapter\Riak\Api\Pb\Message\MapUpdate;
-use OpenAdapter\Riak\Command;
+use Start2004\Riak;
+use Start2004\Riak\Api\Exception;
+use Start2004\Riak\Api\Pb;
+use Start2004\Riak\Api\Pb\Message\MapField;
+use Start2004\Riak\Api\Pb\Message\MapEntry;
+use Start2004\Riak\Api\Pb\Message\MapUpdate;
+use Start2004\Riak\Command;
 
 class DataType
 {

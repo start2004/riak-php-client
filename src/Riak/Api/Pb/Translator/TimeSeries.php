@@ -1,14 +1,14 @@
 <?php
 
-namespace OpenAdapter\Riak\Api\Pb\Translator;
+namespace Start2004\Riak\Api\Pb\Translator;
 
-use OpenAdapter\Riak\Api\Pb\Message\TsCell;
-use OpenAdapter\Riak\Api\Pb\Message\TsColumnDescription;
-use OpenAdapter\Riak\Api\Pb\Message\TsColumnType;
-use OpenAdapter\Riak\TimeSeries\Cell;
-use OpenAdapter\Riak\Api\Pb\Message\RpbPair;
-use OpenAdapter\Riak\Api\Pb\Message\TsInterpolation;
-use OpenAdapter\Riak\Api\Pb\Message\TsRow;
+use Start2004\Riak\Api\Pb\Message\TsCell;
+use Start2004\Riak\Api\Pb\Message\TsColumnDescription;
+use Start2004\Riak\Api\Pb\Message\TsColumnType;
+use Start2004\Riak\TimeSeries\Cell;
+use Start2004\Riak\Api\Pb\Message\RpbPair;
+use Start2004\Riak\Api\Pb\Message\TsInterpolation;
+use Start2004\Riak\Api\Pb\Message\TsRow;
 
 class TimeSeries
 {
@@ -103,7 +103,7 @@ class TimeSeries
      *
      * @param TsRow $tsRow
      * @param TsColumnDescription[] $columns
-     * @return \OpenAdapter\Riak\TimeSeries\Cell[]
+     * @return \Start2004\Riak\TimeSeries\Cell[]
      */
     public static function fromPbRow(TsRow $tsRow, array $columns)
     {

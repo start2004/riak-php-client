@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak.proto at 2016-05-06 13:01:47
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * RpbToggleEncodingResp message
  */

@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenAdapter\Riak\TimeSeries;
+namespace Start2004\Riak\TimeSeries;
 
 /**
  * Data structure for Cells of a TimeSeries row

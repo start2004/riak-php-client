@@ -1,10 +1,10 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\Object;
+namespace Start2004\Riak\Command\Object;
 
-use OpenAdapter\Riak\Command;
+use Start2004\Riak\Command;
 
-use OpenAdapter\Riak\CommandInterface;
+use Start2004\Riak\CommandInterface;
 
 /**
  * Fetches the Preflist for a Riak Kv Object

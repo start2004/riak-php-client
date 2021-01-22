@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenAdapter\Riak\Node;
+namespace Start2004\Riak\Node;
 
 /**
  * Configuration data structure object for connecting to a Riak node.

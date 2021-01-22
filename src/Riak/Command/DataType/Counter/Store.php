@@ -1,10 +1,10 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\DataType\Counter;
+namespace Start2004\Riak\Command\DataType\Counter;
 
-use OpenAdapter\Riak\Command;
-use OpenAdapter\Riak\CommandInterface;
-use OpenAdapter\Riak\Location;
+use Start2004\Riak\Command;
+use Start2004\Riak\CommandInterface;
+use Start2004\Riak\Location;
 
 
 /**

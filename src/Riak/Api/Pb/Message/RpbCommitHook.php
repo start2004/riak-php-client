@@ -2,10 +2,10 @@
 /**
  * Auto generated from riak.proto at 2016-09-24 09:49:42
  *
- * OpenAdapter\Riak\Api\Pb\Message package
+ * Start2004\Riak\Api\Pb\Message package
  */
 
-namespace OpenAdapter\Riak\Api\Pb\Message {
+namespace Start2004\Riak\Api\Pb\Message {
 /**
  * RpbCommitHook message
  */
@@ -20,7 +20,7 @@ class RpbCommitHook extends \ProtobufMessage
         self::MODFUN => array(
             'name' => 'modfun',
             'required' => false,
-            'type' => '\OpenAdapter\Riak\Api\Pb\Message\RpbModFun'
+            'type' => '\Start2004\Riak\Api\Pb\Message\RpbModFun'
         ),
         self::NAME => array(
             'name' => 'name',
@@ -63,11 +63,11 @@ class RpbCommitHook extends \ProtobufMessage
     /**
      * Sets value of 'modfun' property
      *
-     * @param \OpenAdapter\Riak\Api\Pb\Message\RpbModFun $value Property value
+     * @param \Start2004\Riak\Api\Pb\Message\RpbModFun $value Property value
      *
      * @return null
      */
-    public function setModfun(\OpenAdapter\Riak\Api\Pb\Message\RpbModFun $value)
+    public function setModfun(\Start2004\Riak\Api\Pb\Message\RpbModFun $value)
     {
         return $this->set(self::MODFUN, $value);
     }
@@ -75,7 +75,7 @@ class RpbCommitHook extends \ProtobufMessage
     /**
      * Returns value of 'modfun' property
      *
-     * @return \OpenAdapter\Riak\Api\Pb\Message\RpbModFun
+     * @return \Start2004\Riak\Api\Pb\Message\RpbModFun
      */
     public function getModfun()
     {

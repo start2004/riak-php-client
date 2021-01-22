@@ -1,15 +1,15 @@
 <?php
 
-namespace OpenAdapter\Riak\Command\Search;
+namespace Start2004\Riak\Command\Search;
 
-use OpenAdapter\Riak\Search\Doc;
+use Start2004\Riak\Search\Doc;
 
 /**
  * Container for a response for receiving data back from a Search request on Riak
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-class Response extends \OpenAdapter\Riak\Command\Response
+class Response extends \Start2004\Riak\Command\Response
 {
     /**
      * @var int
@@ -28,7 +28,7 @@ class Response extends \OpenAdapter\Riak\Command\Response
      * @param int $code
      * @param string $message
      * @param int $numFound
-     * @param \OpenAdapter\Riak\Search\Doc[] $docs
+     * @param \Start2004\Riak\Search\Doc[] $docs
      */
     public function __construct($success = true, $code = 0, $message = '', $numFound = 0, $docs = [])
     {
@@ -47,7 +47,7 @@ class Response extends \OpenAdapter\Riak\Command\Response
     }
 
     /**
-     * @return \OpenAdapter\Riak\Search\Doc[]
+     * @return \Start2004\Riak\Search\Doc[]
      */
     public function getDocs()
     {
