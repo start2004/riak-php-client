@@ -1,6 +1,6 @@
 # Riak Client for PHP
 
-[![Packagist](https://img.shields.io/packagist/v/open-adapter/riak-php-client.svg?maxAge=2592000)](https://packagist.org/packages/open-adapter/riak-php-client)
+[![Packagist](https://img.shields.io/packagist/v/start2004/riak-php-client.svg?maxAge=2592000)](https://packagist.org/packages/start2004/riak-php-client)
 
 **Riak PHP Client** is a library which makes it easy to communicate with [Riak](http://basho.com/riak/), an open source, distributed database that focuses on high availability, horizontal scalability, and *predictable*
 latency. This library communicates with Riak's HTTP interface using the cURL extension. If you want to communicate with Riak using the Protocol Buffers interface, use the [Official PHP PB Client](https://github.com/basho/riak-phppb-client). Both Riak and this library are maintained by [Basho Technologies](http://www.basho.com/). 
@@ -29,14 +29,14 @@ To see other clients available for use with Riak visit our [Documentation Site](
 This library has been added to [Packagist](https://packagist.org/packages/basho/) to simplify the installation process. Run the following [composer](https://getcomposer.org/) command:
 
 ```console
-$ composer require "open-adapter/riak-php-client": "3.*"
+$ composer require "start2004/riak-php-client": "3.*"
 ```
 
 Alternately, manually add the following to your `composer.json`, in the `require` section:
 
 ```javascript
 "require": {
-    "open-adapter/riak-php-client": "3.*"
+    "start2004/riak-php-client": "3.*"
 }
 ```
 

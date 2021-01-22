@@ -1,5 +1,5 @@
 {
-  "name": "open-adapter/riak-php-client",
+  "name": "start2004/riak-php-client",
   "description": "UnOfficial Riak client for PHP",
   "type": "library",
   "keywords": [
@@ -47,7 +47,7 @@
     }
   },
   "support": {
-    "issues": "https://github.com/open-adapter/riak-php-client/issues"
+    "issues": "https://github.com/start2004/riak-php-client/issues"
   },
   "require": {
     "php": ">=7.2",
