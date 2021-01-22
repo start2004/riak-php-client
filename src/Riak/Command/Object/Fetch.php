@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Riak\Command\Object;
+namespace OpenAdapter\Riak\Command\Object;
 
-use Basho\Riak\Command;
-use Basho\Riak\CommandInterface;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\CommandInterface;
 
 /**
  * Fetches a Riak Kv Object

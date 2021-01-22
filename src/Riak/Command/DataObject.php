@@ -29,6 +29,11 @@ abstract class DataObject extends Command
 
     protected $decodeAsAssociative = false;
 
+    public function getObject()
+    {
+        return $this->object;
+    }
+
     public function getDataObject()
     {
         return $this->object;
@@ -41,6 +46,11 @@ abstract class DataObject extends Command
 
     public function getEncodedData()
     {
+        /**
+         * @since 2021-01-21 编码后保存, 返回406 Not Acceptable
+         */
+        return $this->getData();
+
         $data = $this->getData();
 
         if (\in_array($this->object->getContentType(), ['application/json', 'text/json'])) {

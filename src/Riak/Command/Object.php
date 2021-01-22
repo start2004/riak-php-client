@@ -1,9 +1,9 @@
 <?php
 
-namespace Basho\Riak\Command;
+namespace OpenAdapter\Riak\Command;
 
-use Basho\Riak\Command;
-use Basho\Riak\Location;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\Location;
 
 /**
  * Base class for Commands performing operations on Kv Objects
@@ -18,7 +18,7 @@ abstract class Object extends Command
     protected $response = NULL;
 
     /**
-     * @var \Basho\Riak\Object|null
+     * @var \OpenAdapter\Riak\Object|null
      */
     protected $object = NULL;
 

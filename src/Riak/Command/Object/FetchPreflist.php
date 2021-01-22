@@ -1,10 +1,10 @@
 <?php
 
-namespace Basho\Riak\Command\Object;
+namespace OpenAdapter\Riak\Command\Object;
 
-use Basho\Riak\Command;
+use OpenAdapter\Riak\Command;
 
-use Basho\Riak\CommandInterface;
+use OpenAdapter\Riak\CommandInterface;
 
 /**
  * Fetches the Preflist for a Riak Kv Object

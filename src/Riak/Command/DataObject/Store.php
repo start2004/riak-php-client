@@ -32,4 +32,5 @@ class Store extends Command\DataObject implements CommandInterface
             $this->method = 'PUT';
         }
     }
+
 }

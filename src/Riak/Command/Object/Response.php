@@ -1,18 +1,18 @@
 <?php
 
-namespace Basho\Riak\Command\Object;
+namespace OpenAdapter\Riak\Command\Object;
 
-use Basho\Riak\Location;
+use OpenAdapter\Riak\Location;
 
 /**
  * Container for a response related to an operation on an object
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-class Response extends \Basho\Riak\Command\Response
+class Response extends \OpenAdapter\Riak\Command\Response
 {
     /**
-     * @var \Basho\Riak\Object[]
+     * @var \OpenAdapter\Riak\Object[]
      */
     protected $objects = [];
 
@@ -38,7 +38,7 @@ class Response extends \Basho\Riak\Command\Response
      * Retrieves the Location value from the response headers
      *
      * @return Location
-     * @throws \Basho\Riak\Command\Exception
+     * @throws \OpenAdapter\Riak\Command\Exception
      */
     public function getLocation()
     {
@@ -46,7 +46,7 @@ class Response extends \Basho\Riak\Command\Response
     }
 
     /**
-     * @return \Basho\Riak\Object|null
+     * @return \OpenAdapter\Riak\Object|null
      */
     public function getObject()
     {

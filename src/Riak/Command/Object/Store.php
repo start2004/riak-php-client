@@ -1,10 +1,10 @@
 <?php
 
-namespace Basho\Riak\Command\Object;
+namespace OpenAdapter\Riak\Command\Object;
 
-use Basho\Riak\Api\Http\Translators\SecondaryIndexHeaderTranslator;
-use Basho\Riak\Command;
-use Basho\Riak\CommandInterface;
+use OpenAdapter\Riak\Api\Http\Translators\SecondaryIndexHeaderTranslator;
+use OpenAdapter\Riak\Command;
+use OpenAdapter\Riak\CommandInterface;
 
 /**
  * Riak key value object store
