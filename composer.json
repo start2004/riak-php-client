@@ -1,6 +1,6 @@
 {
   "name": "start2004/riak-php-client",
-  "description": "UnOfficial Riak client for PHP",
+  "description": "UnOfficial Riak client for PHP7, merge `basho/riak-pb` and `open-adapter/riak-php-client`, Fix for the error \"Cannot use Riak\\Object as Object because 'Object' is a special class name\", support 8087 or 8098.",
   "type": "library",
   "keywords": [
     "basho",
