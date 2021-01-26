@@ -52,7 +52,14 @@ Below is a short example of using the client. More substantial sample code is av
 
 #### 8087
 
-8087 need `protobuf` extension.
+8087
+
+requires
+- allegro/protobuf: >= 0.12.3, `docker-php-ext-install protobuf`
+
+https://packagist.org/packages/allegro/php-protobuf
+
+https://github.com/allegro/php-protobuf
 
 ```php
 // lib classes are included via the Composer autoloader files
