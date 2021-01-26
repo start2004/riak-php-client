@@ -52,8 +52,6 @@ Below is a short example of using the client. More substantial sample code is av
 
 #### 8087
 
-8087
-
 requires
 - allegro/protobuf: >= 0.12.3, `docker-php-ext-install protobuf`
 
